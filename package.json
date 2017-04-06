@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "A React flexible dropdown component.",
   "types": "@types/index.d.ts",
-  "main": "index.js",
+  "main": "dist/simplr-dropdown.js",
   "scripts": {
     "test": "tsc -p . --noEmit && npm run tslint",
     "tslint": "tslint --project . --config ./tslint.json",
@@ -19,7 +19,15 @@
     "component"
   ],
   "author": "Martynas Zilinskas <martynas@quatrodev.com> (https://github.com/MartynasZilinskas)",
+  "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
+  "repository": "SimplrJS/simplr-dropdown",
+  "homepage": "https://github.com/SimplrJS/simplr-dropdown",
   "license": "MIT",
+  "files": [
+    "dist",
+    "**/*.md",
+    "@types"
+  ],
   "devDependencies": {
     "@types/react": "^15.0.21",
     "@types/react-dom": "^0.14.23",
