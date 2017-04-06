@@ -1,0 +1,35 @@
+{
+  "name": "simplr-dropdown",
+  "version": "2.0.0",
+  "description": "A React flexible dropdown component.",
+  "types": "@types/index.d.ts",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc -p . --noEmit && npm run tslint",
+    "tslint": "tslint --project . --config ./tslint.json",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "uglifyjs": "uglifyjs ./dist/simplr-dropdown.js -o ./dist/simplr-dropdown.min.js --compress --mangle",
+    "release": "npm run build && npm run uglifyjs"
+  },
+  "keywords": [
+    "react",
+    "dropdown",
+    "flexible",
+    "component"
+  ],
+  "author": "Martynas Zilinskas <martynas@quatrodev.com> (https://github.com/MartynasZilinskas)",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.2",
+    "uglify-js": "^2.8.21",
+    "webpack": "^2.3.3"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
+}
