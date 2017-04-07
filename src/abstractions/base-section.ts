@@ -18,6 +18,16 @@ export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSec
         DropdownOpen: React.PropTypes.bool
     };
 
+    constructor(props: TProps) {
+        super(props);
+
+        if (this.context.DropdownOnSectionClickCallback == null ||
+            this.context.DropdownOpen == null) {
+            throw new Error(`simplr-dropdown: (BaseHeader) ${(this.constructor as any).name}` +
+                ` must be inside DropdownHandler component.`);
+        }
+    }
+
     protected OnSectionClick() {
         this.context.DropdownOnSectionClickCallback();
     }
