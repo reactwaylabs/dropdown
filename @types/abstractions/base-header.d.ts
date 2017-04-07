@@ -14,5 +14,12 @@ export declare class BaseHeader<TProps extends BaseHeaderProps, TState extends B
     };
     constructor(props: TProps, context: BaseHeaderContext);
     static SimplrDropdownBaseSection(): void;
+    /**
+     * This callback MUST be called when container element is clicked.
+     *
+     * @protected
+     *
+     * @memberOf BaseHeader
+     */
     protected OnHeaderClick(): void;
 }

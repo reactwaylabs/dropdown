@@ -16,6 +16,21 @@ export declare class BaseSection<TProps extends BaseSectionProps, TState extends
     };
     constructor(props: TProps, context: BaseSectionContext);
     static SimplrDropdownBaseHeader(): void;
+    /**
+     * This callback MUST be called when container element is clicked.
+     *
+     * @protected
+     *
+     * @memberOf BaseSection
+     */
     protected OnSectionClick(): void;
+    /**
+     * Gets from DropdownHandler if dropdown is open.
+     *
+     * @protected
+     * @returns
+     *
+     * @memberOf BaseSection
+     */
     protected IsOpen(): boolean;
 }

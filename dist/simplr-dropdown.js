@@ -449,6 +449,13 @@ var BaseHeader = (function (_super) {
         return _this;
     }
     BaseHeader.SimplrDropdownBaseSection = function () { };
+    /**
+     * This callback MUST be called when container element is clicked.
+     *
+     * @protected
+     *
+     * @memberOf BaseHeader
+     */
     BaseHeader.prototype.OnHeaderClick = function () {
         this.context.DropdownOnHeaderClickCallback();
     };
@@ -488,9 +495,24 @@ var BaseSection = (function (_super) {
         return _this;
     }
     BaseSection.SimplrDropdownBaseHeader = function () { };
+    /**
+     * This callback MUST be called when container element is clicked.
+     *
+     * @protected
+     *
+     * @memberOf BaseSection
+     */
     BaseSection.prototype.OnSectionClick = function () {
         this.context.DropdownOnSectionClickCallback();
     };
+    /**
+     * Gets from DropdownHandler if dropdown is open.
+     *
+     * @protected
+     * @returns
+     *
+     * @memberOf BaseSection
+     */
     BaseSection.prototype.IsOpen = function () {
         return this.context.DropdownOpen;
     };
