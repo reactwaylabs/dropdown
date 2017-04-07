@@ -32,9 +32,9 @@ export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSec
 
     /**
      * This callback MUST be called when container element is clicked.
-     * 
+     *
      * @protected
-     * 
+     *
      * @memberOf BaseSection
      */
     protected OnSectionClick() {
@@ -43,10 +43,10 @@ export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSec
 
     /**
      * Gets from DropdownHandler if dropdown is open.
-     * 
+     *
      * @protected
-     * @returns 
-     * 
+     * @returns
+     *
      * @memberOf BaseSection
      */
     protected IsOpen() {

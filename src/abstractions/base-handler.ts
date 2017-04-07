@@ -85,9 +85,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * To close dropdown.
-     * 
-     * @returns 
-     * 
+     *
+     * @returns
+     *
      * @memberOf BaseHandler
      */
     public Close() {
@@ -103,9 +103,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * To close dropdown.
-     * 
-     * @returns 
-     * 
+     *
+     * @returns
+     *
      * @memberOf BaseHandler
      */
     public Open() {
@@ -121,9 +121,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Get a boolean if dropdown is open or not.
-     * 
-     * @returns 
-     * 
+     *
+     * @returns
+     *
      * @memberOf BaseHandler
      */
     public IsOpen() {
@@ -131,12 +131,12 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     }
 
     /**
-     * This MUST be used if spread props are being used on element. 
-     * 
+     * This MUST be used if spread props are being used on element.
+     *
      * @protected
-     * @param {Array<string>} [excludeProps] 
-     * @returns {Dictionary} 
-     * 
+     * @param {Array<string>} [excludeProps]
+     * @returns {Dictionary}
+     *
      * @memberOf BaseHandler
      */
     protected GetHTMLProps(excludeProps?: Array<string>): Dictionary {
@@ -170,10 +170,10 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     /**
      * Initial open state value.
      * By default it gets initial value from props: defaultOpen and open.
-     * 
+     *
      * @protected
-     * @returns 
-     * 
+     * @returns
+     *
      * @memberOf BaseHandler
      */
     protected GetInitialOpenValue() {
@@ -193,10 +193,10 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Return true if dropdown is controlled outside of this component.
-     * 
+     *
      * @protected
-     * @returns 
-     * 
+     * @returns
+     *
      * @memberOf BaseHandler
      */
     protected IsControlled() {
@@ -205,11 +205,11 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Checks if passed element is in container element.
-     * 
+     *
      * @protected
-     * @param {Element} element 
-     * @returns 
-     * 
+     * @param {Element} element
+     * @returns
+     *
      * @memberOf BaseHandler
      */
     protected IsElementInContainer(element: Element) {
@@ -219,9 +219,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Handles window click event.
-     * 
+     *
      * @protected
-     * 
+     *
      * @memberOf BaseHandler
      */
     protected OnOutsideClick = (event: MouseEvent) => {
@@ -239,9 +239,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Handles window keyboard events.
-     * 
+     *
      * @private
-     * 
+     *
      * @memberOf BaseHandler
      */
     private OnWindowKeyUp = (event: KeyboardEvent) => {
@@ -262,9 +262,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Triggers this method when header is clicked.
-     * 
+     *
      * @protected
-     * 
+     *
      * @memberOf BaseHandler
      */
     protected OnHeaderClick() {
@@ -281,9 +281,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Triggers this method when section is clicked.
-     * 
+     *
      * @protected
-     * 
+     *
      * @memberOf BaseHandler
      */
     protected OnSectionClick() {
@@ -300,11 +300,11 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Triggers all callbacks: onOpen, onClose and onToggle.
-     * 
+     *
      * @protected
-     * @param {boolean} open 
-     * @param {Contracts.EventSource} source 
-     * 
+     * @param {boolean} open
+     * @param {Contracts.EventSource} source
+     *
      * @memberOf BaseHandler
      */
     protected TriggerCallbacks(open: boolean, source: Contracts.EventSource) {
@@ -323,10 +323,10 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     /**
      * Updates state if dropdown is not controlled.
-     * 
+     *
      * @protected
-     * @param {boolean} open 
-     * 
+     * @param {boolean} open
+     *
      * @memberOf BaseHandler
      */
     protected UpdateOpenState(open: boolean) {
@@ -347,11 +347,11 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     /**
      * Checks if top children are BaseHeader and BaseSection based components.
      * MUST be used to render children for BaseHandler component.
-     * 
+     *
      * @protected
-     * @param {React.ReactNode} children 
-     * @returns 
-     * 
+     * @param {React.ReactNode} children
+     * @returns
+     *
      * @memberOf BaseHandler
      */
     protected RenderChildren(children: React.ReactNode) {

@@ -29,9 +29,9 @@ export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeade
 
     /**
      * This callback MUST be called when container element is clicked.
-     * 
+     *
      * @protected
-     * 
+     *
      * @memberOf BaseHeader
      */
     protected OnHeaderClick() {
