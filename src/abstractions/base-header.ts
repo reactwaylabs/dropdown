@@ -27,6 +27,13 @@ export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeade
 
     static SimplrDropdownBaseSection() { }
 
+    /**
+     * This callback MUST be called when container element is clicked.
+     * 
+     * @protected
+     * 
+     * @memberOf BaseHeader
+     */
     protected OnHeaderClick() {
         this.context.DropdownOnHeaderClickCallback();
     }
