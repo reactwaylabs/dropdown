@@ -14,6 +14,8 @@ export declare class BaseSection<TProps extends BaseSectionProps, TState extends
         DropdownOnSectionClickCallback: React.Requireable<any>;
         DropdownOpen: React.Requireable<any>;
     };
+    constructor(props: TProps, context: BaseSectionContext);
+    static SimplrDropdownBaseHeader(): void;
     protected OnSectionClick(): void;
     protected IsOpen(): boolean;
 }

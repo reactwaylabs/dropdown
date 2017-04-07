@@ -8,3 +8,8 @@ export function UniqueArray(arr: Array<any>) {
 
     return uniqueArr;
 }
+
+export function CheckComponentType(component: JSX.Element, type: string) {
+    let componentType = component.type as any;
+    return (componentType[type] != null);
+}

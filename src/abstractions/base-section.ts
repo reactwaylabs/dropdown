@@ -18,10 +18,37 @@ export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSec
         DropdownOpen: React.PropTypes.bool
     };
 
+    constructor(props: TProps, context: BaseSectionContext) {
+        super(props);
+
+        if (context.DropdownOnSectionClickCallback == null ||
+            context.DropdownOpen == null) {
+            throw new Error(`simplr-dropdown: (BaseHeader) ${(this.constructor as any).name}` +
+                ` must be inside DropdownHandler component.`);
+        }
+    }
+
+    static SimplrDropdownBaseHeader() { }
+
+    /**
+     * This callback MUST be called when container element is clicked.
+     * 
+     * @protected
+     * 
+     * @memberOf BaseSection
+     */
     protected OnSectionClick() {
         this.context.DropdownOnSectionClickCallback();
     }
 
+    /**
+     * Gets from DropdownHandler if dropdown is open.
+     * 
+     * @protected
+     * @returns 
+     * 
+     * @memberOf BaseSection
+     */
     protected IsOpen() {
         return this.context.DropdownOpen;
     }
