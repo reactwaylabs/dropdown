@@ -16,18 +16,18 @@ $ yarn add simplr-dropdown
 
 ## Features
 - Toggles dropdown when clicked on `DropdownHeader` component
-- Closes dropdown when clicked outside of `DropdownHandler` component <sup>*</sup>
+- Closes dropdown when clicked outside of `DropdownHandler` component<sup>*</sup>
 - Closes dropdown when clicked on `DropdownSection` component
 - Closes dropdown when clicked Escape button on keyboard
 - Extendable base components
 
 
-<sup>*</sup> This will not work when click has stopped propogation (event.stopPropagation) and `window.addEventListener("click", ...)` will not receive event.
+<sup>*</sup> This will not work when click event has stopped propogation (`event.stopPropagation()`) and therefore `window.addEventListener("click", ...)` will not receive event.
 
 ## Simple example
 _More examples and demo will be soon_
 ```tsx
-import { DropdownHandler, DropdownHeader, DropdownSection } from "./index";
+import { DropdownHandler, DropdownHeader, DropdownSection } from "simplr-dropdown";
 
 export function DropdownMenu(props: {}) {
     return <DropdownHandler>
