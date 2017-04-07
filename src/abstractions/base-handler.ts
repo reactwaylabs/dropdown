@@ -1,7 +1,13 @@
 import * as React from "react";
 
+import { BaseHeader } from "./base-header";
+import { BaseSection } from "./base-section";
+
 import * as Contracts from "../contracts";
 import * as Utils from "../utils";
+
+const CHILDREN_ERROR = "simplr-dropdown: (DropdownHandler)"
+    + " component must have two components as children: DropdownHeader and DropdownSection.";
 
 export interface Dictionary {
     [key: string]: any;
@@ -75,11 +81,18 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     getChildContext(): BaseHandlerChildContext {
         return {
             DropdownOpen: this.state.Open,
-            DropdownOnHeaderClickCallback: this.OnHeaderClick,
-            DropdownOnSectionClickCallback: this.OnSectionClick
+            DropdownOnHeaderClickCallback: this.OnHeaderClick.bind(this),
+            DropdownOnSectionClickCallback: this.OnSectionClick.bind(this)
         };
     }
 
+    /**
+     * To close dropdown.
+     * 
+     * @returns 
+     * 
+     * @memberOf BaseHandler
+     */
     public Close() {
         if (!this.state.Open) {
             return;
@@ -91,6 +104,13 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         });
     }
 
+    /**
+     * To close dropdown.
+     * 
+     * @returns 
+     * 
+     * @memberOf BaseHandler
+     */
     public Open() {
         if (this.state.Open) {
             return;
@@ -102,10 +122,26 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         });
     }
 
+    /**
+     * Get a boolean if dropdown is open or not.
+     * 
+     * @returns 
+     * 
+     * @memberOf BaseHandler
+     */
     public IsOpen() {
         return this.state.Open;
     }
 
+    /**
+     * This MUST be used if spread props are being used on element. 
+     * 
+     * @protected
+     * @param {Array<string>} [excludeProps] 
+     * @returns {Dictionary} 
+     * 
+     * @memberOf BaseHandler
+     */
     protected GetHTMLProps(excludeProps?: Array<string>): Dictionary {
         let notHTMLProps: string[] = [
             "defaultOpen",
@@ -134,6 +170,15 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         return newProps;
     }
 
+    /**
+     * Initial open state value.
+     * By default it gets initial value from props: defaultOpen and open.
+     * 
+     * @protected
+     * @returns 
+     * 
+     * @memberOf BaseHandler
+     */
     protected GetInitialOpenValue() {
         let props: TProps = this.props;
         let open = false;
@@ -149,15 +194,39 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         return open;
     }
 
+    /**
+     * Return true if dropdown is controlled outside of this component.
+     * 
+     * @protected
+     * @returns 
+     * 
+     * @memberOf BaseHandler
+     */
     protected IsControlled() {
         return this.props.open != null;
     }
 
+    /**
+     * Checks if passed element is in container element.
+     * 
+     * @protected
+     * @param {Element} element 
+     * @returns 
+     * 
+     * @memberOf BaseHandler
+     */
     protected IsElementInContainer(element: Element) {
         let containerElement: Element = this.Element;
         return containerElement.contains(element);
     }
 
+    /**
+     * Handles window click event.
+     * 
+     * @protected
+     * 
+     * @memberOf BaseHandler
+     */
     protected OnOutsideClick = (event: MouseEvent) => {
         let props: TProps = this.props;
         let open = false;
@@ -171,6 +240,13 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         this.UpdateOpenState(open);
     }
 
+    /**
+     * Handles window keyboard events.
+     * 
+     * @private
+     * 
+     * @memberOf BaseHandler
+     */
     private OnWindowKeyUp = (event: KeyboardEvent) => {
         let props: TProps = this.props;
         let open = false;
@@ -187,7 +263,14 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         }
     }
 
-    protected OnHeaderClick = () => {
+    /**
+     * Triggers this method when header is clicked.
+     * 
+     * @protected
+     * 
+     * @memberOf BaseHandler
+     */
+    protected OnHeaderClick() {
         let props: TProps = this.props;
         let open = !this.state.Open;
 
@@ -199,7 +282,14 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         this.UpdateOpenState(open);
     }
 
-    protected OnSectionClick = () => {
+    /**
+     * Triggers this method when section is clicked.
+     * 
+     * @protected
+     * 
+     * @memberOf BaseHandler
+     */
+    protected OnSectionClick() {
         let props: TProps = this.props;
         let open = false;
 
@@ -211,6 +301,15 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         this.UpdateOpenState(open);
     }
 
+    /**
+     * Triggers all callbacks: onOpen, onClose and onToggle.
+     * 
+     * @protected
+     * @param {boolean} open 
+     * @param {Contracts.EventSource} source 
+     * 
+     * @memberOf BaseHandler
+     */
     protected TriggerCallbacks(open: boolean, source: Contracts.EventSource) {
         let props: TProps = this.props;
 
@@ -225,6 +324,14 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         }
     }
 
+    /**
+     * Updates state if dropdown is not controlled.
+     * 
+     * @protected
+     * @param {boolean} open 
+     * 
+     * @memberOf BaseHandler
+     */
     protected UpdateOpenState(open: boolean) {
         if (this.state.Open !== open &&
             !this.IsControlled()) {
@@ -238,5 +345,30 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     protected SetElementRef = (element: any) => {
         this.Element = element;
+    }
+
+    /**
+     * Checks if top children are BaseHeader and BaseSection based components.
+     * MUST be used to render children for BaseHandler component.
+     * 
+     * @protected
+     * @param {React.ReactNode} children 
+     * @returns 
+     * 
+     * @memberOf BaseHandler
+     */
+    protected RenderChildren(children: React.ReactNode) {
+        if (React.Children.count(children) !== 2) {
+            throw new Error(CHILDREN_ERROR);
+        }
+
+        return React.Children.map(children, child => {
+            if (child instanceof BaseHeader ||
+                child instanceof BaseSection) {
+                return child;
+            }
+
+            throw new Error(CHILDREN_ERROR);
+        });
     }
 }
