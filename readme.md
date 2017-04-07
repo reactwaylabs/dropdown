@@ -1,5 +1,9 @@
 simplr-dropdown
 ===============
+A flexible React dropdown component.
+
+[![Build Status](https://travis-ci.org/SimplrJS/simplr-dropdown.svg?branch=master)](https://travis-ci.org/SimplrJS/simplr-dropdown)
+[![NPM version](http://img.shields.io/npm/v/simplr-dropdown.svg)](https://www.npmjs.com/package/simplr-dropdown) [![dependencies Status](https://david-dm.org/simplrjs/simplr-dropdown/status.svg)](https://david-dm.org/simplrjs/simplr-dropdown) [![devDependencies Status](https://david-dm.org/simplrjs/simplr-dropdown/dev-status.svg)](https://david-dm.org/simplrjs/simplr-dropdown?type=dev)
 
 ## Get started 
 ```sh
