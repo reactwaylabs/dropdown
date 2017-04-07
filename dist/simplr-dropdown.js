@@ -93,7 +93,6 @@ var EventSource;
     EventSource[EventSource["SectionClick"] = 16] = "SectionClick";
     EventSource[EventSource["OutsideClick"] = 24] = "OutsideClick";
     EventSource[EventSource["EscapeClick"] = 32] = "EscapeClick";
-    EventSource[EventSource["LocationChange"] = 40] = "LocationChange";
 })(EventSource = exports.EventSource || (exports.EventSource = {}));
 
 
@@ -206,6 +205,9 @@ var BaseHandler = (function (_super) {
             state.Open = true;
             return state;
         });
+    };
+    BaseHandler.prototype.IsOpen = function () {
+        return this.state.Open;
     };
     BaseHandler.prototype.GetHTMLProps = function (excludeProps) {
         var notHTMLProps = [
@@ -514,19 +516,16 @@ exports.CompareSource = CompareSource;
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-var BaseHandler = __webpack_require__(2);
-exports.BaseHandler = BaseHandler;
-var BaseHeader = __webpack_require__(3);
-exports.BaseHeader = BaseHeader;
-var BaseSection = __webpack_require__(4);
-exports.BaseSection = BaseSection;
-var DropdownHandler = __webpack_require__(5);
-exports.DropdownHandler = DropdownHandler;
-var DropdownHeader = __webpack_require__(6);
-exports.DropdownHeader = DropdownHeader;
-var DropdownSection = __webpack_require__(7);
-exports.DropdownSection = DropdownSection;
+__export(__webpack_require__(2));
+__export(__webpack_require__(3));
+__export(__webpack_require__(4));
+__export(__webpack_require__(5));
+__export(__webpack_require__(6));
+__export(__webpack_require__(7));
 var Contracts = __webpack_require__(1);
 exports.Contracts = Contracts;
 var Helpers = __webpack_require__(8);

@@ -3,5 +3,4 @@ export declare enum EventSource {
     SectionClick = 16,
     OutsideClick = 24,
     EscapeClick = 32,
-    LocationChange = 40,
 }

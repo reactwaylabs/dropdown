@@ -37,6 +37,7 @@ export declare abstract class BaseHandler<TProps extends BaseHandlerProps, TStat
     getChildContext(): BaseHandlerChildContext;
     Close(): void;
     Open(): void;
+    IsOpen(): TState["Open"];
     protected GetHTMLProps(excludeProps?: Array<string>): Dictionary;
     protected GetInitialOpenValue(): boolean;
     protected IsControlled(): boolean;
