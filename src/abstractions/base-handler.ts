@@ -1,8 +1,5 @@
 import * as React from "react";
 
-import { BaseHeader } from "./base-header";
-import { BaseSection } from "./base-section";
-
 import * as Contracts from "../contracts";
 import * as Utils from "../utils";
 
@@ -362,9 +359,19 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
             throw new Error(CHILDREN_ERROR);
         }
 
+        let foundHeader = false;
+        let foundSection = false;
+
         return React.Children.map(children, child => {
-            if (child instanceof BaseHeader ||
-                child instanceof BaseSection) {
+            if (!foundHeader &&
+                Utils.CheckComponentType(child as JSX.Element, Contracts.BASE_HEADER_FUNC)) {
+                foundHeader = true;
+
+                return child;
+            } else if (!foundSection &&
+                Utils.CheckComponentType(child as JSX.Element, Contracts.BASE_SECTION_FUNC)) {
+                foundSection = true;
+
                 return child;
             }
 

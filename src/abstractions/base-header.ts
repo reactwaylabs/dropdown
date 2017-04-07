@@ -12,18 +12,20 @@ export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeade
     extends React.Component<TProps, TState> {
     context: BaseHeaderContext;
 
-    constructor(props: TProps) {
+    static contextTypes = {
+        DropdownOnHeaderClickCallback: React.PropTypes.func
+    };
+
+    constructor(props: TProps, context: BaseHeaderContext) {
         super(props);
 
-        if (this.context.DropdownOnHeaderClickCallback == null) {
+        if (context.DropdownOnHeaderClickCallback == null) {
             throw new Error(`simplr-dropdown: ${(this.constructor as any).name}` +
                 ` must be inside DropdownHandler component.`);
         }
     }
 
-    static contextTypes = {
-        DropdownOnHeaderClickCallback: React.PropTypes.func
-    };
+    static SimplrDropdownBaseSection() { }
 
     protected OnHeaderClick() {
         this.context.DropdownOnHeaderClickCallback();
