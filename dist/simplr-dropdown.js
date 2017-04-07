@@ -94,6 +94,8 @@ var EventSource;
     EventSource[EventSource["OutsideClick"] = 24] = "OutsideClick";
     EventSource[EventSource["EscapeClick"] = 32] = "EscapeClick";
 })(EventSource = exports.EventSource || (exports.EventSource = {}));
+exports.BASE_HEADER_FUNC = "SimplrDropdownBaseHeader";
+exports.BASE_SECTION_FUNC = "SimplrDropdownBaseSection";
 
 
 /***/ }),
@@ -114,10 +116,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var Contracts = __webpack_require__(1);
 var Utils = __webpack_require__(10);
+var CHILDREN_ERROR = "simplr-dropdown: (DropdownHandler)"
+    + " component must have two components as children: DropdownHeader and DropdownSection.";
 var BaseHandler = (function (_super) {
     __extends(BaseHandler, _super);
     function BaseHandler(props) {
         var _this = _super.call(this, props) || this;
+        /**
+         * Handles window click event.
+         *
+         * @protected
+         *
+         * @memberOf BaseHandler
+         */
         _this.OnOutsideClick = function (event) {
             var props = _this.props;
             var open = false;
@@ -128,6 +139,13 @@ var BaseHandler = (function (_super) {
             _this.TriggerCallbacks(open, Contracts.EventSource.OutsideClick);
             _this.UpdateOpenState(open);
         };
+        /**
+         * Handles window keyboard events.
+         *
+         * @private
+         *
+         * @memberOf BaseHandler
+         */
         _this.OnWindowKeyUp = function (event) {
             var props = _this.props;
             var open = false;
@@ -139,24 +157,6 @@ var BaseHandler = (function (_super) {
                 _this.TriggerCallbacks(open, Contracts.EventSource.EscapeClick);
                 _this.UpdateOpenState(open);
             }
-        };
-        _this.OnHeaderClick = function () {
-            var props = _this.props;
-            var open = !_this.state.Open;
-            if (!props.toggleOnHeaderClick) {
-                return;
-            }
-            _this.TriggerCallbacks(open, Contracts.EventSource.HeaderClick);
-            _this.UpdateOpenState(open);
-        };
-        _this.OnSectionClick = function () {
-            var props = _this.props;
-            var open = false;
-            if (!props.closeOnSectionClick) {
-                return;
-            }
-            _this.TriggerCallbacks(open, Contracts.EventSource.SectionClick);
-            _this.UpdateOpenState(open);
         };
         _this.SetElementRef = function (element) {
             _this.Element = element;
@@ -184,10 +184,17 @@ var BaseHandler = (function (_super) {
     BaseHandler.prototype.getChildContext = function () {
         return {
             DropdownOpen: this.state.Open,
-            DropdownOnHeaderClickCallback: this.OnHeaderClick,
-            DropdownOnSectionClickCallback: this.OnSectionClick
+            DropdownOnHeaderClickCallback: this.OnHeaderClick.bind(this),
+            DropdownOnSectionClickCallback: this.OnSectionClick.bind(this)
         };
     };
+    /**
+     * To close dropdown.
+     *
+     * @returns
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.Close = function () {
         if (!this.state.Open) {
             return;
@@ -197,6 +204,13 @@ var BaseHandler = (function (_super) {
             return state;
         });
     };
+    /**
+     * To close dropdown.
+     *
+     * @returns
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.Open = function () {
         if (this.state.Open) {
             return;
@@ -206,9 +220,25 @@ var BaseHandler = (function (_super) {
             return state;
         });
     };
+    /**
+     * Get a boolean if dropdown is open or not.
+     *
+     * @returns
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.IsOpen = function () {
         return this.state.Open;
     };
+    /**
+     * This MUST be used if spread props are being used on element.
+     *
+     * @protected
+     * @param {Array<string>} [excludeProps]
+     * @returns {Dictionary}
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.GetHTMLProps = function (excludeProps) {
         var notHTMLProps = [
             "defaultOpen",
@@ -232,6 +262,15 @@ var BaseHandler = (function (_super) {
         }
         return newProps;
     };
+    /**
+     * Initial open state value.
+     * By default it gets initial value from props: defaultOpen and open.
+     *
+     * @protected
+     * @returns
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.GetInitialOpenValue = function () {
         var props = this.props;
         var open = false;
@@ -243,13 +282,71 @@ var BaseHandler = (function (_super) {
         }
         return open;
     };
+    /**
+     * Return true if dropdown is controlled outside of this component.
+     *
+     * @protected
+     * @returns
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.IsControlled = function () {
         return this.props.open != null;
     };
+    /**
+     * Checks if passed element is in container element.
+     *
+     * @protected
+     * @param {Element} element
+     * @returns
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.IsElementInContainer = function (element) {
         var containerElement = this.Element;
         return containerElement.contains(element);
     };
+    /**
+     * Triggers this method when header is clicked.
+     *
+     * @protected
+     *
+     * @memberOf BaseHandler
+     */
+    BaseHandler.prototype.OnHeaderClick = function () {
+        var props = this.props;
+        var open = !this.state.Open;
+        if (!props.toggleOnHeaderClick) {
+            return;
+        }
+        this.TriggerCallbacks(open, Contracts.EventSource.HeaderClick);
+        this.UpdateOpenState(open);
+    };
+    /**
+     * Triggers this method when section is clicked.
+     *
+     * @protected
+     *
+     * @memberOf BaseHandler
+     */
+    BaseHandler.prototype.OnSectionClick = function () {
+        var props = this.props;
+        var open = false;
+        if (!props.closeOnSectionClick) {
+            return;
+        }
+        this.TriggerCallbacks(open, Contracts.EventSource.SectionClick);
+        this.UpdateOpenState(open);
+    };
+    /**
+     * Triggers all callbacks: onOpen, onClose and onToggle.
+     *
+     * @protected
+     * @param {boolean} open
+     * @param {Contracts.EventSource} source
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.TriggerCallbacks = function (open, source) {
         var props = this.props;
         if (open && props.onOpen != null) {
@@ -262,6 +359,14 @@ var BaseHandler = (function (_super) {
             props.onToggle(open, source);
         }
     };
+    /**
+     * Updates state if dropdown is not controlled.
+     *
+     * @protected
+     * @param {boolean} open
+     *
+     * @memberOf BaseHandler
+     */
     BaseHandler.prototype.UpdateOpenState = function (open) {
         if (this.state.Open !== open &&
             !this.IsControlled()) {
@@ -270,6 +375,36 @@ var BaseHandler = (function (_super) {
                 return state;
             });
         }
+    };
+    /**
+     * Checks if top children are BaseHeader and BaseSection based components.
+     * MUST be used to render children for BaseHandler component.
+     *
+     * @protected
+     * @param {React.ReactNode} children
+     * @returns
+     *
+     * @memberOf BaseHandler
+     */
+    BaseHandler.prototype.RenderChildren = function (children) {
+        if (React.Children.count(children) !== 2) {
+            throw new Error(CHILDREN_ERROR);
+        }
+        var foundHeader = false;
+        var foundSection = false;
+        return React.Children.map(children, function (child) {
+            if (!foundHeader &&
+                Utils.CheckComponentType(child, Contracts.BASE_HEADER_FUNC)) {
+                foundHeader = true;
+                return child;
+            }
+            else if (!foundSection &&
+                Utils.CheckComponentType(child, Contracts.BASE_SECTION_FUNC)) {
+                foundSection = true;
+                return child;
+            }
+            throw new Error(CHILDREN_ERROR);
+        });
     };
     return BaseHandler;
 }(React.Component));
@@ -305,9 +440,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var BaseHeader = (function (_super) {
     __extends(BaseHeader, _super);
-    function BaseHeader() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function BaseHeader(props, context) {
+        var _this = _super.call(this, props) || this;
+        if (context.DropdownOnHeaderClickCallback == null) {
+            throw new Error("simplr-dropdown: " + _this.constructor.name +
+                " must be inside DropdownHandler component.");
+        }
+        return _this;
     }
+    BaseHeader.SimplrDropdownBaseSection = function () { };
     BaseHeader.prototype.OnHeaderClick = function () {
         this.context.DropdownOnHeaderClickCallback();
     };
@@ -337,9 +478,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var BaseSection = (function (_super) {
     __extends(BaseSection, _super);
-    function BaseSection() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function BaseSection(props, context) {
+        var _this = _super.call(this, props) || this;
+        if (context.DropdownOnSectionClickCallback == null ||
+            context.DropdownOpen == null) {
+            throw new Error("simplr-dropdown: (BaseHeader) " + _this.constructor.name +
+                " must be inside DropdownHandler component.");
+        }
+        return _this;
     }
+    BaseSection.SimplrDropdownBaseHeader = function () { };
     BaseSection.prototype.OnSectionClick = function () {
         this.context.DropdownOnSectionClickCallback();
     };
@@ -386,7 +534,7 @@ var DropdownHandler = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     DropdownHandler.prototype.render = function () {
-        return React.createElement("div", __assign({ ref: this.SetElementRef }, this.GetHTMLProps()), this.props.children);
+        return React.createElement("div", __assign({ ref: this.SetElementRef }, this.GetHTMLProps()), this.RenderChildren(this.props.children));
     };
     return DropdownHandler;
 }(base_handler_1.BaseHandler));
@@ -547,6 +695,11 @@ function UniqueArray(arr) {
     return uniqueArr;
 }
 exports.UniqueArray = UniqueArray;
+function CheckComponentType(component, type) {
+    var componentType = component.type;
+    return (componentType[type] != null);
+}
+exports.CheckComponentType = CheckComponentType;
 
 
 /***/ })

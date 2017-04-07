@@ -12,5 +12,7 @@ export declare class BaseHeader<TProps extends BaseHeaderProps, TState extends B
     static contextTypes: {
         DropdownOnHeaderClickCallback: React.Requireable<any>;
     };
+    constructor(props: TProps, context: BaseHeaderContext);
+    static SimplrDropdownBaseSection(): void;
     protected OnHeaderClick(): void;
 }

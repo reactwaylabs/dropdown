@@ -4,3 +4,5 @@ export declare enum EventSource {
     OutsideClick = 24,
     EscapeClick = 32,
 }
+export declare const BASE_HEADER_FUNC = "SimplrDropdownBaseHeader";
+export declare const BASE_SECTION_FUNC = "SimplrDropdownBaseSection";
