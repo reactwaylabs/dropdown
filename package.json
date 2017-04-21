@@ -1,6 +1,6 @@
 {
   "name": "simplr-dropdown",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A flexible React dropdown component.",
   "types": "@types/index.d.ts",
   "main": "dist/simplr-dropdown.js",
@@ -18,7 +18,7 @@
     "flexible",
     "component"
   ],
-  "author": "Martynas Zilinskas <martynas@quatrodev.com> (https://github.com/MartynasZilinskas)",
+  "author": "simplrjs <simplr@quatrodev.com> (https://github.com/simplrjs)",
   "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
   "repository": "SimplrJS/simplr-dropdown",
   "homepage": "https://github.com/SimplrJS/simplr-dropdown",
