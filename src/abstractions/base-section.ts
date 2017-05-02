@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as PropTypes from "prop-types";
 
 export interface BaseSectionProps { }
 
@@ -14,8 +15,8 @@ export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSec
     context: BaseSectionContext;
 
     static contextTypes = {
-        DropdownOnSectionClickCallback: React.PropTypes.func,
-        DropdownOpen: React.PropTypes.bool
+        DropdownOnSectionClickCallback: PropTypes.func.isRequired,
+        DropdownOpen: PropTypes.bool.isRequired
     };
 
     constructor(props: TProps, context: BaseSectionContext) {

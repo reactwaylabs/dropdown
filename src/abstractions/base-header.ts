@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as PropTypes from "prop-types";
 
 export interface BaseHeaderProps { }
 
@@ -13,7 +14,7 @@ export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeade
     context: BaseHeaderContext;
 
     static contextTypes = {
-        DropdownOnHeaderClickCallback: React.PropTypes.func
+        DropdownOnHeaderClickCallback: PropTypes.func.isRequired
     };
 
     constructor(props: TProps, context: BaseHeaderContext) {
