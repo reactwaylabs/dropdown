@@ -1,6 +1,6 @@
 {
   "name": "simplr-dropdown",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A flexible React dropdown component.",
   "types": "@types/index.d.ts",
   "main": "dist/simplr-dropdown.js",
