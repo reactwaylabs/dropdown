@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as PropTypes from "prop-types";
 
 import * as Contracts from "../contracts";
 import * as Utils from "../utils";
@@ -44,9 +45,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     };
 
     static childContextTypes = {
-        DropdownOpen: React.PropTypes.bool,
-        DropdownOnHeaderClickCallback: React.PropTypes.func,
-        DropdownOnSectionClickCallback: React.PropTypes.func
+        DropdownOpen: PropTypes.bool.isRequired,
+        DropdownOnHeaderClickCallback: PropTypes.func.isRequired,
+        DropdownOnSectionClickCallback: PropTypes.func.isRequired
     };
 
     constructor(props: TProps) {

@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"));
+		module.exports = factory(require("react"), require("prop-types"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react"], factory);
+		define(["react", "prop-types"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("react")) : factory(root["react"]);
+		var a = typeof exports === 'object' ? factory(require("react"), require("prop-types")) : factory(root["react"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -100,6 +100,12 @@ exports.BASE_SECTION_FUNC = "SimplrDropdownBaseSection";
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __extends = (this && this.__extends) || (function () {
@@ -114,8 +120,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
+var PropTypes = __webpack_require__(2);
 var Contracts = __webpack_require__(1);
-var Utils = __webpack_require__(10);
+var Utils = __webpack_require__(11);
 var CHILDREN_ERROR = "simplr-dropdown: (DropdownHandler)"
     + " component must have two components as children: DropdownHeader and DropdownSection.";
 var BaseHandler = (function (_super) {
@@ -415,15 +422,15 @@ BaseHandler.defaultProps = {
     closeOnEscapeClick: true
 };
 BaseHandler.childContextTypes = {
-    DropdownOpen: React.PropTypes.bool,
-    DropdownOnHeaderClickCallback: React.PropTypes.func,
-    DropdownOnSectionClickCallback: React.PropTypes.func
+    DropdownOpen: PropTypes.bool.isRequired,
+    DropdownOnHeaderClickCallback: PropTypes.func.isRequired,
+    DropdownOnSectionClickCallback: PropTypes.func.isRequired
 };
 exports.BaseHandler = BaseHandler;
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __extends = (this && this.__extends) || (function () {
@@ -438,6 +445,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
+var PropTypes = __webpack_require__(2);
 var BaseHeader = (function (_super) {
     __extends(BaseHeader, _super);
     function BaseHeader(props, context) {
@@ -462,13 +470,13 @@ var BaseHeader = (function (_super) {
     return BaseHeader;
 }(React.Component));
 BaseHeader.contextTypes = {
-    DropdownOnHeaderClickCallback: React.PropTypes.func
+    DropdownOnHeaderClickCallback: PropTypes.func.isRequired
 };
 exports.BaseHeader = BaseHeader;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __extends = (this && this.__extends) || (function () {
@@ -483,6 +491,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
+var PropTypes = __webpack_require__(2);
 var BaseSection = (function (_super) {
     __extends(BaseSection, _super);
     function BaseSection(props, context) {
@@ -519,48 +528,10 @@ var BaseSection = (function (_super) {
     return BaseSection;
 }(React.Component));
 BaseSection.contextTypes = {
-    DropdownOnSectionClickCallback: React.PropTypes.func,
-    DropdownOpen: React.PropTypes.bool
+    DropdownOnSectionClickCallback: PropTypes.func.isRequired,
+    DropdownOpen: PropTypes.bool.isRequired
 };
 exports.BaseSection = BaseSection;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var React = __webpack_require__(0);
-var base_handler_1 = __webpack_require__(2);
-var DropdownHandler = (function (_super) {
-    __extends(DropdownHandler, _super);
-    function DropdownHandler() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    DropdownHandler.prototype.render = function () {
-        return React.createElement("div", __assign({ ref: this.SetElementRef }, this.GetHTMLProps()), this.RenderChildren(this.props.children));
-    };
-    return DropdownHandler;
-}(base_handler_1.BaseHandler));
-exports.DropdownHandler = DropdownHandler;
 
 
 /***/ }),
@@ -587,26 +558,18 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var base_header_1 = __webpack_require__(3);
-var DropdownHeader = (function (_super) {
-    __extends(DropdownHeader, _super);
-    function DropdownHeader() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.OnContainerClickCallback = function (event) {
-            event.persist();
-            _this.OnHeaderClick();
-            if (_this.props.onClick != null) {
-                _this.props.onClick(event);
-            }
-        };
-        return _this;
+var base_handler_1 = __webpack_require__(3);
+var DropdownHandler = (function (_super) {
+    __extends(DropdownHandler, _super);
+    function DropdownHandler() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    DropdownHeader.prototype.render = function () {
-        return React.createElement("div", __assign({}, this.props, { onClick: this.OnContainerClickCallback }), this.props.children);
+    DropdownHandler.prototype.render = function () {
+        return React.createElement("div", __assign({ ref: this.SetElementRef }, this.GetHTMLProps()), this.RenderChildren(this.props.children));
     };
-    return DropdownHeader;
-}(base_header_1.BaseHeader));
-exports.DropdownHeader = DropdownHeader;
+    return DropdownHandler;
+}(base_handler_1.BaseHandler));
+exports.DropdownHandler = DropdownHandler;
 
 
 /***/ }),
@@ -633,7 +596,53 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var base_section_1 = __webpack_require__(4);
+var base_header_1 = __webpack_require__(4);
+var DropdownHeader = (function (_super) {
+    __extends(DropdownHeader, _super);
+    function DropdownHeader() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.OnContainerClickCallback = function (event) {
+            event.persist();
+            _this.OnHeaderClick();
+            if (_this.props.onClick != null) {
+                _this.props.onClick(event);
+            }
+        };
+        return _this;
+    }
+    DropdownHeader.prototype.render = function () {
+        return React.createElement("div", __assign({}, this.props, { onClick: this.OnContainerClickCallback }), this.props.children);
+    };
+    return DropdownHeader;
+}(base_header_1.BaseHeader));
+exports.DropdownHeader = DropdownHeader;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = __webpack_require__(0);
+var base_section_1 = __webpack_require__(5);
 var DropdownSection = (function (_super) {
     __extends(DropdownSection, _super);
     function DropdownSection() {
@@ -659,7 +668,7 @@ exports.DropdownSection = DropdownSection;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -683,27 +692,27 @@ exports.CompareSource = CompareSource;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(2));
 __export(__webpack_require__(3));
 __export(__webpack_require__(4));
 __export(__webpack_require__(5));
 __export(__webpack_require__(6));
 __export(__webpack_require__(7));
+__export(__webpack_require__(8));
 var Contracts = __webpack_require__(1);
 exports.Contracts = Contracts;
-var Helpers = __webpack_require__(8);
+var Helpers = __webpack_require__(9);
 exports.Helpers = Helpers;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });

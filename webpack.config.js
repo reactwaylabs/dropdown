@@ -1,3 +1,12 @@
+const packageJson = require("./package.json");
+let externals = {};
+
+for (const key in packageJson.dependencies) {
+    if (packageJson.dependencies.hasOwnProperty(key)) {
+        externals[key] = key;
+    }
+}
+
 module.exports = {
     entry: "./src/index.ts",
     output: {
@@ -17,8 +26,5 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx"]
     },
-    externals: {
-        "react": "react",
-        "react-dom": "react-dom"
-    }
+    externals: externals
 };

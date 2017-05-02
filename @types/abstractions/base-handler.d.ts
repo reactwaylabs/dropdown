@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
+import * as PropTypes from "prop-types";
 import * as Contracts from "../contracts";
 export interface Dictionary {
     [key: string]: any;
@@ -27,9 +28,9 @@ export declare abstract class BaseHandler<TProps extends BaseHandlerProps, TStat
     abstract Element: any;
     static defaultProps: BaseHandlerProps;
     static childContextTypes: {
-        DropdownOpen: React.Requireable<any>;
-        DropdownOnHeaderClickCallback: React.Requireable<any>;
-        DropdownOnSectionClickCallback: React.Requireable<any>;
+        DropdownOpen: PropTypes.Validator<any>;
+        DropdownOnHeaderClickCallback: PropTypes.Validator<any>;
+        DropdownOnSectionClickCallback: PropTypes.Validator<any>;
     };
     constructor(props: TProps);
     componentWillReceiveProps(nextProps: TProps): void;

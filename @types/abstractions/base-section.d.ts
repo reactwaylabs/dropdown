@@ -1,5 +1,6 @@
 /// <reference types="react" />
 import * as React from "react";
+import * as PropTypes from "prop-types";
 export interface BaseSectionProps {
 }
 export interface BaseSectionState {
@@ -11,8 +12,8 @@ export interface BaseSectionContext {
 export declare class BaseSection<TProps extends BaseSectionProps, TState extends BaseSectionState> extends React.Component<TProps, TState> {
     context: BaseSectionContext;
     static contextTypes: {
-        DropdownOnSectionClickCallback: React.Requireable<any>;
-        DropdownOpen: React.Requireable<any>;
+        DropdownOnSectionClickCallback: PropTypes.Validator<any>;
+        DropdownOpen: PropTypes.Validator<any>;
     };
     constructor(props: TProps, context: BaseSectionContext);
     static SimplrDropdownBaseHeader(): void;
