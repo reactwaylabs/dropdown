@@ -13,3 +13,6 @@ export function CheckComponentType(component: JSX.Element, type: string) {
     let componentType = component.type as any;
     return (componentType[type] != null);
 }
+
+export const CanIUseWindowListeners = (typeof window !== "undefined" &&
+    window.addEventListener != null);

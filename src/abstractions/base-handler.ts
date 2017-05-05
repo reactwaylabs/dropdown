@@ -52,8 +52,11 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     constructor(props: TProps) {
         super(props);
-        window.addEventListener("click", this.OnOutsideClick);
-        window.addEventListener("keyup", this.OnWindowKeyUp);
+        if (Utils.CanIUseWindowListeners) {
+            window.addEventListener("click", this.OnOutsideClick);
+            // TODO: Move keyup to listener to handler container
+            window.addEventListener("keyup", this.OnWindowKeyUp);
+        }
 
         this.state = {
             Open: this.GetInitialOpenValue()
@@ -72,8 +75,10 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     }
 
     componentWillUnmount() {
-        window.removeEventListener("click", this.OnOutsideClick);
-        window.removeEventListener("keyup", this.OnWindowKeyUp);
+        if (Utils.CanIUseWindowListeners) {
+            window.removeEventListener("click", this.OnOutsideClick);
+            window.removeEventListener("keyup", this.OnWindowKeyUp);
+        }
     }
 
     getChildContext(): BaseHandlerChildContext {
