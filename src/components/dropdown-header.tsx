@@ -19,10 +19,8 @@ export class DropdownHeader extends BaseHeader<DropdownHeaderProps, BaseHeaderSt
 
     render() {
         return <div
-            {...this.props}
             onClick={this.OnContainerClickCallback}
-        >
-            {this.props.children}
-        </div>;
+            {...this.props}
+        />;
     }
 }

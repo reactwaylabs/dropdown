@@ -23,10 +23,8 @@ export class DropdownSection extends BaseSection<DropdownSectionProps, BaseSecti
         }
 
         return <div
-            {...this.props}
             onClick={this.OnContainerClickCallback}
-        >
-            {this.props.children}
-        </div>;
+            {...this.props}
+        />;
     }
 }
