@@ -168,8 +168,11 @@ var BaseHandler = (function (_super) {
         _this.SetElementRef = function (element) {
             _this.Element = element;
         };
-        window.addEventListener("click", _this.OnOutsideClick);
-        window.addEventListener("keyup", _this.OnWindowKeyUp);
+        if (Utils.CanIUseWindowListeners) {
+            window.addEventListener("click", _this.OnOutsideClick);
+            // TODO: Move keyup to listener to handler container
+            window.addEventListener("keyup", _this.OnWindowKeyUp);
+        }
         _this.state = {
             Open: _this.GetInitialOpenValue()
         };
@@ -185,8 +188,10 @@ var BaseHandler = (function (_super) {
         }
     };
     BaseHandler.prototype.componentWillUnmount = function () {
-        window.removeEventListener("click", this.OnOutsideClick);
-        window.removeEventListener("keyup", this.OnWindowKeyUp);
+        if (Utils.CanIUseWindowListeners) {
+            window.removeEventListener("click", this.OnOutsideClick);
+            window.removeEventListener("keyup", this.OnWindowKeyUp);
+        }
     };
     BaseHandler.prototype.getChildContext = function () {
         return {
@@ -611,7 +616,7 @@ var DropdownHeader = (function (_super) {
         return _this;
     }
     DropdownHeader.prototype.render = function () {
-        return React.createElement("div", __assign({}, this.props, { onClick: this.OnContainerClickCallback }), this.props.children);
+        return React.createElement("div", __assign({ onClick: this.OnContainerClickCallback }, this.props));
     };
     return DropdownHeader;
 }(base_header_1.BaseHeader));
@@ -660,7 +665,7 @@ var DropdownSection = (function (_super) {
         if (!this.IsOpen()) {
             return null;
         }
-        return React.createElement("div", __assign({}, this.props, { onClick: this.OnContainerClickCallback }), this.props.children);
+        return React.createElement("div", __assign({ onClick: this.OnContainerClickCallback }, this.props));
     };
     return DropdownSection;
 }(base_section_1.BaseSection));
@@ -731,6 +736,8 @@ function CheckComponentType(component, type) {
     return (componentType[type] != null);
 }
 exports.CheckComponentType = CheckComponentType;
+exports.CanIUseWindowListeners = (typeof window !== "undefined" &&
+    window.addEventListener != null);
 
 
 /***/ })
