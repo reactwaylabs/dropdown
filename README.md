@@ -1,9 +1,24 @@
-simplr-dropdown
-===============
-A flexible React dropdown component.
+<p align="right">
+    <a href="https://npmjs.org/package/simplr-dropdown">
+        <img src="https://img.shields.io/npm/v/simplr-dropdown.svg?style=flat-square" alt="version" />
+    </a>
+    <a href="https://travis-ci.org/SimplrJS/simplr-dropdown">
+        <img src="https://img.shields.io/travis/SimplrJS/simplr-dropdown.svg?style=flat-square" alt="build" />
+    </a>
+    <a href="https://david-dm.org/simplrjs/simplr-dropdown">
+        <img src="https://img.shields.io/david/SimplrJS/simplr-dropdown.svg?style=flat-square" alt="dependencies" />
+    </a>
+    <a href="https://david-dm.org/simplrjs/simplr-dropdown?type=dev">
+        <img src="https://img.shields.io/david/dev/SimplrJS/simplr-dropdown.svg?style=flat-square" alt="devDependencies" />
+    </a>
+    <a href="https://npmjs.org/package/simplr-dropdown">
+        <img src="https://img.shields.io/npm/l/simplr-dropdown.svg?style=flat-square" alt="license" />
+    </a>
+</p>
 
-[![Build Status](https://travis-ci.org/SimplrJS/simplr-dropdown.svg?branch=master)](https://travis-ci.org/SimplrJS/simplr-dropdown)
-[![NPM version](http://img.shields.io/npm/v/simplr-dropdown.svg)](https://www.npmjs.com/package/simplr-dropdown) [![dependencies Status](https://david-dm.org/simplrjs/simplr-dropdown/status.svg)](https://david-dm.org/simplrjs/simplr-dropdown) [![devDependencies Status](https://david-dm.org/simplrjs/simplr-dropdown/dev-status.svg)](https://david-dm.org/simplrjs/simplr-dropdown?type=dev)
+<h1 align="center">simplr-dropdown</h1>
+
+A flexible React dropdown component.
 
 ## Get started 
 ```sh
@@ -20,6 +35,7 @@ $ yarn add simplr-dropdown
 - Closes dropdown when clicked on `DropdownSection` component
 - Closes dropdown when clicked Escape button on keyboard
 - Extendable base components
+- Supports server side rendering
 
 
 <sup>*</sup> This will not work when click event has stopped propogation (`event.stopPropagation()`) and therefore `window.addEventListener("click", ...)` will not receive event.
