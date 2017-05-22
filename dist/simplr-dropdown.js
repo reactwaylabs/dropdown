@@ -140,7 +140,7 @@ var BaseHandler = (function (_super) {
             var props = _this.props;
             var open = false;
             if (!props.closeOnOutsideClick
-                || _this.IsElementInContainer(event.toElement)) {
+                || _this.IsElementInContainer(event.target)) {
                 return;
             }
             _this.TriggerCallbacks(open, Contracts.EventSource.OutsideClick);
