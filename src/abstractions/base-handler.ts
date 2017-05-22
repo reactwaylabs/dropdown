@@ -235,7 +235,7 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         let open = false;
 
         if (!props.closeOnOutsideClick
-            || this.IsElementInContainer(event.toElement)) {
+            || this.IsElementInContainer(event.target as Element)) {
             return;
         }
 
