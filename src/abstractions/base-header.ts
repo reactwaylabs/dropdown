@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-export interface BaseHeaderProps { }
+export type BaseHeaderProps = {};
 
-export interface BaseHeaderState { }
+export type BaseHeaderState = {};
 
 export interface BaseHeaderContext {
     DropdownOnHeaderClickCallback: Function;
@@ -11,9 +11,9 @@ export interface BaseHeaderContext {
 
 export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeaderState>
     extends React.Component<TProps, TState> {
-    context: BaseHeaderContext;
+    public context: BaseHeaderContext;
 
-    static contextTypes = {
+    public static contextTypes: PropTypes.ValidationMap<BaseHeaderContext> = {
         DropdownOnHeaderClickCallback: PropTypes.func.isRequired
     };
 
@@ -26,16 +26,17 @@ export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeade
         }
     }
 
-    static SimplrDropdownBaseSection() { }
+    // tslint:disable-next-line:no-empty
+    public static SimplrDropdownBaseSection(): void { }
+
+    protected GetHTMLProps(props: BaseHeaderProps): {} {
+        return props;
+    }
 
     /**
      * This callback MUST be called when container element is clicked.
-     *
-     * @protected
-     *
-     * @memberOf BaseHeader
      */
-    protected OnHeaderClick() {
+    protected OnHeaderClick(): void {
         this.context.DropdownOnHeaderClickCallback();
     }
 }

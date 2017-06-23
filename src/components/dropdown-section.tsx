@@ -1,14 +1,15 @@
 import * as React from "react";
 
 import { BaseSection, BaseSectionProps, BaseSectionState } from "../abstractions/base-section";
+import { HTMLElementProps } from "../contracts";
 
-export interface DropdownSectionProps extends BaseSectionProps, React.HTMLProps<HTMLDivElement> {
+export interface DropdownSectionProps extends BaseSectionProps, HTMLElementProps<HTMLDivElement> {
     // HACK: Workaround of rule "intersection types should be consistent"
-    ref?: (component: any) => void;
+    ref?: React.Ref<DropdownSection>;
 }
 
 export class DropdownSection extends BaseSection<DropdownSectionProps, BaseSectionState> {
-    protected OnContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = (event) => {
+    protected OnContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
         event.persist();
         this.OnSectionClick();
 
@@ -17,14 +18,14 @@ export class DropdownSection extends BaseSection<DropdownSectionProps, BaseSecti
         }
     }
 
-    render() {
+    public render(): JSX.Element | null {
         if (!this.IsOpen()) {
             return null;
         }
 
         return <div
             onClick={this.OnContainerClickCallback}
-            {...this.props}
+            {...this.GetHTMLProps(this.props) }
         />;
     }
 }
