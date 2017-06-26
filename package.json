@@ -29,18 +29,18 @@
     "@types"
   ],
   "devDependencies": {
-    "ts-loader": "^2.0.3",
-    "tslint": "^5.0.0",
-    "typescript": "^2.3.2",
-    "uglify-js": "^2.8.21",
-    "webpack": "^2.3.3"
+    "ts-loader": "^2.2.0",
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4",
+    "uglify-js": "^3.0.20",
+    "webpack": "^3.0.0"
   },
   "dependencies": {
     "@types/prop-types": "^15.5.1",
-    "@types/react": "^15.0.23",
-    "@types/react-dom": "^15.5.0",
-    "prop-types": "^15.5.8",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "@types/react": "^15.0.31",
+    "@types/react-dom": "^15.5.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }

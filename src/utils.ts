@@ -1,5 +1,5 @@
-export function UniqueArray(arr: Array<any>) {
-    let uniqueArr = Array<any>();
+export function UniqueArray(arr: any[]): any[] {
+    const uniqueArr: any[] = [];
     for (let i = 0; i < arr.length; i++) {
         if (uniqueArr.indexOf(arr[i]) === -1) {
             uniqueArr.push(arr[i]);
@@ -9,8 +9,8 @@ export function UniqueArray(arr: Array<any>) {
     return uniqueArr;
 }
 
-export function CheckComponentType(component: JSX.Element, type: string) {
-    let componentType = component.type as any;
+export function CheckComponentType(component: JSX.Element, type: string): boolean {
+    const componentType = component.type as any;
     return (componentType[type] != null);
 }
 

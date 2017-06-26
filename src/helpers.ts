@@ -5,7 +5,7 @@ export function ResolveSource(source: Contracts.EventSource): string {
 }
 
 export function ParseSourceValue(value: string): Contracts.EventSource {
-    let enumArray = Contracts.EventSource as any as { [key: string]: number };
+    const enumArray = Contracts.EventSource as any as { [key: string]: number };
     if (enumArray[value] != null) {
         return enumArray[value as any] as any as Contracts.EventSource;
     }
@@ -13,6 +13,6 @@ export function ParseSourceValue(value: string): Contracts.EventSource {
     throw new Error(`simplr-dropdown: Value "${value}" was not found in Source enum`);
 }
 
-export function CompareSource(value: number, stringValue: string) {
+export function CompareSource(value: number, stringValue: string): boolean {
     return (Contracts.EventSource[value] === stringValue);
 }
