@@ -21,6 +21,7 @@ export interface BaseHandlerProps {
     closeOnOutsideClick?: boolean;
     closeOnSectionClick?: boolean;
     closeOnEscapeClick?: boolean;
+    strictStructure?: boolean;
 }
 
 export interface BaseHandlerState {
@@ -41,7 +42,8 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         toggleOnHeaderClick: true,
         closeOnSectionClick: false,
         closeOnOutsideClick: true,
-        closeOnEscapeClick: true
+        closeOnEscapeClick: true,
+        strictStructure: true
     };
 
     public static childContextTypes: PropTypes.ValidationMap<BaseHandlerChildContext> = {
@@ -285,9 +287,12 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     /**
      * Checks if top children are BaseHeader and BaseSection based components.
      * MUST be used to render children for BaseHandler component.
-     * @deprecated
      */
     protected RenderChildren(children: React.ReactNode): React.ReactNode {
+        if (!this.props.strictStructure) {
+            return children;
+        }
+
         if (React.Children.count(children) !== 2) {
             throw new Error(CHILDREN_ERROR);
         }
