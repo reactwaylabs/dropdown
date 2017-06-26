@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("prop-types")) : factory(root["react"], root["prop-types"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_2__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -43,9 +43,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -73,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -84,6 +81,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -99,12 +102,6 @@ exports.BASE_SECTION_FUNC = "SimplrDropdownBaseSection";
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
-
-/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -118,23 +115,26 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
+            t[p[i]] = s[p[i]];
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var PropTypes = __webpack_require__(2);
-var Contracts = __webpack_require__(1);
-var Utils = __webpack_require__(11);
-var CHILDREN_ERROR = "simplr-dropdown: (DropdownHandler)"
-    + " component must have two components as children: DropdownHeader and DropdownSection.";
+var PropTypes = __webpack_require__(1);
+var Contracts = __webpack_require__(2);
+var Utils = __webpack_require__(7);
 var BaseHandler = (function (_super) {
     __extends(BaseHandler, _super);
     function BaseHandler(props) {
         var _this = _super.call(this, props) || this;
         /**
          * Handles window click event.
-         *
-         * @protected
-         *
-         * @memberOf BaseHandler
          */
         _this.OnOutsideClick = function (event) {
             var props = _this.props;
@@ -148,10 +148,6 @@ var BaseHandler = (function (_super) {
         };
         /**
          * Handles window keyboard events.
-         *
-         * @private
-         *
-         * @memberOf BaseHandler
          */
         _this.OnWindowKeyUp = function (event) {
             var props = _this.props;
@@ -202,10 +198,6 @@ var BaseHandler = (function (_super) {
     };
     /**
      * To close dropdown.
-     *
-     * @returns
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.Close = function () {
         if (!this.state.Open) {
@@ -218,10 +210,6 @@ var BaseHandler = (function (_super) {
     };
     /**
      * To close dropdown.
-     *
-     * @returns
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.Open = function () {
         if (this.state.Open) {
@@ -234,54 +222,20 @@ var BaseHandler = (function (_super) {
     };
     /**
      * Get a boolean if dropdown is open or not.
-     *
-     * @returns
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.IsOpen = function () {
         return this.state.Open;
     };
     /**
      * This MUST be used if spread props are being used on element.
-     *
-     * @protected
-     * @param {Array<string>} [excludeProps]
-     * @returns {Dictionary}
-     *
-     * @memberOf BaseHandler
      */
-    BaseHandler.prototype.GetHTMLProps = function (excludeProps) {
-        var notHTMLProps = [
-            "defaultOpen",
-            "open",
-            "onOpen",
-            "onClose",
-            "onToggle",
-            "toggleOnHeaderClick",
-            "closeOnOutsideClick",
-            "closeOnSectionClick",
-            "closeOnEscapeClick"
-        ];
-        if (excludeProps != null) {
-            notHTMLProps = Utils.UniqueArray(notHTMLProps.concat(excludeProps));
-        }
-        var newProps = {};
-        for (var key in this.props) {
-            if (this.props[key] != null && notHTMLProps.indexOf(key) === -1) {
-                newProps[key] = this.props[key];
-            }
-        }
-        return newProps;
+    BaseHandler.prototype.GetHTMLProps = function (props) {
+        var closeOnEscapeClick = props.closeOnEscapeClick, closeOnOutsideClick = props.closeOnOutsideClick, closeOnSectionClick = props.closeOnSectionClick, defaultOpen = props.defaultOpen, onClose = props.onClose, onOpen = props.onOpen, onToggle = props.onToggle, open = props.open, toggleOnHeaderClick = props.toggleOnHeaderClick, restProps = __rest(props, ["closeOnEscapeClick", "closeOnOutsideClick", "closeOnSectionClick", "defaultOpen", "onClose", "onOpen", "onToggle", "open", "toggleOnHeaderClick"]);
+        return restProps;
     };
     /**
      * Initial open state value.
      * By default it gets initial value from props: defaultOpen and open.
-     *
-     * @protected
-     * @returns
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.GetInitialOpenValue = function () {
         var props = this.props;
@@ -296,34 +250,22 @@ var BaseHandler = (function (_super) {
     };
     /**
      * Return true if dropdown is controlled outside of this component.
-     *
-     * @protected
-     * @returns
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.IsControlled = function () {
         return this.props.open != null;
     };
     /**
      * Checks if passed element is in container element.
-     *
-     * @protected
-     * @param {Element} element
-     * @returns
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.IsElementInContainer = function (element) {
+        if (this.Element == null) {
+            return false;
+        }
         var containerElement = this.Element;
         return containerElement.contains(element);
     };
     /**
      * Triggers this method when header is clicked.
-     *
-     * @protected
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.OnHeaderClick = function () {
         var props = this.props;
@@ -336,10 +278,6 @@ var BaseHandler = (function (_super) {
     };
     /**
      * Triggers this method when section is clicked.
-     *
-     * @protected
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.OnSectionClick = function () {
         var props = this.props;
@@ -352,12 +290,6 @@ var BaseHandler = (function (_super) {
     };
     /**
      * Triggers all callbacks: onOpen, onClose and onToggle.
-     *
-     * @protected
-     * @param {boolean} open
-     * @param {Contracts.EventSource} source
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.TriggerCallbacks = function (open, source) {
         var props = this.props;
@@ -373,11 +305,6 @@ var BaseHandler = (function (_super) {
     };
     /**
      * Updates state if dropdown is not controlled.
-     *
-     * @protected
-     * @param {boolean} open
-     *
-     * @memberOf BaseHandler
      */
     BaseHandler.prototype.UpdateOpenState = function (open) {
         if (this.state.Open !== open &&
@@ -387,36 +314,6 @@ var BaseHandler = (function (_super) {
                 return state;
             });
         }
-    };
-    /**
-     * Checks if top children are BaseHeader and BaseSection based components.
-     * MUST be used to render children for BaseHandler component.
-     *
-     * @protected
-     * @param {React.ReactNode} children
-     * @returns
-     *
-     * @memberOf BaseHandler
-     */
-    BaseHandler.prototype.RenderChildren = function (children) {
-        if (React.Children.count(children) !== 2) {
-            throw new Error(CHILDREN_ERROR);
-        }
-        var foundHeader = false;
-        var foundSection = false;
-        return React.Children.map(children, function (child) {
-            if (!foundHeader &&
-                Utils.CheckComponentType(child, Contracts.BASE_HEADER_FUNC)) {
-                foundHeader = true;
-                return child;
-            }
-            else if (!foundSection &&
-                Utils.CheckComponentType(child, Contracts.BASE_SECTION_FUNC)) {
-                foundSection = true;
-                return child;
-            }
-            throw new Error(CHILDREN_ERROR);
-        });
     };
     return BaseHandler;
 }(React.Component));
@@ -450,7 +347,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var PropTypes = __webpack_require__(2);
+var PropTypes = __webpack_require__(1);
 var BaseHeader = (function (_super) {
     __extends(BaseHeader, _super);
     function BaseHeader(props, context) {
@@ -461,13 +358,13 @@ var BaseHeader = (function (_super) {
         }
         return _this;
     }
+    // tslint:disable-next-line:no-empty
     BaseHeader.SimplrDropdownBaseSection = function () { };
+    BaseHeader.prototype.GetHTMLProps = function (props) {
+        return props;
+    };
     /**
      * This callback MUST be called when container element is clicked.
-     *
-     * @protected
-     *
-     * @memberOf BaseHeader
      */
     BaseHeader.prototype.OnHeaderClick = function () {
         this.context.DropdownOnHeaderClickCallback();
@@ -496,7 +393,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
-var PropTypes = __webpack_require__(2);
+var PropTypes = __webpack_require__(1);
 var BaseSection = (function (_super) {
     __extends(BaseSection, _super);
     function BaseSection(props, context) {
@@ -508,24 +405,19 @@ var BaseSection = (function (_super) {
         }
         return _this;
     }
+    // tslint:disable-next-line:no-empty
     BaseSection.SimplrDropdownBaseHeader = function () { };
+    BaseSection.prototype.GetHTMLProps = function (props) {
+        return props;
+    };
     /**
      * This callback MUST be called when container element is clicked.
-     *
-     * @protected
-     *
-     * @memberOf BaseSection
      */
     BaseSection.prototype.OnSectionClick = function () {
         this.context.DropdownOnSectionClickCallback();
     };
     /**
      * Gets from DropdownHandler if dropdown is open.
-     *
-     * @protected
-     * @returns
-     *
-     * @memberOf BaseSection
      */
     BaseSection.prototype.IsOpen = function () {
         return this.context.DropdownOpen;
@@ -541,6 +433,45 @@ exports.BaseSection = BaseSection;
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(3));
+__export(__webpack_require__(4));
+__export(__webpack_require__(5));
+__export(__webpack_require__(8));
+__export(__webpack_require__(9));
+__export(__webpack_require__(10));
+var Contracts = __webpack_require__(2);
+exports.Contracts = Contracts;
+var Helpers = __webpack_require__(11);
+exports.Helpers = Helpers;
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function UniqueArray(arr) {
+    var uniqueArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (uniqueArr.indexOf(arr[i]) === -1) {
+            uniqueArr.push(arr[i]);
+        }
+    }
+    return uniqueArr;
+}
+exports.UniqueArray = UniqueArray;
+exports.CanIUseWindowListeners = (typeof window !== "undefined" &&
+    window.addEventListener != null);
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __extends = (this && this.__extends) || (function () {
@@ -570,7 +501,7 @@ var DropdownHandler = (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     DropdownHandler.prototype.render = function () {
-        return React.createElement("div", __assign({ ref: this.SetElementRef }, this.GetHTMLProps()), this.RenderChildren(this.props.children));
+        return React.createElement("div", __assign({ ref: this.SetElementRef }, this.GetHTMLProps(this.props)), this.props.children);
     };
     return DropdownHandler;
 }(base_handler_1.BaseHandler));
@@ -578,7 +509,7 @@ exports.DropdownHandler = DropdownHandler;
 
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __extends = (this && this.__extends) || (function () {
@@ -616,7 +547,7 @@ var DropdownHeader = (function (_super) {
         return _this;
     }
     DropdownHeader.prototype.render = function () {
-        return React.createElement("div", __assign({ onClick: this.OnContainerClickCallback }, this.props));
+        return React.createElement("div", __assign({ onClick: this.OnContainerClickCallback }, this.GetHTMLProps(this.props)));
     };
     return DropdownHeader;
 }(base_header_1.BaseHeader));
@@ -624,7 +555,7 @@ exports.DropdownHeader = DropdownHeader;
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __extends = (this && this.__extends) || (function () {
@@ -665,7 +596,7 @@ var DropdownSection = (function (_super) {
         if (!this.IsOpen()) {
             return null;
         }
-        return React.createElement("div", __assign({ onClick: this.OnContainerClickCallback }, this.props));
+        return React.createElement("div", __assign({ onClick: this.OnContainerClickCallback }, this.GetHTMLProps(this.props)));
     };
     return DropdownSection;
 }(base_section_1.BaseSection));
@@ -673,11 +604,11 @@ exports.DropdownSection = DropdownSection;
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Contracts = __webpack_require__(1);
+var Contracts = __webpack_require__(2);
 function ResolveSource(source) {
     return Contracts.EventSource[source];
 }
@@ -694,50 +625,6 @@ function CompareSource(value, stringValue) {
     return (Contracts.EventSource[value] === stringValue);
 }
 exports.CompareSource = CompareSource;
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(3));
-__export(__webpack_require__(4));
-__export(__webpack_require__(5));
-__export(__webpack_require__(6));
-__export(__webpack_require__(7));
-__export(__webpack_require__(8));
-var Contracts = __webpack_require__(1);
-exports.Contracts = Contracts;
-var Helpers = __webpack_require__(9);
-exports.Helpers = Helpers;
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-Object.defineProperty(exports, "__esModule", { value: true });
-function UniqueArray(arr) {
-    var uniqueArr = Array();
-    for (var i = 0; i < arr.length; i++) {
-        if (uniqueArr.indexOf(arr[i]) === -1) {
-            uniqueArr.push(arr[i]);
-        }
-    }
-    return uniqueArr;
-}
-exports.UniqueArray = UniqueArray;
-function CheckComponentType(component, type) {
-    var componentType = component.type;
-    return (componentType[type] != null);
-}
-exports.CheckComponentType = CheckComponentType;
-exports.CanIUseWindowListeners = (typeof window !== "undefined" &&
-    window.addEventListener != null);
 
 
 /***/ })
