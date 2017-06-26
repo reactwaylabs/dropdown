@@ -16,7 +16,7 @@ export class DropdownHandler extends BaseHandler<DropdownHandlerProps, BaseHandl
             ref={this.SetElementRef}
             {...this.GetHTMLProps(this.props) }
         >
-            {this.RenderChildren(this.props.children)}
+            {this.props.children}
         </div>;
     }
 }

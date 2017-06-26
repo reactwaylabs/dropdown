@@ -4,9 +4,6 @@ import * as PropTypes from "prop-types";
 import * as Contracts from "../contracts";
 import * as Utils from "../utils";
 
-const CHILDREN_ERROR = "simplr-dropdown: (DropdownHandler)"
-    + " component must have two components as children: DropdownHeader and DropdownSection.";
-
 export interface Dictionary {
     [key: string]: any;
 }
@@ -21,7 +18,6 @@ export interface BaseHandlerProps {
     closeOnOutsideClick?: boolean;
     closeOnSectionClick?: boolean;
     closeOnEscapeClick?: boolean;
-    strictStructure?: boolean;
 }
 
 export interface BaseHandlerState {
@@ -42,8 +38,7 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         toggleOnHeaderClick: true,
         closeOnSectionClick: false,
         closeOnOutsideClick: true,
-        closeOnEscapeClick: true,
-        strictStructure: true
+        closeOnEscapeClick: true
     };
 
     public static childContextTypes: PropTypes.ValidationMap<BaseHandlerChildContext> = {
@@ -282,38 +277,5 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
 
     protected SetElementRef = (element: HTMLElement | null) => {
         this.Element = element;
-    }
-
-    /**
-     * Checks if top children are BaseHeader and BaseSection based components.
-     * MUST be used to render children for BaseHandler component.
-     */
-    protected RenderChildren(children: React.ReactNode): React.ReactNode {
-        if (!this.props.strictStructure) {
-            return children;
-        }
-
-        if (React.Children.count(children) !== 2) {
-            throw new Error(CHILDREN_ERROR);
-        }
-
-        let foundHeader = false;
-        let foundSection = false;
-
-        return React.Children.map(children, child => {
-            if (!foundHeader &&
-                Utils.CheckComponentType(child as JSX.Element, Contracts.BASE_HEADER_FUNC)) {
-                foundHeader = true;
-
-                return child;
-            } else if (!foundSection &&
-                Utils.CheckComponentType(child as JSX.Element, Contracts.BASE_SECTION_FUNC)) {
-                foundSection = true;
-
-                return child;
-            }
-
-            throw new Error(CHILDREN_ERROR);
-        });
     }
 }
