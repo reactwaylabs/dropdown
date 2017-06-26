@@ -7,3 +7,9 @@ export enum EventSource {
 
 export const BASE_HEADER_FUNC = "SimplrDropdownBaseHeader";
 export const BASE_SECTION_FUNC = "SimplrDropdownBaseSection";
+
+export interface HTMLElementProps<TElement> extends React.HTMLProps<TElement> {
+    // When extending HTMLProps interface there is an Element ref and it is not overriden by component ref.
+    ref?: React.Ref<any>;
+    children?: React.ReactNode;
+}

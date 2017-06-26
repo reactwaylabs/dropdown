@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-export interface BaseSectionProps { }
+export type BaseSectionProps = {};
 
-export interface BaseSectionState { }
+export type BaseSectionState = {};
 
 export interface BaseSectionContext {
     DropdownOnSectionClickCallback: Function;
@@ -12,9 +12,9 @@ export interface BaseSectionContext {
 
 export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSectionState>
     extends React.Component<TProps, TState> {
-    context: BaseSectionContext;
+    public context: BaseSectionContext;
 
-    static contextTypes = {
+    public static contextTypes: PropTypes.ValidationMap<BaseSectionContext> = {
         DropdownOnSectionClickCallback: PropTypes.func.isRequired,
         DropdownOpen: PropTypes.bool.isRequired
     };
@@ -29,28 +29,24 @@ export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSec
         }
     }
 
-    static SimplrDropdownBaseHeader() { }
+    // tslint:disable-next-line:no-empty
+    public static SimplrDropdownBaseHeader(): void { }
+
+    protected GetHTMLProps(props: BaseSectionProps): {} {
+        return props;
+    }
 
     /**
      * This callback MUST be called when container element is clicked.
-     *
-     * @protected
-     *
-     * @memberOf BaseSection
      */
-    protected OnSectionClick() {
+    protected OnSectionClick(): void {
         this.context.DropdownOnSectionClickCallback();
     }
 
     /**
      * Gets from DropdownHandler if dropdown is open.
-     *
-     * @protected
-     * @returns
-     *
-     * @memberOf BaseSection
      */
-    protected IsOpen() {
+    protected IsOpen(): boolean {
         return this.context.DropdownOpen;
     }
 }
