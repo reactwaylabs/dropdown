@@ -24,8 +24,8 @@ export class DropdownSection extends BaseSection<DropdownSectionProps, BaseSecti
         }
 
         return <div
-            onClick={this.OnContainerClickCallback}
             {...this.GetHTMLProps(this.props) }
+            onClick={this.OnContainerClickCallback}
         />;
     }
 }
