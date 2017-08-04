@@ -20,8 +20,8 @@ export class DropdownHeader extends BaseHeader<DropdownHeaderProps, BaseHeaderSt
 
     public render(): JSX.Element {
         return <div
-            onClick={this.OnContainerClickCallback}
             {...this.GetHTMLProps(this.props) }
+            onClick={this.OnContainerClickCallback}
         />;
     }
 }
