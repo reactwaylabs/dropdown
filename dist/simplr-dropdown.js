@@ -315,19 +315,19 @@ var BaseHandler = (function (_super) {
             });
         }
     };
+    BaseHandler.defaultProps = {
+        toggleOnHeaderClick: true,
+        closeOnSectionClick: false,
+        closeOnOutsideClick: true,
+        closeOnEscapeClick: true
+    };
+    BaseHandler.childContextTypes = {
+        DropdownOpen: PropTypes.bool.isRequired,
+        DropdownOnHeaderClickCallback: PropTypes.func.isRequired,
+        DropdownOnSectionClickCallback: PropTypes.func.isRequired
+    };
     return BaseHandler;
 }(React.Component));
-BaseHandler.defaultProps = {
-    toggleOnHeaderClick: true,
-    closeOnSectionClick: false,
-    closeOnOutsideClick: true,
-    closeOnEscapeClick: true
-};
-BaseHandler.childContextTypes = {
-    DropdownOpen: PropTypes.bool.isRequired,
-    DropdownOnHeaderClickCallback: PropTypes.func.isRequired,
-    DropdownOnSectionClickCallback: PropTypes.func.isRequired
-};
 exports.BaseHandler = BaseHandler;
 
 
@@ -369,11 +369,11 @@ var BaseHeader = (function (_super) {
     BaseHeader.prototype.OnHeaderClick = function () {
         this.context.DropdownOnHeaderClickCallback();
     };
+    BaseHeader.contextTypes = {
+        DropdownOnHeaderClickCallback: PropTypes.func.isRequired
+    };
     return BaseHeader;
 }(React.Component));
-BaseHeader.contextTypes = {
-    DropdownOnHeaderClickCallback: PropTypes.func.isRequired
-};
 exports.BaseHeader = BaseHeader;
 
 
@@ -422,12 +422,12 @@ var BaseSection = (function (_super) {
     BaseSection.prototype.IsOpen = function () {
         return this.context.DropdownOpen;
     };
+    BaseSection.contextTypes = {
+        DropdownOnSectionClickCallback: PropTypes.func.isRequired,
+        DropdownOpen: PropTypes.bool.isRequired
+    };
     return BaseSection;
 }(React.Component));
-BaseSection.contextTypes = {
-    DropdownOnSectionClickCallback: PropTypes.func.isRequired,
-    DropdownOpen: PropTypes.bool.isRequired
-};
 exports.BaseSection = BaseSection;
 
 
@@ -547,7 +547,7 @@ var DropdownHeader = (function (_super) {
         return _this;
     }
     DropdownHeader.prototype.render = function () {
-        return React.createElement("div", __assign({ onClick: this.OnContainerClickCallback }, this.GetHTMLProps(this.props)));
+        return React.createElement("div", __assign({}, this.GetHTMLProps(this.props), { onClick: this.OnContainerClickCallback }));
     };
     return DropdownHeader;
 }(base_header_1.BaseHeader));
@@ -596,7 +596,7 @@ var DropdownSection = (function (_super) {
         if (!this.IsOpen()) {
             return null;
         }
-        return React.createElement("div", __assign({ onClick: this.OnContainerClickCallback }, this.GetHTMLProps(this.props)));
+        return React.createElement("div", __assign({}, this.GetHTMLProps(this.props), { onClick: this.OnContainerClickCallback }));
     };
     return DropdownSection;
 }(base_section_1.BaseSection));
