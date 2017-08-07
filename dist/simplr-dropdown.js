@@ -369,8 +369,15 @@ var BaseHeader = (function (_super) {
     BaseHeader.prototype.OnHeaderClick = function () {
         this.context.DropdownOnHeaderClickCallback();
     };
+    /**
+     * Gets from DropdownHandler if dropdown is open.
+     */
+    BaseHeader.prototype.IsOpen = function () {
+        return this.context.DropdownOpen;
+    };
     BaseHeader.contextTypes = {
-        DropdownOnHeaderClickCallback: PropTypes.func.isRequired
+        DropdownOnHeaderClickCallback: PropTypes.func.isRequired,
+        DropdownOpen: PropTypes.bool.isRequired
     };
     return BaseHeader;
 }(React.Component));

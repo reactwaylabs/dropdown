@@ -5,6 +5,7 @@ export declare type BaseHeaderProps = {};
 export declare type BaseHeaderState = {};
 export interface BaseHeaderContext {
     DropdownOnHeaderClickCallback: Function;
+    DropdownOpen: boolean;
 }
 export declare class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeaderState> extends React.Component<TProps, TState> {
     context: BaseHeaderContext;
@@ -16,4 +17,8 @@ export declare class BaseHeader<TProps extends BaseHeaderProps, TState extends B
      * This callback MUST be called when container element is clicked.
      */
     protected OnHeaderClick(): void;
+    /**
+     * Gets from DropdownHandler if dropdown is open.
+     */
+    protected IsOpen(): boolean;
 }
