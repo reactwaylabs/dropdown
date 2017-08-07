@@ -7,6 +7,7 @@ export type BaseHeaderState = {};
 
 export interface BaseHeaderContext {
     DropdownOnHeaderClickCallback: Function;
+    DropdownOpen: boolean;
 }
 
 export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeaderState>
@@ -14,7 +15,8 @@ export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeade
     public context: BaseHeaderContext;
 
     public static contextTypes: PropTypes.ValidationMap<BaseHeaderContext> = {
-        DropdownOnHeaderClickCallback: PropTypes.func.isRequired
+        DropdownOnHeaderClickCallback: PropTypes.func.isRequired,
+        DropdownOpen: PropTypes.bool.isRequired
     };
 
     constructor(props: TProps, context: BaseHeaderContext) {
@@ -38,5 +40,12 @@ export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeade
      */
     protected OnHeaderClick(): void {
         this.context.DropdownOnHeaderClickCallback();
+    }
+
+    /**
+     * Gets from DropdownHandler if dropdown is open.
+     */
+    protected IsOpen(): boolean {
+        return this.context.DropdownOpen;
     }
 }
