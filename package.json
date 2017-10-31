@@ -29,7 +29,7 @@
     "@types"
   ],
   "devDependencies": {
-    "ts-loader": "^2.2.0",
+    "ts-loader": "^3.1.1",
     "tslint": "^5.4.3",
     "typescript": "^2.3.4",
     "uglify-js": "^3.0.20",
@@ -37,10 +37,10 @@
   },
   "dependencies": {
     "@types/prop-types": "^15.5.1",
-    "@types/react": "^15.0.31",
-    "@types/react-dom": "^15.5.1",
+    "@types/react": "^16.0.19",
+    "@types/react-dom": "^16.0.2",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
   }
 }
