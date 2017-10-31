@@ -129,7 +129,7 @@ var React = __webpack_require__(0);
 var PropTypes = __webpack_require__(1);
 var Contracts = __webpack_require__(2);
 var Utils = __webpack_require__(7);
-var BaseHandler = (function (_super) {
+var BaseHandler = /** @class */ (function (_super) {
     __extends(BaseHandler, _super);
     function BaseHandler(props) {
         var _this = _super.call(this, props) || this;
@@ -348,7 +348,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var PropTypes = __webpack_require__(1);
-var BaseHeader = (function (_super) {
+var BaseHeader = /** @class */ (function (_super) {
     __extends(BaseHeader, _super);
     function BaseHeader(props, context) {
         var _this = _super.call(this, props) || this;
@@ -401,7 +401,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var PropTypes = __webpack_require__(1);
-var BaseSection = (function (_super) {
+var BaseSection = /** @class */ (function (_super) {
     __extends(BaseSection, _super);
     function BaseSection(props, context) {
         var _this = _super.call(this, props) || this;
@@ -502,7 +502,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var base_handler_1 = __webpack_require__(3);
-var DropdownHandler = (function (_super) {
+var DropdownHandler = /** @class */ (function (_super) {
     __extends(DropdownHandler, _super);
     function DropdownHandler() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -540,7 +540,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var base_header_1 = __webpack_require__(4);
-var DropdownHeader = (function (_super) {
+var DropdownHeader = /** @class */ (function (_super) {
     __extends(DropdownHeader, _super);
     function DropdownHeader() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
@@ -586,7 +586,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(0);
 var base_section_1 = __webpack_require__(5);
-var DropdownSection = (function (_super) {
+var DropdownSection = /** @class */ (function (_super) {
     __extends(DropdownSection, _super);
     function DropdownSection() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
