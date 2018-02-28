@@ -9,11 +9,11 @@ export interface DropdownHandlerProps extends BaseHandlerProps, HTMLElementProps
 }
 
 export class DropdownHandler extends BaseHandler<DropdownHandlerProps, BaseHandlerState> {
-    public Element: HTMLDivElement;
+    public element!: HTMLDivElement;
 
     public render(): JSX.Element {
         return <div
-            ref={this.SetElementRef}
+            ref={this.setElementRef}
             {...this.GetHTMLProps(this.props) }
         >
             {this.props.children}

@@ -6,24 +6,24 @@ export type BaseSectionProps = {};
 export type BaseSectionState = {};
 
 export interface BaseSectionContext {
-    DropdownOnSectionClickCallback: Function;
-    DropdownOpen: boolean;
+    dropdownOnSectionClickCallback: Function;
+    dropdownOpen: boolean;
 }
 
 export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSectionState>
     extends React.Component<TProps, TState> {
-    public context: BaseSectionContext;
+    public context!: BaseSectionContext;
 
     public static contextTypes: PropTypes.ValidationMap<BaseSectionContext> = {
-        DropdownOnSectionClickCallback: PropTypes.func.isRequired,
-        DropdownOpen: PropTypes.bool.isRequired
+        dropdownOnSectionClickCallback: PropTypes.func.isRequired,
+        dropdownOpen: PropTypes.bool.isRequired
     };
 
     constructor(props: TProps, context: BaseSectionContext) {
         super(props);
 
-        if (context.DropdownOnSectionClickCallback == null ||
-            context.DropdownOpen == null) {
+        if (context.dropdownOnSectionClickCallback == null ||
+            context.dropdownOpen == null) {
             throw new Error(`simplr-dropdown: (BaseHeader) ${(this.constructor as any).name}` +
                 ` must be inside DropdownHandler component.`);
         }
@@ -40,13 +40,13 @@ export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSec
      * This callback MUST be called when container element is clicked.
      */
     protected OnSectionClick(): void {
-        this.context.DropdownOnSectionClickCallback();
+        this.context.dropdownOnSectionClickCallback();
     }
 
     /**
      * Gets from DropdownHandler if dropdown is open.
      */
     protected IsOpen(): boolean {
-        return this.context.DropdownOpen;
+        return this.context.dropdownOpen;
     }
 }

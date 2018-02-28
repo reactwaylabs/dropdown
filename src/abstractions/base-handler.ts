@@ -21,13 +21,13 @@ export interface BaseHandlerProps {
 }
 
 export interface BaseHandlerState {
-    Open: boolean;
+    open: boolean;
 }
 
 export interface BaseHandlerChildContext {
-    DropdownOpen: boolean;
-    DropdownOnHeaderClickCallback: Function;
-    DropdownOnSectionClickCallback: Function;
+    dropdownOpen: boolean;
+    dropdownOnHeaderClickCallback: Function;
+    dropdownOnSectionClickCallback: Function;
 }
 
 // TODO: Fix state spread.
@@ -36,7 +36,7 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     TProps,
     TState
 > {
-    public abstract Element: HTMLElement | null;
+    public abstract element: HTMLElement | null;
 
     public static defaultProps: BaseHandlerProps = {
         toggleOnHeaderClick: true,
@@ -46,44 +46,44 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     };
 
     public static childContextTypes: PropTypes.ValidationMap<BaseHandlerChildContext> = {
-        DropdownOpen: PropTypes.bool.isRequired,
-        DropdownOnHeaderClickCallback: PropTypes.func.isRequired,
-        DropdownOnSectionClickCallback: PropTypes.func.isRequired
+        dropdownOpen: PropTypes.bool.isRequired,
+        dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
+        dropdownOnSectionClickCallback: PropTypes.func.isRequired
     };
 
     constructor(props: TProps) {
         super(props);
-        if (Utils.CanIUseWindowListeners) {
-            window.addEventListener("click", this.OnOutsideClick);
+        if (Utils.CAN_I_USE_WINDOW_LISTENERS) {
+            window.addEventListener("click", this.onOutsideClick);
             // TODO: Move keyup to listener to handler container
-            window.addEventListener("keyup", this.OnWindowKeyUp);
+            window.addEventListener("keyup", this.onWindowKeyUp);
         }
 
         this.state = {
-            Open: this.GetInitialOpenValue()
+            open: this.GetInitialOpenValue()
         } as TState;
     }
 
     public componentWillReceiveProps(nextProps: TProps): void {
         if (nextProps.open != null && this.props.open !== nextProps.open) {
             this.setState(state => ({
-                Open: nextProps.open!
+                open: nextProps.open!
             }));
         }
     }
 
     public componentWillUnmount(): void {
-        if (Utils.CanIUseWindowListeners) {
-            window.removeEventListener("click", this.OnOutsideClick);
-            window.removeEventListener("keyup", this.OnWindowKeyUp);
+        if (Utils.CAN_I_USE_WINDOW_LISTENERS) {
+            window.removeEventListener("click", this.onOutsideClick);
+            window.removeEventListener("keyup", this.onWindowKeyUp);
         }
     }
 
     public getChildContext(): BaseHandlerChildContext {
         return {
-            DropdownOpen: this.state.Open,
-            DropdownOnHeaderClickCallback: this.OnHeaderClick.bind(this),
-            DropdownOnSectionClickCallback: this.OnSectionClick.bind(this)
+            dropdownOpen: this.state.open,
+            dropdownOnHeaderClickCallback: this.OnHeaderClick.bind(this),
+            dropdownOnSectionClickCallback: this.OnSectionClick.bind(this)
         };
     }
 
@@ -91,12 +91,12 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
      * To close dropdown.
      */
     public Close(): void {
-        if (!this.state.Open) {
+        if (!this.state.open) {
             return;
         }
 
         this.setState(state => ({
-            Open: false
+            open: false
         }));
     }
 
@@ -104,11 +104,11 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
      * To close dropdown.
      */
     public Open(): void {
-        if (this.state.Open) {
+        if (this.state.open) {
             return;
         }
         this.setState(state => ({
-            Open: true
+            open: true
         }));
     }
 
@@ -116,7 +116,7 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
      * Get a boolean if dropdown is open or not.
      */
     public IsOpen(): boolean {
-        return this.state.Open;
+        return this.state.open;
     }
 
     /**
@@ -169,10 +169,10 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
      * Checks if passed element is in container element.
      */
     protected IsElementInContainer(element: Element): boolean {
-        if (this.Element == null) {
+        if (this.element == null) {
             return false;
         }
-        const containerElement: HTMLElement = this.Element;
+        const containerElement: HTMLElement = this.element;
 
         return containerElement.contains(element);
     }
@@ -180,7 +180,7 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     /**
      * Handles window click event.
      */
-    protected OnOutsideClick = (event: MouseEvent) => {
+    protected onOutsideClick = (event: MouseEvent) => {
         const props: TProps = this.props;
         const open = false;
 
@@ -195,7 +195,7 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     /**
      * Handles window keyboard events.
      */
-    private OnWindowKeyUp = (event: KeyboardEvent) => {
+    private onWindowKeyUp = (event: KeyboardEvent) => {
         const props: TProps = this.props;
         const open = false;
 
@@ -214,7 +214,7 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
      */
     protected OnHeaderClick(): void {
         const props: TProps = this.props;
-        const open = !this.state.Open;
+        const open = !this.state.open;
 
         if (!props.toggleOnHeaderClick) {
             return;
@@ -260,14 +260,14 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
      * Updates state if dropdown is not controlled.
      */
     protected UpdateOpenState(open: boolean): void {
-        if (this.state.Open !== open && !this.IsControlled()) {
+        if (this.state.open !== open && !this.IsControlled()) {
             this.setState(state => ({
-                Open: open
+                open: open
             }));
         }
     }
 
-    protected SetElementRef = (element: HTMLElement | null) => {
-        this.Element = element;
+    protected setElementRef = (element: HTMLElement | null) => {
+        this.element = element;
     };
 }

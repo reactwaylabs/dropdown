@@ -6,23 +6,23 @@ export type BaseHeaderProps = {};
 export type BaseHeaderState = {};
 
 export interface BaseHeaderContext {
-    DropdownOnHeaderClickCallback: Function;
-    DropdownOpen: boolean;
+    dropdownOnHeaderClickCallback: Function;
+    dropdownOpen: boolean;
 }
 
 export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeaderState>
     extends React.Component<TProps, TState> {
-    public context: BaseHeaderContext;
+    public context!: BaseHeaderContext;
 
     public static contextTypes: PropTypes.ValidationMap<BaseHeaderContext> = {
-        DropdownOnHeaderClickCallback: PropTypes.func.isRequired,
-        DropdownOpen: PropTypes.bool.isRequired
+        dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
+        dropdownOpen: PropTypes.bool.isRequired
     };
 
     constructor(props: TProps, context: BaseHeaderContext) {
         super(props);
 
-        if (context.DropdownOnHeaderClickCallback == null) {
+        if (context.dropdownOnHeaderClickCallback == null) {
             throw new Error(`simplr-dropdown: ${(this.constructor as any).name}` +
                 ` must be inside DropdownHandler component.`);
         }
@@ -39,13 +39,13 @@ export class BaseHeader<TProps extends BaseHeaderProps, TState extends BaseHeade
      * This callback MUST be called when container element is clicked.
      */
     protected OnHeaderClick(): void {
-        this.context.DropdownOnHeaderClickCallback();
+        this.context.dropdownOnHeaderClickCallback();
     }
 
     /**
      * Gets from DropdownHandler if dropdown is open.
      */
     protected IsOpen(): boolean {
-        return this.context.DropdownOpen;
+        return this.context.dropdownOpen;
     }
 }

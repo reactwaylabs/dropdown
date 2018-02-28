@@ -9,5 +9,5 @@ export function UniqueArray(arr: any[]): any[] {
     return uniqueArr;
 }
 
-export const CanIUseWindowListeners = (typeof window !== "undefined" &&
+export const CAN_I_USE_WINDOW_LISTENERS = (typeof window !== "undefined" &&
     window.addEventListener != null);
