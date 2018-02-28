@@ -2,8 +2,8 @@
   "name": "simplr-dropdown",
   "version": "3.1.1",
   "description": "A flexible React dropdown component.",
-  "types": "@types/index.d.ts",
-  "main": "dist/simplr-dropdown.js",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/simplr-dropdown.js",
   "scripts": {
     "pretest": "tsc -p . && tslint -p .",
     "test": "echo 0;",
