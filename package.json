@@ -5,12 +5,11 @@
   "types": "@types/index.d.ts",
   "main": "dist/simplr-dropdown.js",
   "scripts": {
-    "test": "tsc -p . --noEmit && npm run tslint",
+    "pretest": "tsc -p . && tslint -p .",
+    "test": "echo 0;",
     "tslint": "tslint --project . --config ./tslint.json",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "uglifyjs": "uglifyjs ./dist/simplr-dropdown.js -o ./dist/simplr-dropdown.min.js --compress --mangle",
-    "release": "npm run build && npm run uglifyjs"
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
   },
   "keywords": [
     "react",
@@ -33,12 +32,9 @@
     "rollup-plugin-typescript2": "^0.11.1",
     "rollup-plugin-uglify": "^3.0.0",
     "simplr-tslint": "^1.0.0-alpha.7",
-    "ts-loader": "^4.0.0",
     "tslint": "^5.9.1",
     "tslint-language-service": "^0.9.8",
-    "typescript": "^2.7.2",
-    "uglify-js": "^3.3.12",
-    "webpack": "^4.0.1"
+    "typescript": "^2.7.2"
   },
   "dependencies": {
     "@types/prop-types": "^15.5.2",
