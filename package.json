@@ -29,18 +29,23 @@
     "@types"
   ],
   "devDependencies": {
-    "ts-loader": "^3.1.1",
-    "tslint": "^5.4.3",
-    "typescript": "^2.3.4",
-    "uglify-js": "^3.0.20",
-    "webpack": "^3.0.0"
+    "rollup": "^0.56.3",
+    "rollup-plugin-typescript2": "^0.11.1",
+    "rollup-plugin-uglify": "^3.0.0",
+    "simplr-tslint": "^1.0.0-alpha.7",
+    "ts-loader": "^4.0.0",
+    "tslint": "^5.9.1",
+    "tslint-language-service": "^0.9.8",
+    "typescript": "^2.7.2",
+    "uglify-js": "^3.3.12",
+    "webpack": "^4.0.1"
   },
   "dependencies": {
-    "@types/prop-types": "^15.5.1",
-    "@types/react": "^16.0.19",
-    "@types/react-dom": "^16.0.2",
-    "prop-types": "^15.5.10",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.38",
+    "@types/react-dom": "^16.0.4",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }

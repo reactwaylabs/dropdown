@@ -14,7 +14,12 @@
         "strictNullChecks": true,
         "skipDefaultLibCheck": true,
         "declaration": true,
-        "declarationDir": "@types"
+        "declarationDir": "@types",
+        "plugins": [
+            {
+                "name": "tslint-language-service"
+            }
+        ]
     },
     "include": [
         "src/**/*"

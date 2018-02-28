@@ -30,8 +30,12 @@ export interface BaseHandlerChildContext {
     DropdownOnSectionClickCallback: Function;
 }
 
-export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extends BaseHandlerState>
-    extends React.Component<TProps, TState> {
+// TODO: Fix state spread.
+
+export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extends BaseHandlerState> extends React.Component<
+    TProps,
+    TState
+> {
     public abstract Element: HTMLElement | null;
 
     public static defaultProps: BaseHandlerProps = {
@@ -61,13 +65,10 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
     }
 
     public componentWillReceiveProps(nextProps: TProps): void {
-        if (nextProps.open != null &&
-            this.props.open !== nextProps.open) {
-            this.setState(state => {
-                state.Open = nextProps.open!;
-
-                return state;
-            });
+        if (nextProps.open != null && this.props.open !== nextProps.open) {
+            this.setState(state => ({
+                Open: nextProps.open!
+            }));
         }
     }
 
@@ -94,10 +95,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
             return;
         }
 
-        this.setState(state => {
-            state.Open = false;
-            return state;
-        });
+        this.setState(state => ({
+            Open: false
+        }));
     }
 
     /**
@@ -107,11 +107,9 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         if (this.state.Open) {
             return;
         }
-
-        this.setState(state => {
-            state.Open = true;
-            return state;
-        });
+        this.setState(state => ({
+            Open: true
+        }));
     }
 
     /**
@@ -186,14 +184,13 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
         const props: TProps = this.props;
         const open = false;
 
-        if (!props.closeOnOutsideClick
-            || this.IsElementInContainer(event.target as Element)) {
+        if (!props.closeOnOutsideClick || this.IsElementInContainer(event.target as Element)) {
             return;
         }
 
         this.TriggerCallbacks(open, Contracts.EventSource.OutsideClick);
         this.UpdateOpenState(open);
-    }
+    };
 
     /**
      * Handles window keyboard events.
@@ -206,13 +203,11 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
             return;
         }
 
-        if (event.keyCode === 27 &&
-            props.closeOnEscapeClick) {
-
+        if (event.keyCode === 27 && props.closeOnEscapeClick) {
             this.TriggerCallbacks(open, Contracts.EventSource.EscapeClick);
             this.UpdateOpenState(open);
         }
-    }
+    };
 
     /**
      * Triggers this method when header is clicked.
@@ -265,17 +260,14 @@ export abstract class BaseHandler<TProps extends BaseHandlerProps, TState extend
      * Updates state if dropdown is not controlled.
      */
     protected UpdateOpenState(open: boolean): void {
-        if (this.state.Open !== open &&
-            !this.IsControlled()) {
-
-            this.setState(state => {
-                state.Open = open;
-                return state;
-            });
+        if (this.state.Open !== open && !this.IsControlled()) {
+            this.setState(state => ({
+                Open: open
+            }));
         }
     }
 
     protected SetElementRef = (element: HTMLElement | null) => {
         this.Element = element;
-    }
+    };
 }
