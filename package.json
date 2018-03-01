@@ -1,47 +1,69 @@
 {
-  "name": "simplr-dropdown",
-  "version": "3.1.1",
-  "description": "A flexible React dropdown component.",
-  "types": "./dist/index.d.ts",
-  "main": "./dist/simplr-dropdown.js",
-  "scripts": {
-    "pretest": "tsc -p . && tslint -p .",
-    "test": "echo 0;",
-    "tslint": "tslint --project . --config ./tslint.json",
-    "build": "rollup -c",
-    "watch": "rollup -c -w"
-  },
-  "keywords": [
-    "react",
-    "dropdown",
-    "flexible",
-    "component"
-  ],
-  "author": "simplrjs <simplr@quatrodev.com> (https://github.com/simplrjs)",
-  "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
-  "repository": "SimplrJS/simplr-dropdown",
-  "homepage": "https://github.com/SimplrJS/simplr-dropdown",
-  "license": "MIT",
-  "files": [
-    "dist",
-    "**/*.md",
-    "@types"
-  ],
-  "devDependencies": {
-    "rollup": "^0.56.3",
-    "rollup-plugin-typescript2": "^0.11.1",
-    "rollup-plugin-uglify": "^3.0.0",
-    "simplr-tslint": "^1.0.0-alpha.7",
-    "tslint": "^5.9.1",
-    "tslint-language-service": "^0.9.8",
-    "typescript": "^2.7.2"
-  },
-  "dependencies": {
-    "@types/prop-types": "^15.5.2",
-    "@types/react": "^16.0.38",
-    "@types/react-dom": "^16.0.4",
-    "prop-types": "^15.6.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
-  }
+    "name": "simplr-dropdown",
+    "version": "3.1.1",
+    "description": "A flexible React dropdown component.",
+    "types": "./dist/index.d.ts",
+    "main": "./dist/simplr-dropdown.js",
+    "scripts": {
+        "pretest": "tsc -p . && tslint -p .",
+        "test": "echo 0;",
+        "tslint": "tslint --project . --config ./tslint.json",
+        "build": "rollup -c",
+        "watch": "rollup -c -w",
+        "docs-gen": "ts-docs-gen --entryFile ./src/index.ts"
+    },
+    "keywords": [
+        "react",
+        "dropdown",
+        "flexible",
+        "component"
+    ],
+    "author": "simplrjs <simplr@quatrodev.com> (https://github.com/simplrjs)",
+    "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
+    "repository": "SimplrJS/simplr-dropdown",
+    "homepage": "https://github.com/SimplrJS/simplr-dropdown",
+    "license": "MIT",
+    "files": [
+        "dist",
+        "**/*.md",
+        "@types"
+    ],
+    "devDependencies": {
+        "@types/enzyme": "^3.1.9",
+        "@types/enzyme-adapter-react-16": "^1.0.2",
+        "@types/jest": "^22.1.4",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
+        "jest": "^22.3.0",
+        "jest-environment-jsdom": "^22.4.0",
+        "jest-enzyme": "^4.2.0",
+        "rollup": "^0.56.3",
+        "rollup-plugin-typescript2": "^0.11.1",
+        "rollup-plugin-uglify": "^3.0.0",
+        "simplr-tslint": "^1.0.0-alpha.8",
+        "ts-docs-gen": "^0.2.0",
+        "tslint": "^5.9.1",
+        "tslint-language-service": "^0.9.8",
+        "typescript": "^2.7.2"
+    },
+    "dependencies": {
+        "@types/prop-types": "^15.5.2",
+        "@types/react": "^16.0.38",
+        "@types/react-dom": "^16.0.4",
+        "prop-types": "^15.6.1",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0"
+    },
+    "jest": {
+        "setupTestFrameworkScriptFile": "./__tests__/tests-configuration.ts",
+        "transform": {
+            ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+        },
+        "testRegex": "/__tests__/.*\\.(test|spec).(ts|tsx|js)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ]
+    }
 }
