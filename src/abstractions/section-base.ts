@@ -12,8 +12,10 @@ export interface SectionBaseContext {
     dropdownOpen: boolean;
 }
 
-export class SectionBase<TProps extends SectionBaseProps, TState extends SectionBaseState>
-    extends React.Component<TProps, TState> {
+export class SectionBase<
+    TProps extends SectionBaseProps = SectionBaseProps,
+    TState extends SectionBaseState = SectionBaseState
+> extends React.Component<TProps, TState> {
     public context!: SectionBaseContext;
 
     public static contextTypes: PropTypes.ValidationMap<SectionBaseContext> = {
@@ -24,10 +26,10 @@ export class SectionBase<TProps extends SectionBaseProps, TState extends Section
     constructor(props: TProps, context: SectionBaseContext) {
         super(props);
 
-        if (context.dropdownOnSectionClickCallback == null ||
-            context.dropdownOpen == null) {
-            throw new Error(`simplr-dropdown: (BaseHeader) ${(this.constructor as any).name}` +
-                ` must be inside DropdownHandler component.`);
+        if (context.dropdownOnSectionClickCallback == null || context.dropdownOpen == null) {
+            throw new Error(
+                `simplr-dropdown: (BaseHeader) ${(this.constructor as any).name}` + ` must be inside DropdownHandler component.`
+            );
         }
     }
 

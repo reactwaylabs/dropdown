@@ -1,7 +1,6 @@
 import * as React from "react";
 import { HandlerBase, HandlerBaseProps } from "../abstractions/handler-base";
 
-// tslint:disable-next-line: no-empty-interface
 export interface DropdownHandlerProps
     extends HandlerBaseProps,
         React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
