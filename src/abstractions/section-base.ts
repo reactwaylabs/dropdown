@@ -2,26 +2,26 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 // tslint:disable-next-line: no-empty-interface
-export interface BaseSectionProps {}
+export interface SectionBaseProps {}
 
 // tslint:disable-next-line: no-empty-interface
-export interface BaseSectionState {}
+export interface SectionBaseState {}
 
-export interface BaseSectionContext {
+export interface SectionBaseContext {
     dropdownOnSectionClickCallback: Function;
     dropdownOpen: boolean;
 }
 
-export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSectionState>
+export class SectionBase<TProps extends SectionBaseProps, TState extends SectionBaseState>
     extends React.Component<TProps, TState> {
-    public context!: BaseSectionContext;
+    public context!: SectionBaseContext;
 
-    public static contextTypes: PropTypes.ValidationMap<BaseSectionContext> = {
+    public static contextTypes: PropTypes.ValidationMap<SectionBaseContext> = {
         dropdownOnSectionClickCallback: PropTypes.func.isRequired,
         dropdownOpen: PropTypes.bool.isRequired
     };
 
-    constructor(props: TProps, context: BaseSectionContext) {
+    constructor(props: TProps, context: SectionBaseContext) {
         super(props);
 
         if (context.dropdownOnSectionClickCallback == null ||
@@ -43,5 +43,9 @@ export class BaseSection<TProps extends BaseSectionProps, TState extends BaseSec
      */
     protected isOpen(): boolean {
         return this.context.dropdownOpen;
+    }
+
+    protected getRestProps(props: SectionBaseProps): {} {
+        return props;
     }
 }

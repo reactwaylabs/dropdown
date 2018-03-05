@@ -44,4 +44,8 @@ export class HeaderBase<TProps extends HeaderBaseProps = {}, TState extends Head
     protected isOpen(): boolean {
         return this.context.dropdownOpen;
     }
+
+    protected getRestProps(props: HeaderBaseProps): {} {
+        return props;
+    }
 }

@@ -79,7 +79,7 @@ export abstract class HandlerBase<TProps extends HandlerBaseProps, TState extend
 
         this.triggerCallbacks(open, EventSource.OutsideClick);
         this.updateOpenState(open);
-    };
+    }
 
     /**
      * Handles window keyboard events.
@@ -95,7 +95,7 @@ export abstract class HandlerBase<TProps extends HandlerBaseProps, TState extend
             this.triggerCallbacks(open, EventSource.EscapeClick);
             this.updateOpenState(open);
         }
-    };
+    }
 
     /**
      * Checks if passed element is in container element.
@@ -141,5 +141,22 @@ export abstract class HandlerBase<TProps extends HandlerBaseProps, TState extend
      */
     protected isControlled(): boolean {
         return this.props.open != null;
+    }
+
+    protected getRestProps(props: HandlerBaseProps): {} {
+        const {
+            closeOnEscapeClick,
+            closeOnOutsideClick,
+            closeOnSectionClick,
+            defaultOpen,
+            onClose,
+            onOpen,
+            onToggle,
+            open,
+            toggleOnHeaderClick,
+            ...restProps
+        } = props;
+
+        return restProps;
     }
 }
