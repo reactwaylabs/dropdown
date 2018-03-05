@@ -25,10 +25,10 @@ export interface BaseHandlerChildContext {
     dropdownOnSectionClickCallback: Function;
 }
 
-export abstract class HandlerBase<TProps extends HandlerBaseProps, TState extends HandlerBaseState> extends React.Component<
-    TProps,
-    TState
-> {
+export abstract class HandlerBase<
+    TProps extends HandlerBaseProps = HandlerBaseProps,
+    TState extends HandlerBaseState = HandlerBaseState
+> extends React.Component<TProps, TState> {
     constructor(props: TProps) {
         super(props);
         if (CAN_I_USE_WINDOW_LISTENERS) {
