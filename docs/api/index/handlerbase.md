@@ -5,26 +5,32 @@
         * [constructor(props)][Constructor-0]
     * Methods
         * [getInitialOpenValue()][MethodDeclaration-0]
-        * [onOutsideClick(event)][MethodDeclaration-1]
-        * [isElementInContainer(element)][MethodDeclaration-2]
-        * [triggerCallbacks(open, source)][MethodDeclaration-3]
-        * [updateOpenState(open)][MethodDeclaration-4]
-        * [isControlled()][MethodDeclaration-5]
+        * [getChildContext()][MethodDeclaration-1]
+        * [onHeaderClick()][MethodDeclaration-2]
+        * [onSectionClick()][MethodDeclaration-3]
+        * [onOutsideClick(event)][MethodDeclaration-4]
+        * [isElementInContainer(element)][MethodDeclaration-5]
+        * [triggerCallbacks(open, source)][MethodDeclaration-6]
+        * [updateOpenState(open)][MethodDeclaration-7]
+        * [isControlled()][MethodDeclaration-8]
+        * [getRestProps(props)][MethodDeclaration-9]
     * Properties
         * [element][PropertyDeclaration-0]
+        * [defaultProps][PropertyDeclaration-1]
+        * [childContextTypes][PropertyDeclaration-2]
 
 # HandlerBase
 
 ```typescript
-abstract class HandlerBase<TProps extends HandlerBaseProps, TState extends HandlerBaseState>
+abstract class HandlerBase<TProps extends HandlerBaseProps = HandlerBaseProps, TState extends HandlerBaseState = HandlerBaseState>
 ```
 
 **Type parameters**
 
-| Name   | Constraint                                 |
-| ------ | ------------------------------------------ |
-| TProps | [HandlerBaseProps][InterfaceDeclaration-0] |
-| TState | [HandlerBaseState][InterfaceDeclaration-1] |
+| Name   | Constraint                                 | Default                                    |
+| ------ | ------------------------------------------ | ------------------------------------------ |
+| TProps | [HandlerBaseProps][InterfaceDeclaration-0] | [HandlerBaseProps][InterfaceDeclaration-0] |
+| TState | [HandlerBaseState][InterfaceDeclaration-1] | [HandlerBaseState][InterfaceDeclaration-1] |
 ## Constructor
 
 ### constructor(props)
@@ -53,6 +59,46 @@ protected getInitialOpenValue(): boolean;
 **Return type**
 
 boolean
+
+----------
+
+### getChildContext()
+
+```typescript
+public getChildContext(): BaseHandlerChildContext;
+```
+
+**Return type**
+
+[BaseHandlerChildContext][InterfaceDeclaration-2]
+
+----------
+
+### onHeaderClick()
+
+Triggers this method when header is clicked.
+
+```typescript
+protected onHeaderClick(): void;
+```
+
+**Return type**
+
+void
+
+----------
+
+### onSectionClick()
+
+Triggers this method when section is clicked.
+
+```typescript
+protected onSectionClick(): void;
+```
+
+**Return type**
+
+void
 
 ----------
 
@@ -149,6 +195,24 @@ protected isControlled(): boolean;
 
 boolean
 
+----------
+
+### getRestProps(props)
+
+```typescript
+protected getRestProps(props: HandlerBaseProps): {};
+```
+
+**Parameters**
+
+| Name  | Type                                       |
+| ----- | ------------------------------------------ |
+| props | [HandlerBaseProps][InterfaceDeclaration-0] |
+
+**Return type**
+
+{}
+
 ## Properties
 
 ### element
@@ -163,15 +227,51 @@ public abstract element: HTMLElement | null;
 
 HTMLElement | null
 
+----------
+
+### defaultProps
+
+```typescript
+public static defaultProps: HandlerBaseProps;
+```
+
+**Type**
+
+[HandlerBaseProps][InterfaceDeclaration-0]
+
+----------
+
+### childContextTypes
+
+```typescript
+public static childContextTypes: ValidationMap<BaseHandlerChildContext>;
+```
+
+**Type**
+
+ValidationMap<[BaseHandlerChildContext][InterfaceDeclaration-2]>
+
 [ClassDeclaration-0]: handlerbase.md#handlerbase
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
+[InterfaceDeclaration-0]: ../index.md#handlerbaseprops
+[InterfaceDeclaration-1]: ../index.md#handlerbasestate
 [InterfaceDeclaration-1]: ../index.md#handlerbasestate
 [Constructor-0]: handlerbase.md#constructorprops
 [MethodDeclaration-0]: handlerbase.md#getinitialopenvalue
-[MethodDeclaration-1]: handlerbase.md#onoutsideclickevent
-[MethodDeclaration-2]: handlerbase.md#iselementincontainerelement
-[MethodDeclaration-3]: handlerbase.md#triggercallbacksopen-source
+[MethodDeclaration-1]: handlerbase.md#getchildcontext
+[InterfaceDeclaration-2]: ../index.md#basehandlerchildcontext
+[MethodDeclaration-2]: handlerbase.md#onheaderclick
+[MethodDeclaration-3]: handlerbase.md#onsectionclick
+[MethodDeclaration-4]: handlerbase.md#onoutsideclickevent
+[MethodDeclaration-5]: handlerbase.md#iselementincontainerelement
+[MethodDeclaration-6]: handlerbase.md#triggercallbacksopen-source
 [EnumDeclaration-0]: ../index.md#eventsource
-[MethodDeclaration-4]: handlerbase.md#updateopenstateopen
-[MethodDeclaration-5]: handlerbase.md#iscontrolled
+[MethodDeclaration-7]: handlerbase.md#updateopenstateopen
+[MethodDeclaration-8]: handlerbase.md#iscontrolled
+[MethodDeclaration-9]: handlerbase.md#getrestpropsprops
+[InterfaceDeclaration-0]: ../index.md#handlerbaseprops
 [PropertyDeclaration-0]: handlerbase.md#element
+[PropertyDeclaration-1]: handlerbase.md#defaultprops
+[InterfaceDeclaration-0]: ../index.md#handlerbaseprops
+[PropertyDeclaration-2]: handlerbase.md#childcontexttypes
+[InterfaceDeclaration-2]: ../index.md#basehandlerchildcontext

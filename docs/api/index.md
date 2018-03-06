@@ -8,9 +8,9 @@
         * [HeaderBaseProps][InterfaceDeclaration-3]
         * [HeaderBaseState][InterfaceDeclaration-4]
         * [HeaderBaseContext][InterfaceDeclaration-5]
-        * [BaseSectionProps][InterfaceDeclaration-6]
-        * [BaseSectionState][InterfaceDeclaration-7]
-        * [BaseSectionContext][InterfaceDeclaration-8]
+        * [SectionBaseProps][InterfaceDeclaration-6]
+        * [SectionBaseState][InterfaceDeclaration-7]
+        * [SectionBaseContext][InterfaceDeclaration-8]
     * Enums
         * [EventSource][EnumDeclaration-0]
 
@@ -122,28 +122,28 @@ interface HeaderBaseContext {
 
 ----------
 
-### BaseSectionProps
+### SectionBaseProps
 
 ```typescript
-interface BaseSectionProps {
+interface SectionBaseProps {
 }
 ```
 
 ----------
 
-### BaseSectionState
+### SectionBaseState
 
 ```typescript
-interface BaseSectionState {
+interface SectionBaseState {
 }
 ```
 
 ----------
 
-### BaseSectionContext
+### SectionBaseContext
 
 ```typescript
-interface BaseSectionContext {
+interface SectionBaseContext {
     dropdownOnSectionClickCallback: Function;
     dropdownOpen: boolean;
 }
@@ -191,7 +191,7 @@ enum EventSource {
 
 ----------
 
-### [BaseSection][ClassDeclaration-2]
+### [SectionBase][ClassDeclaration-2]
 
 
 [SourceFile-0]: index.md#indexts
@@ -201,10 +201,10 @@ enum EventSource {
 [InterfaceDeclaration-3]: index.md#headerbaseprops
 [InterfaceDeclaration-4]: index.md#headerbasestate
 [InterfaceDeclaration-5]: index.md#headerbasecontext
-[InterfaceDeclaration-6]: index.md#basesectionprops
-[InterfaceDeclaration-7]: index.md#basesectionstate
-[InterfaceDeclaration-8]: index.md#basesectioncontext
+[InterfaceDeclaration-6]: index.md#sectionbaseprops
+[InterfaceDeclaration-7]: index.md#sectionbasestate
+[InterfaceDeclaration-8]: index.md#sectionbasecontext
 [EnumDeclaration-0]: index.md#eventsource
 [ClassDeclaration-0]: index/handlerbase.md#handlerbase
 [ClassDeclaration-1]: index/headerbase.md#headerbase
-[ClassDeclaration-2]: index/basesection.md#basesection
+[ClassDeclaration-2]: index/sectionbase.md#sectionbase

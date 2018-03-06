@@ -4,11 +4,12 @@
     * Constructor
         * [constructor(props, context)][Constructor-1]
     * Methods
-        * [onHeaderClick()][MethodDeclaration-6]
-        * [isOpen()][MethodDeclaration-7]
+        * [onHeaderClick()][MethodDeclaration-10]
+        * [isOpen()][MethodDeclaration-11]
+        * [getRestProps(props)][MethodDeclaration-12]
     * Properties
-        * [context][PropertyDeclaration-1]
-        * [contextTypes][PropertyDeclaration-2]
+        * [context][PropertyDeclaration-3]
+        * [contextTypes][PropertyDeclaration-4]
 
 # HeaderBase
 
@@ -65,6 +66,24 @@ protected isOpen(): boolean;
 
 boolean
 
+----------
+
+### getRestProps(props)
+
+```typescript
+protected getRestProps(props: HeaderBaseProps): {};
+```
+
+**Parameters**
+
+| Name  | Type                                      |
+| ----- | ----------------------------------------- |
+| props | [HeaderBaseProps][InterfaceDeclaration-3] |
+
+**Return type**
+
+{}
+
 ## Properties
 
 ### context
@@ -94,9 +113,11 @@ ValidationMap<[HeaderBaseContext][InterfaceDeclaration-5]>
 [InterfaceDeclaration-4]: ../index.md#headerbasestate
 [Constructor-1]: headerbase.md#constructorprops-context
 [InterfaceDeclaration-5]: ../index.md#headerbasecontext
-[MethodDeclaration-6]: headerbase.md#onheaderclick
-[MethodDeclaration-7]: headerbase.md#isopen
-[PropertyDeclaration-1]: headerbase.md#context
+[MethodDeclaration-10]: headerbase.md#onheaderclick
+[MethodDeclaration-11]: headerbase.md#isopen
+[MethodDeclaration-12]: headerbase.md#getrestpropsprops
+[InterfaceDeclaration-3]: ../index.md#headerbaseprops
+[PropertyDeclaration-3]: headerbase.md#context
 [InterfaceDeclaration-5]: ../index.md#headerbasecontext
-[PropertyDeclaration-2]: headerbase.md#contexttypes
+[PropertyDeclaration-4]: headerbase.md#contexttypes
 [InterfaceDeclaration-5]: ../index.md#headerbasecontext
