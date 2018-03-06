@@ -9,26 +9,38 @@
         "test": "jest",
         "tslint": "tslint --project . --config ./tslint.json",
         "build": "rollup -c",
+        "postbuild": "rimraf ./dist/**/__tests__/",
         "watch": "rollup -c -w",
         "docs-gen": "ts-docs-gen --entryFile ./src/index.ts"
     },
-    "keywords": ["react", "dropdown", "flexible", "component"],
+    "keywords": [
+        "react",
+        "dropdown",
+        "flexible",
+        "component"
+    ],
     "author": "simplrjs <simplr@quatrodev.com> (https://github.com/simplrjs)",
     "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
     "repository": "SimplrJS/simplr-dropdown",
     "homepage": "https://github.com/SimplrJS/simplr-dropdown",
     "license": "MIT",
-    "files": ["dist", "**/*.md", "@types"],
+    "files": [
+        "dist",
+        "**/*.md",
+        "@types"
+    ],
     "devDependencies": {
         "@types/enzyme": "^3.1.9",
         "@types/enzyme-adapter-react-16": "^1.0.2",
-        "@types/jest": "^22.1.4",
+        "@types/jest": "^22.2.0",
         "enzyme": "^3.3.0",
         "enzyme-adapter-react-16": "^1.1.1",
-        "jest": "^22.3.0",
-        "jest-environment-jsdom": "^22.4.0",
+        "jest": "^22.4.2",
+        "jest-environment-jsdom": "^22.4.1",
         "jest-enzyme": "^4.2.0",
-        "rollup": "^0.56.3",
+        "rimraf": "^2.6.2",
+        "rollup": "^0.56.4",
+        "rollup-plugin-auto-external": "^1.2.0",
         "rollup-plugin-typescript2": "^0.11.1",
         "rollup-plugin-uglify": "^3.0.0",
         "simplr-tslint": "^1.0.0-alpha.8",
@@ -40,7 +52,7 @@
     },
     "dependencies": {
         "@types/prop-types": "^15.5.2",
-        "@types/react": "^16.0.38",
+        "@types/react": "^16.0.40",
         "@types/react-dom": "^16.0.4",
         "prop-types": "^15.6.1",
         "react": "^16.2.0",
@@ -49,7 +61,12 @@
     "jest": {
         "setupTestFrameworkScriptFile": "./__tests__/tests-configuration.ts",
         "collectCoverage": true,
-        "collectCoverageFrom": ["!src/index.ts", "src/**/*.{ts,tsx}", "!*", "!**/__tests__/**/*"],
+        "collectCoverageFrom": [
+            "!src/index.ts",
+            "src/**/*.{ts,tsx}",
+            "!*",
+            "!**/__tests__/**/*"
+        ],
         "transform": {
             ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
         },
@@ -60,6 +77,10 @@
             }
         },
         "testRegex": "/__tests__/.*\\.(test|spec).(ts|tsx|js)$",
-        "moduleFileExtensions": ["ts", "tsx", "js"]
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ]
     }
 }

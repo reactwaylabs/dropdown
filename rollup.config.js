@@ -1,19 +1,30 @@
 import typescript from "rollup-plugin-typescript2";
 import uglify from "rollup-plugin-uglify";
+import autoExternal from "rollup-plugin-auto-external";
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
 const production = !process.env.ROLLUP_WATCH;
 
+let plugins;
+if (production) {
+    plugins = [
+        uglify()
+    ];
+} else {
+    plugins = [];
+}
+
 export default {
-    entry: "./src/index.ts",
+    input: "./src/index.ts",
     output: {
         file: "./dist/simplr-dropdown.js",
-        format: "umd",
+        format: "cjs",
         name: "simplr-dropdown"
     },
     plugins: [
         typescript(),
-        production ? uglify() : undefined
+        autoExternal(),
+        ...plugins
     ]
 }
