@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as PropTypes from "prop-types";
 
 import { EventSource } from "../contracts";
 import { CAN_I_USE_WINDOW_LISTENERS, ESCAPE_KEYCODE } from "../helpers";
@@ -47,6 +48,19 @@ export abstract class HandlerBase<
      */
     public abstract element: HTMLElement | null;
 
+    public static defaultProps: HandlerBaseProps = {
+        toggleOnHeaderClick: true,
+        closeOnSectionClick: false,
+        closeOnOutsideClick: true,
+        closeOnEscapeClick: true
+    };
+
+    public static childContextTypes: PropTypes.ValidationMap<BaseHandlerChildContext> = {
+        dropdownOpen: PropTypes.bool.isRequired,
+        dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
+        dropdownOnSectionClickCallback: PropTypes.func.isRequired
+    };
+
     /**
      * Initial open state value.
      * By default it gets initial value from props: defaultOpen and open.
@@ -64,6 +78,41 @@ export abstract class HandlerBase<
         }
 
         return open;
+    }
+
+    public getChildContext(): BaseHandlerChildContext {
+        return {
+            dropdownOpen: this.state.open,
+            dropdownOnHeaderClickCallback: this.onHeaderClick.bind(this),
+            dropdownOnSectionClickCallback: this.onSectionClick.bind(this)
+        };
+    }
+
+    /**
+     * Triggers this method when header is clicked.
+     */
+    protected onHeaderClick(): void {
+        const open = !this.state.open;
+        if (!this.props.toggleOnHeaderClick) {
+            return;
+        }
+
+        this.triggerCallbacks(open, EventSource.HeaderClick);
+        this.updateOpenState(open);
+    }
+
+    /**
+     * Triggers this method when section is clicked.
+     */
+    protected onSectionClick(): void {
+        const open = false;
+
+        if (!this.props.closeOnSectionClick) {
+            return;
+        }
+
+        this.triggerCallbacks(open, EventSource.SectionClick);
+        this.updateOpenState(open);
     }
 
     /**
