@@ -11,6 +11,9 @@
         * [SectionBaseProps][InterfaceDeclaration-6]
         * [SectionBaseState][InterfaceDeclaration-7]
         * [SectionBaseContext][InterfaceDeclaration-8]
+        * [DropdownHandlerProps][InterfaceDeclaration-9]
+        * [DropdownHeaderProps][InterfaceDeclaration-10]
+        * [DropdownSectionProps][InterfaceDeclaration-11]
     * Enums
         * [EventSource][EnumDeclaration-0]
 
@@ -156,6 +159,51 @@ interface SectionBaseContext {
 | dropdownOnSectionClickCallback | Function | false    |
 | dropdownOpen                   | boolean  | false    |
 
+----------
+
+### DropdownHandlerProps
+
+```typescript
+interface DropdownHandlerProps extends HandlerBaseProps, DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+}
+```
+
+**Extends**
+
+[HandlerBaseProps][InterfaceDeclaration-0]
+
+DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+
+----------
+
+### DropdownHeaderProps
+
+```typescript
+interface DropdownHeaderProps extends HeaderBaseProps, DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+}
+```
+
+**Extends**
+
+[HeaderBaseProps][InterfaceDeclaration-3]
+
+DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+
+----------
+
+### DropdownSectionProps
+
+```typescript
+interface DropdownSectionProps extends SectionBaseProps, DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+}
+```
+
+**Extends**
+
+[SectionBaseProps][InterfaceDeclaration-6]
+
+DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+
 ## Enums
 
 ### EventSource
@@ -194,6 +242,21 @@ enum EventSource {
 ### [SectionBase][ClassDeclaration-2]
 
 
+----------
+
+### [DropdownHandler][ClassDeclaration-3]
+
+
+----------
+
+### [DropdownHeader][ClassDeclaration-4]
+
+
+----------
+
+### [DropdownSection][ClassDeclaration-5]
+
+
 [SourceFile-0]: index.md#indexts
 [InterfaceDeclaration-0]: index.md#handlerbaseprops
 [InterfaceDeclaration-1]: index.md#handlerbasestate
@@ -204,7 +267,16 @@ enum EventSource {
 [InterfaceDeclaration-6]: index.md#sectionbaseprops
 [InterfaceDeclaration-7]: index.md#sectionbasestate
 [InterfaceDeclaration-8]: index.md#sectionbasecontext
+[InterfaceDeclaration-9]: index.md#dropdownhandlerprops
+[InterfaceDeclaration-0]: index.md#handlerbaseprops
+[InterfaceDeclaration-10]: index.md#dropdownheaderprops
+[InterfaceDeclaration-3]: index.md#headerbaseprops
+[InterfaceDeclaration-11]: index.md#dropdownsectionprops
+[InterfaceDeclaration-6]: index.md#sectionbaseprops
 [EnumDeclaration-0]: index.md#eventsource
 [ClassDeclaration-0]: index/handlerbase.md#handlerbase
 [ClassDeclaration-1]: index/headerbase.md#headerbase
 [ClassDeclaration-2]: index/sectionbase.md#sectionbase
+[ClassDeclaration-3]: index/dropdownhandler.md#dropdownhandler
+[ClassDeclaration-4]: index/dropdownheader.md#dropdownheader
+[ClassDeclaration-5]: index/dropdownsection.md#dropdownsection
