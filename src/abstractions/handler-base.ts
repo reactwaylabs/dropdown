@@ -66,15 +66,14 @@ export abstract class HandlerBase<
      * By default it gets initial value from props: defaultOpen and open.
      */
     protected getInitialOpenValue(): boolean {
-        const props: TProps = this.props;
         let open = false;
 
-        if (props.defaultOpen != null) {
-            open = props.defaultOpen;
+        if (this.props.defaultOpen != null) {
+            open = this.props.defaultOpen as boolean;
         }
 
-        if (props.open != null) {
-            open = props.open;
+        if (this.props.open != null) {
+            open = this.props.open as boolean;
         }
 
         return open;
@@ -119,10 +118,9 @@ export abstract class HandlerBase<
      * Handles window click event.
      */
     protected onOutsideClick(event: MouseEvent): void {
-        const props: TProps = this.props;
         const open = false;
 
-        if (!props.closeOnOutsideClick || this.isElementInContainer(event.target as Element)) {
+        if (!this.props.closeOnOutsideClick || this.isElementInContainer(event.target as Element)) {
             return;
         }
 

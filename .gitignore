@@ -266,3 +266,4 @@ dist
 **/webpack.config.js
 .rpt2_cache
 _src
+coverage

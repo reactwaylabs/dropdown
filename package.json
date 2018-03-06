@@ -12,22 +12,13 @@
         "watch": "rollup -c -w",
         "docs-gen": "ts-docs-gen --entryFile ./src/index.ts"
     },
-    "keywords": [
-        "react",
-        "dropdown",
-        "flexible",
-        "component"
-    ],
+    "keywords": ["react", "dropdown", "flexible", "component"],
     "author": "simplrjs <simplr@quatrodev.com> (https://github.com/simplrjs)",
     "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
     "repository": "SimplrJS/simplr-dropdown",
     "homepage": "https://github.com/SimplrJS/simplr-dropdown",
     "license": "MIT",
-    "files": [
-        "dist",
-        "**/*.md",
-        "@types"
-    ],
+    "files": ["dist", "**/*.md", "@types"],
     "devDependencies": {
         "@types/enzyme": "^3.1.9",
         "@types/enzyme-adapter-react-16": "^1.0.2",
@@ -57,14 +48,18 @@
     },
     "jest": {
         "setupTestFrameworkScriptFile": "./__tests__/tests-configuration.ts",
+        "collectCoverage": true,
+        "collectCoverageFrom": ["!src/index.ts", "src/**/*.{ts,tsx}", "!*", "!**/__tests__/**/*"],
         "transform": {
             ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
         },
+        "globals": {
+            "ts-jest": {
+                "skipBabel": true,
+                "tsConfigFile": "./tsconfig.json"
+            }
+        },
         "testRegex": "/__tests__/.*\\.(test|spec).(ts|tsx|js)$",
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js"
-        ]
+        "moduleFileExtensions": ["ts", "tsx", "js"]
     }
 }
