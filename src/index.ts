@@ -1,14 +1,12 @@
-export * from "./abstractions/base-handler";
-export * from "./abstractions/base-header";
-export * from "./abstractions/base-section";
+// Abstractions
+export * from "./abstractions/handler-base";
+export * from "./abstractions/header-base";
+export * from "./abstractions/section-base";
+
+// Components
 export * from "./components/dropdown-handler";
 export * from "./components/dropdown-header";
 export * from "./components/dropdown-section";
 
-import * as Contracts from "./contracts";
-import * as Helpers from "./helpers";
-
-export {
-    Contracts,
-    Helpers
-};
+// Other
+export * from "./contracts";

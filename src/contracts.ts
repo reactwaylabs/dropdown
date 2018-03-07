@@ -5,11 +5,10 @@ export enum EventSource {
     EscapeClick = 32
 }
 
-export const BASE_HEADER_FUNC = "SimplrDropdownBaseHeader";
-export const BASE_SECTION_FUNC = "SimplrDropdownBaseSection";
+export type DropdownOnToggleHandler = (isOpened: boolean, source: EventSource) => void;
+export type DropdownOnOpenHandler = (source: EventSource) => void;
+export type DropdownOnCloseHandler = (source: EventSource) => void;
 
-export interface HTMLElementProps<TElement> extends React.HTMLProps<TElement> {
-    // When extending HTMLProps interface there is an Element ref and it is not overriden by component ref.
+export interface HTMLElementProps<TElement> extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     ref?: React.Ref<any>;
-    children?: React.ReactNode;
 }

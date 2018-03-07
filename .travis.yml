@@ -10,12 +10,12 @@ branches:
 node_js:
 - stable
 script:
-- npm test
+- npm run test-ci
 before_deploy:
-- npm run release
+- npm run build
 deploy:
   provider: npm
-  email: dovydas@quatrodev.com
+  email: $SIMPLR_NPM_EMAIL
   api_key: $SIMPLR_NPM_API_KEY
   skip_cleanup: true
   on:

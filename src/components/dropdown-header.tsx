@@ -1,27 +1,23 @@
 import * as React from "react";
-
-import { BaseHeader, BaseHeaderProps, BaseHeaderState } from "../abstractions/base-header";
+import { HeaderBaseProps, HeaderBase } from "../abstractions/header-base";
 import { HTMLElementProps } from "../contracts";
 
-export interface DropdownHeaderProps extends BaseHeaderProps, HTMLElementProps<HTMLDivElement> {
+export interface DropdownHeaderProps extends HeaderBaseProps, HTMLElementProps<HTMLDivElement> {
     // HACK: Workaround of rule "intersection types should be consistent"
     ref?: React.Ref<DropdownHeader>;
 }
 
-export class DropdownHeader extends BaseHeader<DropdownHeaderProps, BaseHeaderState> {
-    protected OnContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
+export class DropdownHeader extends HeaderBase<DropdownHeaderProps> {
+    protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
         event.persist();
-        this.OnHeaderClick();
+        this.onHeaderClick();
 
         if (this.props.onClick != null) {
             this.props.onClick(event);
         }
-    }
+    };
 
     public render(): JSX.Element {
-        return <div
-            {...this.GetHTMLProps(this.props) }
-            onClick={this.OnContainerClickCallback}
-        />;
+        return <div {...this.getRestProps(this.props)} onClick={this.onContainerClickCallback} />;
     }
 }
