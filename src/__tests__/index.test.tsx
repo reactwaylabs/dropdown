@@ -19,7 +19,7 @@ it("opens when clicked on header.", () => {
     expect(handlerState.open).toBe(true);
 });
 
-it("closes when clicked on section when closeOnSectionClick true.", () => {
+it("closes when clicked on section when closeOnSectionClick is true.", () => {
     const dropdown = mount(
         <DropdownHandler defaultOpen={true} closeOnSectionClick={true}>
             <DropdownHeader>Header</DropdownHeader>
@@ -32,15 +32,15 @@ it("closes when clicked on section when closeOnSectionClick true.", () => {
     expect(handlerState.open).toBe(false);
 });
 
-it("throws error when header is not inside handler component.", () => {
+it("throws an error when header is not inside handler component.", () => {
     expect(() => shallow(<DropdownHeader />)).toThrowError();
 });
 
-it("throws error when section is not inside handler component.", () => {
+it("throws an error when section is not inside handler component.", () => {
     expect(() => shallow(<DropdownSection />)).toThrowError();
 });
 
-it("doesn't open when handler is controlled.", () => {
+it("does not open when clicked on header if handler is controlled.", () => {
     const dropdown = mount(
         <DropdownHandler open={false}>
             <DropdownHeader id="header">Header</DropdownHeader>
