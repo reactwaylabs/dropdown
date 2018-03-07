@@ -9,7 +9,7 @@ export interface HeaderBaseState {}
 
 export interface HeaderBaseContext {
     dropdownOnHeaderClickCallback: Function;
-    dropdownOpen: boolean;
+    dropdownIsOpen: boolean;
 }
 
 export class HeaderBase<TProps extends HeaderBaseProps = {}, TState extends HeaderBaseState = {}> extends React.Component<TProps, TState> {
@@ -28,7 +28,7 @@ export class HeaderBase<TProps extends HeaderBaseProps = {}, TState extends Head
 
     public static contextTypes: PropTypes.ValidationMap<HeaderBaseContext> = {
         dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
-        dropdownOpen: PropTypes.bool.isRequired
+        dropdownIsOpen: PropTypes.bool.isRequired
     };
 
     /**
@@ -42,7 +42,7 @@ export class HeaderBase<TProps extends HeaderBaseProps = {}, TState extends Head
      * Gets from DropdownHandler if dropdown is open.
      */
     protected isOpen(): boolean {
-        return this.context.dropdownOpen;
+        return this.context.dropdownIsOpen;
     }
 
     protected getRestProps(props: HeaderBaseProps): {} {

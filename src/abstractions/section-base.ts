@@ -9,7 +9,7 @@ export interface SectionBaseState {}
 
 export interface SectionBaseContext {
     dropdownOnSectionClickCallback: Function;
-    dropdownOpen: boolean;
+    dropdownIsOpen: boolean;
 }
 
 export class SectionBase<
@@ -22,7 +22,7 @@ export class SectionBase<
     constructor(props: TProps, context: SectionBaseContext) {
         super(props);
 
-        if (context.dropdownOnSectionClickCallback == null || context.dropdownOpen == null) {
+        if (context.dropdownOnSectionClickCallback == null || context.dropdownIsOpen == null) {
             throw `simplr-dropdown: (BaseHeader) "${this.constructor.name}" must be inside DropdownHandler component.`;
         }
     }
@@ -31,7 +31,7 @@ export class SectionBase<
 
     public static contextTypes: PropTypes.ValidationMap<SectionBaseContext> = {
         dropdownOnSectionClickCallback: PropTypes.func.isRequired,
-        dropdownOpen: PropTypes.bool.isRequired
+        dropdownIsOpen: PropTypes.bool.isRequired
     };
 
     /**
@@ -45,7 +45,7 @@ export class SectionBase<
      * Gets from DropdownHandler if dropdown is open.
      */
     protected isOpen(): boolean {
-        return this.context.dropdownOpen;
+        return this.context.dropdownIsOpen;
     }
 
     protected getRestProps(props: SectionBaseProps): {} {

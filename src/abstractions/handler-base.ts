@@ -21,7 +21,7 @@ export interface HandlerBaseState {
 }
 
 export interface BaseHandlerChildContext {
-    dropdownOpen: boolean;
+    dropdownIsOpen: boolean;
     dropdownOnHeaderClickCallback: () => void;
     dropdownOnSectionClickCallback: () => void;
 }
@@ -62,7 +62,7 @@ export abstract class HandlerBase<
     };
 
     public static childContextTypes: PropTypes.ValidationMap<BaseHandlerChildContext> = {
-        dropdownOpen: PropTypes.bool.isRequired,
+        dropdownIsOpen: PropTypes.bool.isRequired,
         dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
         dropdownOnSectionClickCallback: PropTypes.func.isRequired
     };
@@ -87,7 +87,7 @@ export abstract class HandlerBase<
 
     public getChildContext(): BaseHandlerChildContext {
         return {
-            dropdownOpen: this.state.open,
+            dropdownIsOpen: this.state.open,
             dropdownOnHeaderClickCallback: this.onHeaderClick.bind(this),
             dropdownOnSectionClickCallback: this.onSectionClick.bind(this)
         };
