@@ -43,6 +43,13 @@ export abstract class HandlerBase<
         } as TState;
     }
 
+    public componentWillUnmount(): void {
+        if (CAN_I_USE_WINDOW_LISTENERS) {
+            window.removeEventListener("click", this.onOutsideClick.bind(this));
+            window.removeEventListener("keyup", this.onWindowKeyUp.bind(this));
+        }
+    }
+
     /**
      * Container element.
      */
