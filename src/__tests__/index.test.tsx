@@ -16,12 +16,12 @@ it("opens when clicked on header.", () => {
     dropdown.find("div#header").simulate("click");
 
     const handlerState: HandlerBaseState = dropdown.state();
-    expect(handlerState.open).toBe(true);
+    expect(handlerState.isOpen).toBe(true);
 });
 
 it("closes when clicked on section when closeOnSectionClick is true.", () => {
     const dropdown = mount(
-        <DropdownHandler defaultOpen={true} closeOnSectionClick={true}>
+        <DropdownHandler defaultIsOpen={true} closeOnSectionClick={true}>
             <DropdownHeader>Header</DropdownHeader>
             <DropdownSection id="section">Section</DropdownSection>
         </DropdownHandler>
@@ -29,7 +29,7 @@ it("closes when clicked on section when closeOnSectionClick is true.", () => {
     dropdown.find("div#section").simulate("click");
 
     const handlerState: HandlerBaseState = dropdown.state();
-    expect(handlerState.open).toBe(false);
+    expect(handlerState.isOpen).toBe(false);
 });
 
 it("throws an error when header is not inside handler component.", () => {
@@ -42,7 +42,7 @@ it("throws an error when section is not inside handler component.", () => {
 
 it("does not open when clicked on header if handler is controlled.", () => {
     const dropdown = mount(
-        <DropdownHandler open={false}>
+        <DropdownHandler isOpen={false}>
             <DropdownHeader id="header">Header</DropdownHeader>
             <DropdownSection>Section</DropdownSection>
         </DropdownHandler>
@@ -50,5 +50,5 @@ it("does not open when clicked on header if handler is controlled.", () => {
     dropdown.find("div#header").simulate("click");
 
     const handlerState: HandlerBaseState = dropdown.state();
-    expect(handlerState.open).toBe(false);
+    expect(handlerState.isOpen).toBe(false);
 });

@@ -5,8 +5,8 @@ import { EventSource, DropdownOnToggleHandler, DropdownOnCloseHandler, DropdownO
 import { CAN_I_USE_WINDOW_LISTENERS, ESCAPE_KEYCODE } from "../helpers";
 
 export interface HandlerBaseProps {
-    defaultOpen?: boolean;
-    open?: boolean;
+    defaultIsOpen?: boolean;
+    isOpen?: boolean;
     onOpen?: DropdownOnOpenHandler;
     onClose?: DropdownOnOpenHandler;
     onToggle?: DropdownOnToggleHandler;
@@ -17,7 +17,7 @@ export interface HandlerBaseProps {
 }
 
 export interface HandlerBaseState {
-    open: boolean;
+    isOpen: boolean;
 }
 
 export interface BaseHandlerChildContext {
@@ -38,7 +38,7 @@ export abstract class HandlerBase<
         }
 
         this.state = {
-            open: this.getInitialOpenValue()
+            isOpen: this.getInitialOpenValue()
         } as TState;
     }
 
@@ -74,12 +74,12 @@ export abstract class HandlerBase<
     protected getInitialOpenValue(): boolean {
         let open = false;
 
-        if (this.props.defaultOpen != null) {
-            open = Boolean(this.props.defaultOpen);
+        if (this.props.defaultIsOpen != null) {
+            open = Boolean(this.props.defaultIsOpen);
         }
 
-        if (this.props.open != null) {
-            open = Boolean(this.props.open);
+        if (this.props.isOpen != null) {
+            open = Boolean(this.props.isOpen);
         }
 
         return open;
@@ -87,7 +87,7 @@ export abstract class HandlerBase<
 
     public getChildContext(): BaseHandlerChildContext {
         return {
-            dropdownIsOpen: this.state.open,
+            dropdownIsOpen: this.state.isOpen,
             dropdownOnHeaderClickCallback: this.onHeaderClick.bind(this),
             dropdownOnSectionClickCallback: this.onSectionClick.bind(this)
         };
@@ -97,56 +97,56 @@ export abstract class HandlerBase<
      * Triggers this method when header is clicked.
      */
     protected onHeaderClick(): void {
-        const open = !this.state.open;
+        const isOpen = !this.state.isOpen;
         if (!this.props.toggleOnHeaderClick) {
             return;
         }
 
-        this.triggerCallbacks(open, EventSource.HeaderClick);
-        this.updateOpenState(open);
+        this.triggerCallbacks(isOpen, EventSource.HeaderClick);
+        this.updateOpenState(isOpen);
     }
 
     /**
      * Triggers this method when section is clicked.
      */
     protected onSectionClick(): void {
-        const open = false;
+        const isOpen = false;
 
         if (!this.props.closeOnSectionClick) {
             return;
         }
 
-        this.triggerCallbacks(open, EventSource.SectionClick);
-        this.updateOpenState(open);
+        this.triggerCallbacks(isOpen, EventSource.SectionClick);
+        this.updateOpenState(isOpen);
     }
 
     /**
      * Handles window click event.
      */
     protected onOutsideClick(event: MouseEvent): void {
-        const open = false;
+        const isOpen = false;
 
         if (!this.props.closeOnOutsideClick || this.isElementInContainer(event.target as Element)) {
             return;
         }
 
-        this.triggerCallbacks(open, EventSource.OutsideClick);
-        this.updateOpenState(open);
+        this.triggerCallbacks(isOpen, EventSource.OutsideClick);
+        this.updateOpenState(isOpen);
     }
 
     /**
      * Handles window keyboard events.
      */
     private onWindowKeyUp(event: KeyboardEvent): void {
-        const open = false;
+        const isOpen = false;
 
         if (!this.props.closeOnEscapeClick) {
             return;
         }
 
         if (event.keyCode === ESCAPE_KEYCODE && this.props.closeOnEscapeClick) {
-            this.triggerCallbacks(open, EventSource.EscapeClick);
-            this.updateOpenState(open);
+            this.triggerCallbacks(isOpen, EventSource.EscapeClick);
+            this.updateOpenState(isOpen);
         }
     }
 
@@ -165,26 +165,26 @@ export abstract class HandlerBase<
     /**
      * Triggers all callbacks: onOpen, onClose and onToggle.
      */
-    protected triggerCallbacks(open: boolean, source: EventSource): void {
-        if (open && this.props.onOpen != null) {
+    protected triggerCallbacks(isOpen: boolean, source: EventSource): void {
+        if (isOpen && this.props.onOpen != null) {
             this.props.onOpen(source);
         }
-        if (!open && this.props.onClose != null) {
+        if (!isOpen && this.props.onClose != null) {
             this.props.onClose(source);
         }
         if (this.props.onToggle != null) {
-            this.props.onToggle(open, source);
+            this.props.onToggle(isOpen, source);
         }
     }
 
     /**
      * Updates state if dropdown is not controlled.
      */
-    protected updateOpenState(open: boolean): void {
-        if (this.state.open !== open && !this.isControlled()) {
+    protected updateOpenState(isOpen: boolean): void {
+        if (this.state.isOpen !== isOpen && !this.isControlled()) {
             this.setState((state: HandlerBaseState) => ({
                 ...state,
-                open: open
+                isOpen: isOpen
             }));
         }
     }
@@ -193,7 +193,7 @@ export abstract class HandlerBase<
      * Return true if dropdown is controlled outside of this component.
      */
     protected isControlled(): boolean {
-        return this.props.open != null;
+        return this.props.isOpen != null;
     }
 
     protected getRestProps(props: HandlerBaseProps): {} {
@@ -201,11 +201,11 @@ export abstract class HandlerBase<
             closeOnEscapeClick,
             closeOnOutsideClick,
             closeOnSectionClick,
-            defaultOpen,
+            defaultIsOpen,
             onClose,
             onOpen,
             onToggle,
-            open,
+            isOpen,
             toggleOnHeaderClick,
             ...restProps
         } = props;
