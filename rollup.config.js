@@ -2,8 +2,8 @@ import typescript from "rollup-plugin-typescript2";
 import uglify from "rollup-plugin-uglify";
 import autoExternal from "rollup-plugin-auto-external";
 
-// `npm run build` -> `production` is true
-// `npm run dev` -> `production` is false
+// `npm run build` -> `ROLLUP_WATCH` is true
+// `npm run watch` -> `ROLLUP_WATCH` is false
 const production = !process.env.ROLLUP_WATCH;
 
 let plugins;
