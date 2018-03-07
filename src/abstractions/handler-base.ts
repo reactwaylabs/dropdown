@@ -1,15 +1,15 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-import { EventSource } from "../contracts";
+import { EventSource, DropdownOnToggleHandler, DropdownOnCloseHandler, DropdownOnOpenHandler } from "../contracts";
 import { CAN_I_USE_WINDOW_LISTENERS, ESCAPE_KEYCODE } from "../helpers";
 
 export interface HandlerBaseProps {
     defaultOpen?: boolean;
     open?: boolean;
-    onOpen?: (source: EventSource) => void;
-    onClose?: (source: EventSource) => void;
-    onToggle?: (isOpened: boolean, source: EventSource) => void;
+    onOpen?: DropdownOnOpenHandler;
+    onClose?: DropdownOnOpenHandler;
+    onToggle?: DropdownOnToggleHandler;
     toggleOnHeaderClick?: boolean;
     closeOnOutsideClick?: boolean;
     closeOnSectionClick?: boolean;
@@ -22,8 +22,8 @@ export interface HandlerBaseState {
 
 export interface BaseHandlerChildContext {
     dropdownOpen: boolean;
-    dropdownOnHeaderClickCallback: Function;
-    dropdownOnSectionClickCallback: Function;
+    dropdownOnHeaderClickCallback: () => void;
+    dropdownOnSectionClickCallback: () => void;
 }
 
 export abstract class HandlerBase<
@@ -34,7 +34,6 @@ export abstract class HandlerBase<
         super(props);
         if (CAN_I_USE_WINDOW_LISTENERS) {
             window.addEventListener("click", this.onOutsideClick.bind(this));
-            // TODO: Move keyup to listener to handler container
             window.addEventListener("keyup", this.onWindowKeyUp.bind(this));
         }
 
@@ -76,11 +75,11 @@ export abstract class HandlerBase<
         let open = false;
 
         if (this.props.defaultOpen != null) {
-            open = this.props.defaultOpen as boolean;
+            open = Boolean(this.props.defaultOpen);
         }
 
         if (this.props.open != null) {
-            open = this.props.open as boolean;
+            open = Boolean(this.props.open);
         }
 
         return open;

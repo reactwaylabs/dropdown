@@ -20,7 +20,7 @@ export class HeaderBase<TProps extends HeaderBaseProps = {}, TState extends Head
         super(props, context);
 
         if (context.dropdownOnHeaderClickCallback == null) {
-            throw `simplr-dropdown: ${HeaderBase.name} must be inside DropdownHandler component.`;
+            throw `simplr-dropdown: (HeaderBase) "${this.constructor.name}" must be inside DropdownHandler component.`;
         }
     }
 

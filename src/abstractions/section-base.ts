@@ -23,9 +23,7 @@ export class SectionBase<
         super(props);
 
         if (context.dropdownOnSectionClickCallback == null || context.dropdownOpen == null) {
-            throw new Error(
-                `simplr-dropdown: (BaseHeader) ${(this.constructor as any).name}` + ` must be inside DropdownHandler component.`
-            );
+            throw `simplr-dropdown: (BaseHeader) "${this.constructor.name}" must be inside DropdownHandler component.`;
         }
     }
 
