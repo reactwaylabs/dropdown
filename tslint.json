@@ -1,6 +1,3 @@
 {
-    "extends": "simplr-tslint",
-    "rules": {
-        "semicolon": false
-    }
+    "extends": "simplr-tslint"
 }
