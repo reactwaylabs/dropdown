@@ -4,16 +4,17 @@
     * Constructor
         * [constructor(props)][Constructor-0]
     * Methods
-        * [getInitialOpenValue()][MethodDeclaration-0]
-        * [getChildContext()][MethodDeclaration-1]
-        * [onHeaderClick()][MethodDeclaration-2]
-        * [onSectionClick()][MethodDeclaration-3]
-        * [onOutsideClick(event)][MethodDeclaration-4]
-        * [isElementInContainer(element)][MethodDeclaration-5]
-        * [triggerCallbacks(open, source)][MethodDeclaration-6]
-        * [updateOpenState(open)][MethodDeclaration-7]
-        * [isControlled()][MethodDeclaration-8]
-        * [getRestProps(props)][MethodDeclaration-9]
+        * [componentWillUnmount()][MethodDeclaration-0]
+        * [getInitialOpenValue()][MethodDeclaration-1]
+        * [getChildContext()][MethodDeclaration-2]
+        * [onHeaderClick()][MethodDeclaration-3]
+        * [onSectionClick()][MethodDeclaration-4]
+        * [onOutsideClick(event)][MethodDeclaration-5]
+        * [isElementInContainer(element)][MethodDeclaration-6]
+        * [triggerCallbacks(isOpen, source)][MethodDeclaration-7]
+        * [updateOpenState(isOpen)][MethodDeclaration-8]
+        * [isControlled()][MethodDeclaration-9]
+        * [getRestProps(props)][MethodDeclaration-10]
     * Properties
         * [element][PropertyDeclaration-0]
         * [defaultProps][PropertyDeclaration-1]
@@ -46,6 +47,21 @@ public constructor(props: TProps);
 | props | TProps |
 
 ## Methods
+
+### componentWillUnmount()
+
+Called immediately before a component is destroyed. Perform any necessary cleanup in this method, such as
+cancelled network requests, or cleaning up any DOM elements created in `componentDidMount`.
+
+```typescript
+public componentWillUnmount(): void;
+```
+
+**Return type**
+
+void
+
+----------
 
 ### getInitialOpenValue()
 
@@ -142,19 +158,19 @@ boolean
 
 ----------
 
-### triggerCallbacks(open, source)
+### triggerCallbacks(isOpen, source)
 
 Triggers all callbacks: onOpen, onClose and onToggle.
 
 ```typescript
-protected triggerCallbacks(open: boolean, source: EventSource): void;
+protected triggerCallbacks(isOpen: boolean, source: EventSource): void;
 ```
 
 **Parameters**
 
 | Name   | Type                             |
 | ------ | -------------------------------- |
-| open   | boolean                          |
+| isOpen | boolean                          |
 | source | [EventSource][EnumDeclaration-0] |
 
 **Return type**
@@ -163,19 +179,19 @@ void
 
 ----------
 
-### updateOpenState(open)
+### updateOpenState(isOpen)
 
 Updates state if dropdown is not controlled.
 
 ```typescript
-protected updateOpenState(open: boolean): void;
+protected updateOpenState(isOpen: boolean): void;
 ```
 
 **Parameters**
 
-| Name | Type    |
-| ---- | ------- |
-| open | boolean |
+| Name   | Type    |
+| ------ | ------- |
+| isOpen | boolean |
 
 **Return type**
 
@@ -257,18 +273,19 @@ ValidationMap<[BaseHandlerChildContext][InterfaceDeclaration-2]>
 [InterfaceDeclaration-1]: ../index.md#handlerbasestate
 [InterfaceDeclaration-1]: ../index.md#handlerbasestate
 [Constructor-0]: handlerbase.md#constructorprops
-[MethodDeclaration-0]: handlerbase.md#getinitialopenvalue
-[MethodDeclaration-1]: handlerbase.md#getchildcontext
+[MethodDeclaration-0]: handlerbase.md#componentwillunmount
+[MethodDeclaration-1]: handlerbase.md#getinitialopenvalue
+[MethodDeclaration-2]: handlerbase.md#getchildcontext
 [InterfaceDeclaration-2]: ../index.md#basehandlerchildcontext
-[MethodDeclaration-2]: handlerbase.md#onheaderclick
-[MethodDeclaration-3]: handlerbase.md#onsectionclick
-[MethodDeclaration-4]: handlerbase.md#onoutsideclickevent
-[MethodDeclaration-5]: handlerbase.md#iselementincontainerelement
-[MethodDeclaration-6]: handlerbase.md#triggercallbacksopen-source
+[MethodDeclaration-3]: handlerbase.md#onheaderclick
+[MethodDeclaration-4]: handlerbase.md#onsectionclick
+[MethodDeclaration-5]: handlerbase.md#onoutsideclickevent
+[MethodDeclaration-6]: handlerbase.md#iselementincontainerelement
+[MethodDeclaration-7]: handlerbase.md#triggercallbacksisopen-source
 [EnumDeclaration-0]: ../index.md#eventsource
-[MethodDeclaration-7]: handlerbase.md#updateopenstateopen
-[MethodDeclaration-8]: handlerbase.md#iscontrolled
-[MethodDeclaration-9]: handlerbase.md#getrestpropsprops
+[MethodDeclaration-8]: handlerbase.md#updateopenstateisopen
+[MethodDeclaration-9]: handlerbase.md#iscontrolled
+[MethodDeclaration-10]: handlerbase.md#getrestpropsprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
 [PropertyDeclaration-0]: handlerbase.md#element
 [PropertyDeclaration-1]: handlerbase.md#defaultprops

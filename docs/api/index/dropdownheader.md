@@ -2,7 +2,7 @@
 
 * [DropdownHeader][ClassDeclaration-4]
     * Methods
-        * [render()][MethodDeclaration-17]
+        * [render()][MethodDeclaration-18]
     * Properties
         * [onContainerClickCallback][PropertyDeclaration-8]
 
@@ -36,5 +36,5 @@ protected onContainerClickCallback: bivarianceHack<HTMLDivElement>;
 bivarianceHack<HTMLDivElement>
 
 [ClassDeclaration-4]: dropdownheader.md#dropdownheader
-[MethodDeclaration-17]: dropdownheader.md#render
+[MethodDeclaration-18]: dropdownheader.md#render
 [PropertyDeclaration-8]: dropdownheader.md#oncontainerclickcallback
