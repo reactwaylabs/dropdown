@@ -1,9 +1,11 @@
 import * as React from "react";
 import { SectionBase, SectionBaseProps } from "../abstractions/section-base";
+import { HTMLElementProps } from "../contracts";
 
-export interface DropdownSectionProps
-    extends SectionBaseProps,
-        React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+export interface DropdownSectionProps extends SectionBaseProps, HTMLElementProps<HTMLDivElement> {
+    // HACK: Workaround of rule "intersection types should be consistent"
+    ref?: React.Ref<DropdownSection>;
+}
 
 export class DropdownSection extends SectionBase<DropdownSectionProps> {
     protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {

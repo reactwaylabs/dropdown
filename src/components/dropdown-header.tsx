@@ -1,9 +1,11 @@
 import * as React from "react";
 import { HeaderBaseProps, HeaderBase } from "../abstractions/header-base";
+import { HTMLElementProps } from "../contracts";
 
-export interface DropdownHeaderProps
-    extends HeaderBaseProps,
-        React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
+export interface DropdownHeaderProps extends HeaderBaseProps, HTMLElementProps<HTMLDivElement> {
+    // HACK: Workaround of rule "intersection types should be consistent"
+    ref?: React.Ref<DropdownHeader>;
+}
 
 export class DropdownHeader extends HeaderBase<DropdownHeaderProps> {
     protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
