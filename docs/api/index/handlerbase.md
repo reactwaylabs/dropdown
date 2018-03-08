@@ -5,8 +5,8 @@
         * [constructor(props)][Constructor-0]
     * Methods
         * [componentWillUnmount()][MethodDeclaration-0]
-        * [getInitialOpenValue()][MethodDeclaration-1]
-        * [getChildContext()][MethodDeclaration-2]
+        * [getChildContext()][MethodDeclaration-1]
+        * [getInitialOpenValue()][MethodDeclaration-2]
         * [onHeaderClick()][MethodDeclaration-3]
         * [onSectionClick()][MethodDeclaration-4]
         * [onOutsideClick(event)][MethodDeclaration-5]
@@ -15,6 +15,9 @@
         * [updateOpenState(isOpen)][MethodDeclaration-8]
         * [isControlled()][MethodDeclaration-9]
         * [getRestProps(props)][MethodDeclaration-10]
+        * [isOpen()][MethodDeclaration-11]
+        * [Open()][MethodDeclaration-12]
+        * [Close()][MethodDeclaration-13]
     * Properties
         * [element][PropertyDeclaration-0]
         * [defaultProps][PropertyDeclaration-1]
@@ -63,6 +66,18 @@ void
 
 ----------
 
+### getChildContext()
+
+```typescript
+public getChildContext(): BaseHandlerChildContext;
+```
+
+**Return type**
+
+[BaseHandlerChildContext][InterfaceDeclaration-2]
+
+----------
+
 ### getInitialOpenValue()
 
 Initial open state value.
@@ -75,18 +90,6 @@ protected getInitialOpenValue(): boolean;
 **Return type**
 
 boolean
-
-----------
-
-### getChildContext()
-
-```typescript
-public getChildContext(): BaseHandlerChildContext;
-```
-
-**Return type**
-
-[BaseHandlerChildContext][InterfaceDeclaration-2]
 
 ----------
 
@@ -229,6 +232,48 @@ protected getRestProps(props: HandlerBaseProps): {};
 
 {}
 
+----------
+
+### isOpen()
+
+Get a boolean if dropdown is open or not.
+
+```typescript
+public isOpen(): boolean;
+```
+
+**Return type**
+
+boolean
+
+----------
+
+### Open()
+
+To close dropdown.
+
+```typescript
+public Open(): void;
+```
+
+**Return type**
+
+void
+
+----------
+
+### Close()
+
+To close dropdown. 
+
+```typescript
+public Close(): void;
+```
+
+**Return type**
+
+void
+
 ## Properties
 
 ### element
@@ -274,9 +319,9 @@ ValidationMap<[BaseHandlerChildContext][InterfaceDeclaration-2]>
 [InterfaceDeclaration-1]: ../index.md#handlerbasestate
 [Constructor-0]: handlerbase.md#constructorprops
 [MethodDeclaration-0]: handlerbase.md#componentwillunmount
-[MethodDeclaration-1]: handlerbase.md#getinitialopenvalue
-[MethodDeclaration-2]: handlerbase.md#getchildcontext
+[MethodDeclaration-1]: handlerbase.md#getchildcontext
 [InterfaceDeclaration-2]: ../index.md#basehandlerchildcontext
+[MethodDeclaration-2]: handlerbase.md#getinitialopenvalue
 [MethodDeclaration-3]: handlerbase.md#onheaderclick
 [MethodDeclaration-4]: handlerbase.md#onsectionclick
 [MethodDeclaration-5]: handlerbase.md#onoutsideclickevent
@@ -287,6 +332,9 @@ ValidationMap<[BaseHandlerChildContext][InterfaceDeclaration-2]>
 [MethodDeclaration-9]: handlerbase.md#iscontrolled
 [MethodDeclaration-10]: handlerbase.md#getrestpropsprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
+[MethodDeclaration-11]: handlerbase.md#isopen
+[MethodDeclaration-12]: handlerbase.md#open
+[MethodDeclaration-13]: handlerbase.md#close
 [PropertyDeclaration-0]: handlerbase.md#element
 [PropertyDeclaration-1]: handlerbase.md#defaultprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
