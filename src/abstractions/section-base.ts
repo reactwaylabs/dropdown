@@ -1,21 +1,12 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-// tslint:disable-next-line: no-empty-interface
-export interface SectionBaseProps {}
-
-// tslint:disable-next-line: no-empty-interface
-export interface SectionBaseState {}
-
 export interface SectionBaseContext {
     dropdownOnSectionClickCallback: Function;
     dropdownIsOpen: boolean;
 }
 
-export class SectionBase<
-    TProps extends SectionBaseProps = SectionBaseProps,
-    TState extends SectionBaseState = SectionBaseState
-> extends React.Component<TProps, TState> {
+export class SectionBase<TProps = {}, TState = {}> extends React.Component<TProps, TState> {
     /**
      * @throws
      */
@@ -48,7 +39,7 @@ export class SectionBase<
         return this.context.dropdownIsOpen;
     }
 
-    protected getRestProps(props: SectionBaseProps): {} {
+    protected getRestProps(props: TProps): {} {
         return props;
     }
 }

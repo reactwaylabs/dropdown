@@ -1,18 +1,12 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 
-// tslint:disable-next-line: no-empty-interface
-export interface HeaderBaseProps {}
-
-// tslint:disable-next-line: no-empty-interface
-export interface HeaderBaseState {}
-
 export interface HeaderBaseContext {
     dropdownOnHeaderClickCallback: Function;
     dropdownIsOpen: boolean;
 }
 
-export class HeaderBase<TProps extends HeaderBaseProps = {}, TState extends HeaderBaseState = {}> extends React.Component<TProps, TState> {
+export class HeaderBase<TProps = {}, TState = {}> extends React.Component<TProps, TState> {
     /**
      * @throws
      */
@@ -45,7 +39,7 @@ export class HeaderBase<TProps extends HeaderBaseProps = {}, TState extends Head
         return this.context.dropdownIsOpen;
     }
 
-    protected getRestProps(props: HeaderBaseProps): {} {
+    protected getRestProps(props: TProps): {} {
         return props;
     }
 }

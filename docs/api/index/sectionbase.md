@@ -14,15 +14,15 @@
 # SectionBase
 
 ```typescript
-class SectionBase<TProps extends SectionBaseProps = SectionBaseProps, TState extends SectionBaseState = SectionBaseState>
+class SectionBase<TProps = {}, TState = {}>
 ```
 
 **Type parameters**
 
-| Name   | Constraint                                 | Default                                    |
-| ------ | ------------------------------------------ | ------------------------------------------ |
-| TProps | [SectionBaseProps][InterfaceDeclaration-6] | [SectionBaseProps][InterfaceDeclaration-6] |
-| TState | [SectionBaseState][InterfaceDeclaration-7] | [SectionBaseState][InterfaceDeclaration-7] |
+| Name   | Default |
+| ------ | ------- |
+| TProps | {}      |
+| TState | {}      |
 ## Constructor
 
 ### constructor(props, context)
@@ -36,7 +36,7 @@ public constructor(props: TProps, context: SectionBaseContext);
 | Name    | Type                                         |
 | ------- | -------------------------------------------- |
 | props   | TProps                                       |
-| context | [SectionBaseContext][InterfaceDeclaration-8] |
+| context | [SectionBaseContext][InterfaceDeclaration-4] |
 
 ## Methods
 
@@ -71,14 +71,14 @@ boolean
 ### getRestProps(props)
 
 ```typescript
-protected getRestProps(props: SectionBaseProps): {};
+protected getRestProps(props: TProps): {};
 ```
 
 **Parameters**
 
-| Name  | Type                                       |
-| ----- | ------------------------------------------ |
-| props | [SectionBaseProps][InterfaceDeclaration-6] |
+| Name  | Type   |
+| ----- | ------ |
+| props | TProps |
 
 **Return type**
 
@@ -94,7 +94,7 @@ public context: SectionBaseContext;
 
 **Type**
 
-[SectionBaseContext][InterfaceDeclaration-8]
+[SectionBaseContext][InterfaceDeclaration-4]
 
 ----------
 
@@ -106,20 +106,15 @@ public static contextTypes: ValidationMap<SectionBaseContext>;
 
 **Type**
 
-ValidationMap<[SectionBaseContext][InterfaceDeclaration-8]>
+ValidationMap<[SectionBaseContext][InterfaceDeclaration-4]>
 
 [ClassDeclaration-2]: sectionbase.md#sectionbase
-[InterfaceDeclaration-6]: ../index.md#sectionbaseprops
-[InterfaceDeclaration-6]: ../index.md#sectionbaseprops
-[InterfaceDeclaration-7]: ../index.md#sectionbasestate
-[InterfaceDeclaration-7]: ../index.md#sectionbasestate
 [Constructor-2]: sectionbase.md#constructorprops-context
-[InterfaceDeclaration-8]: ../index.md#sectionbasecontext
+[InterfaceDeclaration-4]: ../index.md#sectionbasecontext
 [MethodDeclaration-17]: sectionbase.md#onsectionclick
 [MethodDeclaration-18]: sectionbase.md#isopen
 [MethodDeclaration-19]: sectionbase.md#getrestpropsprops
-[InterfaceDeclaration-6]: ../index.md#sectionbaseprops
 [PropertyDeclaration-5]: sectionbase.md#context
-[InterfaceDeclaration-8]: ../index.md#sectionbasecontext
+[InterfaceDeclaration-4]: ../index.md#sectionbasecontext
 [PropertyDeclaration-6]: sectionbase.md#contexttypes
-[InterfaceDeclaration-8]: ../index.md#sectionbasecontext
+[InterfaceDeclaration-4]: ../index.md#sectionbasecontext

@@ -5,16 +5,12 @@
         * [HandlerBaseProps][InterfaceDeclaration-0]
         * [HandlerBaseState][InterfaceDeclaration-1]
         * [BaseHandlerChildContext][InterfaceDeclaration-2]
-        * [HeaderBaseProps][InterfaceDeclaration-3]
-        * [HeaderBaseState][InterfaceDeclaration-4]
-        * [HeaderBaseContext][InterfaceDeclaration-5]
-        * [SectionBaseProps][InterfaceDeclaration-6]
-        * [SectionBaseState][InterfaceDeclaration-7]
-        * [SectionBaseContext][InterfaceDeclaration-8]
-        * [DropdownHandlerProps][InterfaceDeclaration-9]
-        * [DropdownHeaderProps][InterfaceDeclaration-11]
-        * [DropdownSectionProps][InterfaceDeclaration-12]
-        * [HTMLElementProps][InterfaceDeclaration-10]
+        * [HeaderBaseContext][InterfaceDeclaration-3]
+        * [SectionBaseContext][InterfaceDeclaration-4]
+        * [DropdownHandlerProps][InterfaceDeclaration-5]
+        * [DropdownHeaderProps][InterfaceDeclaration-7]
+        * [DropdownSectionProps][InterfaceDeclaration-8]
+        * [HTMLElementProps][InterfaceDeclaration-6]
     * Types
         * [DropdownOnToggleHandler][TypeAliasDeclaration-0]
         * [DropdownOnOpenHandler][TypeAliasDeclaration-1]
@@ -94,24 +90,6 @@ interface BaseHandlerChildContext {
 
 ----------
 
-### HeaderBaseProps
-
-```typescript
-interface HeaderBaseProps {
-}
-```
-
-----------
-
-### HeaderBaseState
-
-```typescript
-interface HeaderBaseState {
-}
-```
-
-----------
-
 ### HeaderBaseContext
 
 ```typescript
@@ -127,24 +105,6 @@ interface HeaderBaseContext {
 | ----------------------------- | -------- | -------- |
 | dropdownOnHeaderClickCallback | Function | false    |
 | dropdownIsOpen                | boolean  | false    |
-
-----------
-
-### SectionBaseProps
-
-```typescript
-interface SectionBaseProps {
-}
-```
-
-----------
-
-### SectionBaseState
-
-```typescript
-interface SectionBaseState {
-}
-```
 
 ----------
 
@@ -178,7 +138,7 @@ interface DropdownHandlerProps extends HandlerBaseProps, HTMLElementProps<HTMLDi
 
 [HandlerBaseProps][InterfaceDeclaration-0]
 
-[HTMLElementProps][InterfaceDeclaration-10]<HTMLDivElement>
+[HTMLElementProps][InterfaceDeclaration-6]<HTMLDivElement>
 
 **Properties**
 
@@ -191,16 +151,14 @@ interface DropdownHandlerProps extends HandlerBaseProps, HTMLElementProps<HTMLDi
 ### DropdownHeaderProps
 
 ```typescript
-interface DropdownHeaderProps extends HeaderBaseProps, HTMLElementProps<HTMLDivElement> {
+interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement> {
     ref?: string | ((instance: DropdownHeader | null) => any) | undefined<DropdownHeader>;
 }
 ```
 
 **Extends**
 
-[HeaderBaseProps][InterfaceDeclaration-3]
-
-[HTMLElementProps][InterfaceDeclaration-10]<HTMLDivElement>
+[HTMLElementProps][InterfaceDeclaration-6]<HTMLDivElement>
 
 **Properties**
 
@@ -213,16 +171,14 @@ interface DropdownHeaderProps extends HeaderBaseProps, HTMLElementProps<HTMLDivE
 ### DropdownSectionProps
 
 ```typescript
-interface DropdownSectionProps extends SectionBaseProps, HTMLElementProps<HTMLDivElement> {
+interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement> {
     ref?: string | ((instance: DropdownSection | null) => any) | undefined<DropdownSection>;
 }
 ```
 
 **Extends**
 
-[SectionBaseProps][InterfaceDeclaration-6]
-
-[HTMLElementProps][InterfaceDeclaration-10]<HTMLDivElement>
+[HTMLElementProps][InterfaceDeclaration-6]<HTMLDivElement>
 
 **Properties**
 
@@ -351,25 +307,19 @@ enum EventSource {
 [InterfaceDeclaration-0]: index.md#handlerbaseprops
 [InterfaceDeclaration-1]: index.md#handlerbasestate
 [InterfaceDeclaration-2]: index.md#basehandlerchildcontext
-[InterfaceDeclaration-3]: index.md#headerbaseprops
-[InterfaceDeclaration-4]: index.md#headerbasestate
-[InterfaceDeclaration-5]: index.md#headerbasecontext
-[InterfaceDeclaration-6]: index.md#sectionbaseprops
-[InterfaceDeclaration-7]: index.md#sectionbasestate
-[InterfaceDeclaration-8]: index.md#sectionbasecontext
-[InterfaceDeclaration-9]: index.md#dropdownhandlerprops
+[InterfaceDeclaration-3]: index.md#headerbasecontext
+[InterfaceDeclaration-4]: index.md#sectionbasecontext
+[InterfaceDeclaration-5]: index.md#dropdownhandlerprops
 [InterfaceDeclaration-0]: index.md#handlerbaseprops
-[InterfaceDeclaration-10]: index.md#htmlelementprops
+[InterfaceDeclaration-6]: index.md#htmlelementprops
 [ClassDeclaration-3]: index/dropdownhandler.md#dropdownhandler
-[InterfaceDeclaration-11]: index.md#dropdownheaderprops
-[InterfaceDeclaration-3]: index.md#headerbaseprops
-[InterfaceDeclaration-10]: index.md#htmlelementprops
+[InterfaceDeclaration-7]: index.md#dropdownheaderprops
+[InterfaceDeclaration-6]: index.md#htmlelementprops
 [ClassDeclaration-4]: index/dropdownheader.md#dropdownheader
-[InterfaceDeclaration-12]: index.md#dropdownsectionprops
-[InterfaceDeclaration-6]: index.md#sectionbaseprops
-[InterfaceDeclaration-10]: index.md#htmlelementprops
+[InterfaceDeclaration-8]: index.md#dropdownsectionprops
+[InterfaceDeclaration-6]: index.md#htmlelementprops
 [ClassDeclaration-5]: index/dropdownsection.md#dropdownsection
-[InterfaceDeclaration-10]: index.md#htmlelementprops
+[InterfaceDeclaration-6]: index.md#htmlelementprops
 [TypeAliasDeclaration-0]: index.md#dropdownontogglehandler
 [TypeAliasDeclaration-1]: index.md#dropdownonopenhandler
 [TypeAliasDeclaration-2]: index.md#dropdownonclosehandler
