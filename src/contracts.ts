@@ -2,7 +2,8 @@ export enum EventSource {
     HeaderClick = 8,
     SectionClick = 16,
     OutsideClick = 24,
-    EscapeClick = 32
+    EscapeClick = 32,
+    ManualTrigger = 64
 }
 
 export type DropdownOnToggleHandler = (isOpened: boolean, source: EventSource) => void;

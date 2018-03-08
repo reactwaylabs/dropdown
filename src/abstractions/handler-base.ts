@@ -67,6 +67,14 @@ export abstract class HandlerBase<
         dropdownOnSectionClickCallback: PropTypes.func.isRequired
     };
 
+    public getChildContext(): BaseHandlerChildContext {
+        return {
+            dropdownIsOpen: this.state.isOpen,
+            dropdownOnHeaderClickCallback: this.onHeaderClick.bind(this),
+            dropdownOnSectionClickCallback: this.onSectionClick.bind(this)
+        };
+    }
+
     /**
      * Initial open state value.
      * By default it gets initial value from props: defaultOpen and open.
@@ -83,14 +91,6 @@ export abstract class HandlerBase<
         }
 
         return open;
-    }
-
-    public getChildContext(): BaseHandlerChildContext {
-        return {
-            dropdownIsOpen: this.state.isOpen,
-            dropdownOnHeaderClickCallback: this.onHeaderClick.bind(this),
-            dropdownOnSectionClickCallback: this.onSectionClick.bind(this)
-        };
     }
 
     /**
@@ -212,4 +212,43 @@ export abstract class HandlerBase<
 
         return restProps;
     }
+
+    //#region Public API
+    /**
+     * Get a boolean if dropdown is open or not.
+     */
+    public isOpen(): boolean {
+        return this.state.isOpen;
+    }
+
+    /**
+     * To close dropdown.
+     */
+    public Open(): void {
+        if (this.state.isOpen) {
+            return;
+        }
+
+        this.setState((state: HandlerBaseState) => ({
+            ...state,
+            isOpen: true
+        }));
+        this.triggerCallbacks(true, EventSource.ManualTrigger);        
+    }
+    
+    /**
+     * To close dropdown. 
+     */
+    public Close(): void {
+        if (!this.state.isOpen) {
+            return;
+        }
+
+        this.setState((state: HandlerBaseState) => ({
+            ...state,
+            isOpen: false
+        }));
+        this.triggerCallbacks(true, EventSource.ManualTrigger);
+    }
+    //#endregion
 }
