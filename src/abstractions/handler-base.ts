@@ -215,14 +215,14 @@ export abstract class HandlerBase<
 
     //#region Public API
     /**
-     * Get a boolean if dropdown is open or not.
+     * Is dropdown open.
      */
     public isOpen(): boolean {
         return this.state.isOpen;
     }
 
     /**
-     * To close dropdown.
+     * To open dropdown.
      */
     public open(): void {
         if (this.state.isOpen) {
@@ -248,7 +248,7 @@ export abstract class HandlerBase<
             ...state,
             isOpen: false
         }));
-        this.triggerCallbacks(true, EventSource.ManualTrigger);
+        this.triggerCallbacks(false, EventSource.ManualTrigger);
     }
     //#endregion
 }
