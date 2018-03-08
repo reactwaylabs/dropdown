@@ -17,5 +17,5 @@
         "typeRoots": ["./node_modules/@types"],
         "plugins": [{ "name": "tslint-language-service" }]
     },
-    "exclude": ["node_modules", "dist", "@types", "__tests__", "tools"]
+    "exclude": ["node_modules", "dist", "@types", "__tests__", "tools", "examples"]
 }
