@@ -25,4 +25,4 @@ export class App extends React.Component {
 }
 ```
 
-[Codesandbox link](https://github.com/SimplrJS/simplr-dropdown/tree/master/examples/simple-example)
+[Codesandbox link](https://codesandbox.io/s/github/SimplrJS/simplr-dropdown/tree/master/examples/simple-example)
