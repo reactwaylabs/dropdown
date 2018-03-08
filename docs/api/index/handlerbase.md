@@ -16,8 +16,8 @@
         * [isControlled()][MethodDeclaration-9]
         * [getRestProps(props)][MethodDeclaration-10]
         * [isOpen()][MethodDeclaration-11]
-        * [Open()][MethodDeclaration-12]
-        * [Close()][MethodDeclaration-13]
+        * [open()][MethodDeclaration-12]
+        * [close()][MethodDeclaration-13]
     * Properties
         * [element][PropertyDeclaration-0]
         * [defaultProps][PropertyDeclaration-1]
@@ -248,12 +248,12 @@ boolean
 
 ----------
 
-### Open()
+### open()
 
 To close dropdown.
 
 ```typescript
-public Open(): void;
+public open(): void;
 ```
 
 **Return type**
@@ -262,12 +262,12 @@ void
 
 ----------
 
-### Close()
+### close()
 
-To close dropdown. 
+To close dropdown.
 
 ```typescript
-public Close(): void;
+public close(): void;
 ```
 
 **Return type**

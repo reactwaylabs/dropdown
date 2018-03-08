@@ -224,7 +224,7 @@ export abstract class HandlerBase<
     /**
      * To close dropdown.
      */
-    public Open(): void {
+    public open(): void {
         if (this.state.isOpen) {
             return;
         }
@@ -233,13 +233,13 @@ export abstract class HandlerBase<
             ...state,
             isOpen: true
         }));
-        this.triggerCallbacks(true, EventSource.ManualTrigger);        
+        this.triggerCallbacks(true, EventSource.ManualTrigger);
     }
-    
+
     /**
-     * To close dropdown. 
+     * To close dropdown.
      */
-    public Close(): void {
+    public close(): void {
         if (!this.state.isOpen) {
             return;
         }
