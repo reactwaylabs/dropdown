@@ -2,7 +2,7 @@
     "name": "simplr-dropdown-simple-example",
     "version": "1.0.0",
     "description": "",
-    "main": "src/_index.html",
+    "main": "src/index.html",
     "scripts": {
         "start": "parcel src/index.html --open",
         "build": "parcel build src/index.html"
