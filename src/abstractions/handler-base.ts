@@ -217,7 +217,7 @@ export abstract class HandlerBase<
     /**
      * Is dropdown open.
      */
-    public isOpen(): boolean {
+    public get isOpen(): boolean {
         return this.state.isOpen;
     }
 

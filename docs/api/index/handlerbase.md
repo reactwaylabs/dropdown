@@ -15,13 +15,13 @@
         * [updateOpenState(isOpen)][MethodDeclaration-8]
         * [isControlled()][MethodDeclaration-9]
         * [getRestProps(props)][MethodDeclaration-10]
-        * [isOpen()][MethodDeclaration-11]
-        * [open()][MethodDeclaration-12]
-        * [close()][MethodDeclaration-13]
+        * [open()][MethodDeclaration-11]
+        * [close()][MethodDeclaration-12]
     * Properties
         * [element][PropertyDeclaration-0]
         * [defaultProps][PropertyDeclaration-1]
         * [childContextTypes][PropertyDeclaration-2]
+        * [isOpen][GetAccessor-0]
 
 # HandlerBase
 
@@ -234,23 +234,9 @@ protected getRestProps(props: HandlerBaseProps): {};
 
 ----------
 
-### isOpen()
-
-Get a boolean if dropdown is open or not.
-
-```typescript
-public isOpen(): boolean;
-```
-
-**Return type**
-
-boolean
-
-----------
-
 ### open()
 
-To close dropdown.
+To open dropdown.
 
 ```typescript
 public open(): void;
@@ -312,6 +298,20 @@ public static childContextTypes: ValidationMap<BaseHandlerChildContext>;
 
 ValidationMap<[BaseHandlerChildContext][InterfaceDeclaration-2]>
 
+----------
+
+### isOpen
+
+Is dropdown open.
+
+```typescript
+public get isOpen: boolean;
+```
+
+**Type**
+
+boolean
+
 [ClassDeclaration-0]: handlerbase.md#handlerbase
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
@@ -332,11 +332,11 @@ ValidationMap<[BaseHandlerChildContext][InterfaceDeclaration-2]>
 [MethodDeclaration-9]: handlerbase.md#iscontrolled
 [MethodDeclaration-10]: handlerbase.md#getrestpropsprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
-[MethodDeclaration-11]: handlerbase.md#isopen
-[MethodDeclaration-12]: handlerbase.md#open
-[MethodDeclaration-13]: handlerbase.md#close
+[MethodDeclaration-11]: handlerbase.md#open
+[MethodDeclaration-12]: handlerbase.md#close
 [PropertyDeclaration-0]: handlerbase.md#element
 [PropertyDeclaration-1]: handlerbase.md#defaultprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
 [PropertyDeclaration-2]: handlerbase.md#childcontexttypes
 [InterfaceDeclaration-2]: ../index.md#basehandlerchildcontext
+[GetAccessor-0]: handlerbase.md#isopen

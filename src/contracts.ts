@@ -6,7 +6,7 @@ export enum EventSource {
     ManualTrigger = 64
 }
 
-export type DropdownOnToggleHandler = (isOpened: boolean, source: EventSource) => void;
+export type DropdownOnToggleHandler = (isOpen: boolean, source: EventSource) => void;
 export type DropdownOnOpenHandler = (source: EventSource) => void;
 export type DropdownOnCloseHandler = (source: EventSource) => void;
 

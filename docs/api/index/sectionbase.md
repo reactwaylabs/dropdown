@@ -4,9 +4,9 @@
     * Constructor
         * [constructor(props, context)][Constructor-2]
     * Methods
-        * [onSectionClick()][MethodDeclaration-17]
-        * [isOpen()][MethodDeclaration-18]
-        * [getRestProps(props)][MethodDeclaration-19]
+        * [onSectionClick()][MethodDeclaration-16]
+        * [isOpen()][MethodDeclaration-17]
+        * [getRestProps(props)][MethodDeclaration-18]
     * Properties
         * [context][PropertyDeclaration-5]
         * [contextTypes][PropertyDeclaration-6]
@@ -111,9 +111,9 @@ ValidationMap<[SectionBaseContext][InterfaceDeclaration-4]>
 [ClassDeclaration-2]: sectionbase.md#sectionbase
 [Constructor-2]: sectionbase.md#constructorprops-context
 [InterfaceDeclaration-4]: ../index.md#sectionbasecontext
-[MethodDeclaration-17]: sectionbase.md#onsectionclick
-[MethodDeclaration-18]: sectionbase.md#isopen
-[MethodDeclaration-19]: sectionbase.md#getrestpropsprops
+[MethodDeclaration-16]: sectionbase.md#onsectionclick
+[MethodDeclaration-17]: sectionbase.md#isopen
+[MethodDeclaration-18]: sectionbase.md#getrestpropsprops
 [PropertyDeclaration-5]: sectionbase.md#context
 [InterfaceDeclaration-4]: ../index.md#sectionbasecontext
 [PropertyDeclaration-6]: sectionbase.md#contexttypes

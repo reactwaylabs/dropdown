@@ -4,9 +4,9 @@
     * Constructor
         * [constructor(props, context)][Constructor-1]
     * Methods
-        * [onHeaderClick()][MethodDeclaration-14]
-        * [isOpen()][MethodDeclaration-15]
-        * [getRestProps(props)][MethodDeclaration-16]
+        * [onHeaderClick()][MethodDeclaration-13]
+        * [isOpen()][MethodDeclaration-14]
+        * [getRestProps(props)][MethodDeclaration-15]
     * Properties
         * [context][PropertyDeclaration-3]
         * [contextTypes][PropertyDeclaration-4]
@@ -111,9 +111,9 @@ ValidationMap<[HeaderBaseContext][InterfaceDeclaration-3]>
 [ClassDeclaration-1]: headerbase.md#headerbase
 [Constructor-1]: headerbase.md#constructorprops-context
 [InterfaceDeclaration-3]: ../index.md#headerbasecontext
-[MethodDeclaration-14]: headerbase.md#onheaderclick
-[MethodDeclaration-15]: headerbase.md#isopen
-[MethodDeclaration-16]: headerbase.md#getrestpropsprops
+[MethodDeclaration-13]: headerbase.md#onheaderclick
+[MethodDeclaration-14]: headerbase.md#isopen
+[MethodDeclaration-15]: headerbase.md#getrestpropsprops
 [PropertyDeclaration-3]: headerbase.md#context
 [InterfaceDeclaration-3]: ../index.md#headerbasecontext
 [PropertyDeclaration-4]: headerbase.md#contexttypes

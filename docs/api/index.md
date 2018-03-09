@@ -217,12 +217,12 @@ DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 ### DropdownOnToggleHandler
 
 ```typescript
-type DropdownOnToggleHandler = (isOpened: boolean, source: EventSource) => void;
+type DropdownOnToggleHandler = (isOpen: boolean, source: EventSource) => void;
 ```
 
 **Type**
 
-(isOpened: boolean, source: EventSource) => void
+(isOpen: boolean, source: EventSource) => void
 
 ----------
 
