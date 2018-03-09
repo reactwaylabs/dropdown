@@ -11,7 +11,7 @@ dropdownHandler.Open() -> dropdownHandler.open()
 
 ## isOpen
 
-To be more clear in naming, we changed from `open` to `isOpen`. 
+The name was changed from `open` to `isOpen`.
 
 [Commit](https://github.com/SimplrJS/simplr-dropdown/pull/10/commits/eb88d3ff62ea67c04df5cc6cde9737f7afc1ac64)
 
