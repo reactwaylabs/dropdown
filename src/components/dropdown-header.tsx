@@ -1,8 +1,8 @@
 import * as React from "react";
-import { HeaderBaseProps, HeaderBase } from "../abstractions/header-base";
+import { HeaderBase } from "../abstractions/header-base";
 import { HTMLElementProps } from "../contracts";
 
-export interface DropdownHeaderProps extends HeaderBaseProps, HTMLElementProps<HTMLDivElement> {
+export interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement> {
     // HACK: Workaround of rule "intersection types should be consistent"
     ref?: React.Ref<DropdownHeader>;
 }

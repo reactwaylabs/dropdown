@@ -4,9 +4,9 @@
     * Constructor
         * [constructor(props, context)][Constructor-1]
     * Methods
-        * [onHeaderClick()][MethodDeclaration-11]
-        * [isOpen()][MethodDeclaration-12]
-        * [getRestProps(props)][MethodDeclaration-13]
+        * [onHeaderClick()][MethodDeclaration-13]
+        * [isOpen()][MethodDeclaration-14]
+        * [getRestProps(props)][MethodDeclaration-15]
     * Properties
         * [context][PropertyDeclaration-3]
         * [contextTypes][PropertyDeclaration-4]
@@ -14,15 +14,15 @@
 # HeaderBase
 
 ```typescript
-class HeaderBase<TProps extends HeaderBaseProps = {}, TState extends HeaderBaseState = {}>
+class HeaderBase<TProps = {}, TState = {}>
 ```
 
 **Type parameters**
 
-| Name   | Constraint                                | Default |
-| ------ | ----------------------------------------- | ------- |
-| TProps | [HeaderBaseProps][InterfaceDeclaration-3] | {}      |
-| TState | [HeaderBaseState][InterfaceDeclaration-4] | {}      |
+| Name   | Default |
+| ------ | ------- |
+| TProps | {}      |
+| TState | {}      |
 ## Constructor
 
 ### constructor(props, context)
@@ -36,7 +36,7 @@ public constructor(props: TProps, context: HeaderBaseContext);
 | Name    | Type                                        |
 | ------- | ------------------------------------------- |
 | props   | TProps                                      |
-| context | [HeaderBaseContext][InterfaceDeclaration-5] |
+| context | [HeaderBaseContext][InterfaceDeclaration-3] |
 
 ## Methods
 
@@ -71,14 +71,14 @@ boolean
 ### getRestProps(props)
 
 ```typescript
-protected getRestProps(props: HeaderBaseProps): {};
+protected getRestProps(props: TProps): {};
 ```
 
 **Parameters**
 
-| Name  | Type                                      |
-| ----- | ----------------------------------------- |
-| props | [HeaderBaseProps][InterfaceDeclaration-3] |
+| Name  | Type   |
+| ----- | ------ |
+| props | TProps |
 
 **Return type**
 
@@ -94,7 +94,7 @@ public context: HeaderBaseContext;
 
 **Type**
 
-[HeaderBaseContext][InterfaceDeclaration-5]
+[HeaderBaseContext][InterfaceDeclaration-3]
 
 ----------
 
@@ -106,18 +106,15 @@ public static contextTypes: ValidationMap<HeaderBaseContext>;
 
 **Type**
 
-ValidationMap<[HeaderBaseContext][InterfaceDeclaration-5]>
+ValidationMap<[HeaderBaseContext][InterfaceDeclaration-3]>
 
 [ClassDeclaration-1]: headerbase.md#headerbase
-[InterfaceDeclaration-3]: ../index.md#headerbaseprops
-[InterfaceDeclaration-4]: ../index.md#headerbasestate
 [Constructor-1]: headerbase.md#constructorprops-context
-[InterfaceDeclaration-5]: ../index.md#headerbasecontext
-[MethodDeclaration-11]: headerbase.md#onheaderclick
-[MethodDeclaration-12]: headerbase.md#isopen
-[MethodDeclaration-13]: headerbase.md#getrestpropsprops
-[InterfaceDeclaration-3]: ../index.md#headerbaseprops
+[InterfaceDeclaration-3]: ../index.md#headerbasecontext
+[MethodDeclaration-13]: headerbase.md#onheaderclick
+[MethodDeclaration-14]: headerbase.md#isopen
+[MethodDeclaration-15]: headerbase.md#getrestpropsprops
 [PropertyDeclaration-3]: headerbase.md#context
-[InterfaceDeclaration-5]: ../index.md#headerbasecontext
+[InterfaceDeclaration-3]: ../index.md#headerbasecontext
 [PropertyDeclaration-4]: headerbase.md#contexttypes
-[InterfaceDeclaration-5]: ../index.md#headerbasecontext
+[InterfaceDeclaration-3]: ../index.md#headerbasecontext

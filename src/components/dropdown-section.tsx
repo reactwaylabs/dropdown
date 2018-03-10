@@ -1,8 +1,8 @@
 import * as React from "react";
-import { SectionBase, SectionBaseProps } from "../abstractions/section-base";
+import { SectionBase } from "../abstractions/section-base";
 import { HTMLElementProps } from "../contracts";
 
-export interface DropdownSectionProps extends SectionBaseProps, HTMLElementProps<HTMLDivElement> {
+export interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement> {
     // HACK: Workaround of rule "intersection types should be consistent"
     ref?: React.Ref<DropdownSection>;
 }

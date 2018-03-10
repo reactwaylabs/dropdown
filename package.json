@@ -26,8 +26,7 @@
     "license": "MIT",
     "files": [
         "dist",
-        "**/*.md",
-        "@types"
+        "**/*.md"
     ],
     "devDependencies": {
         "@types/enzyme": "^3.1.9",
