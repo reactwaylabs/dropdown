@@ -26,27 +26,5 @@ $ npm install simplr-dropdown
 
 <sup>*</sup> This will not work when click event has stopped propogation (`event.stopPropagation()`) and therefore `window.addEventListener("click", ...)` will not receive event.
 
-## Simple example
-_More examples and demo will be soon_
-```tsx
-import { DropdownHandler, DropdownHeader, DropdownSection } from "simplr-dropdown";
-
-export function DropdownMenu(props: {}) {
-    return <DropdownHandler>
-        <DropdownHeader>
-            Profile
-        </DropdownHeader>
-        <DropdownSection>
-            <ul>
-                <li>View profile</li>
-                <li>Edit profile</li>
-                <li>Settings</li>
-                <li>Logout</li>
-            </ul>
-        </DropdownSection>
-    </DropdownHandler>;
-}
-```
-
 ## License
 Released under the [MIT license](LICENSE).
