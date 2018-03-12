@@ -21,6 +21,11 @@
         "component"
     ],
     "author": "simplrjs <simplr@quatrodev.com> (https://github.com/simplrjs)",
+    "contributors": [
+        "Martynas Žilinskas <martynas@quatrodev.com> (https://github.com/MartynasZilinskas)",
+        "Dovydas Navickas <dovydas@quatrodev.com> (https://github.com/DovydasNavickas)",
+        "Giedrius Grabauskas <giedrius@quatrodev.com> (https://github.com/GiedriusGrabauskas)"        
+    ],
     "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
     "repository": "SimplrJS/simplr-dropdown",
     "homepage": "https://github.com/SimplrJS/simplr-dropdown",
