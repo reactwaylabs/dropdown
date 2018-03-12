@@ -6,13 +6,17 @@ notifications:
 branches:
   only:
   - master
+  - dev
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 node_js:
-- stable
+- "node"
 script:
 - npm run test-ci
+after_script:
+- npm run coveralls
 before_deploy:
 - npm run build
+- npm run travis-release
 deploy:
   provider: npm
   email: $SIMPLR_NPM_EMAIL
