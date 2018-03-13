@@ -10,7 +10,7 @@
     "dependencies": {
         "react": "16.2.0",
         "react-dom": "16.2.0",
-        "simplr-dropdown": "3.1.1"
+        "simplr-dropdown": "4.0.0-alpha.1"
     },
     "devDependencies": {
         "parcel-bundler": "^1.6.1"
