@@ -34,7 +34,7 @@ export abstract class HandlerBase<
         super(props);
 
         this.onOutsideClickHandler = this.onOutsideClick.bind(this);
-        this.onWindowKeyUpHandler = this.onWindowKeyUp.bind(this);
+        this.onWindowKeyUpHandler = this.onEscapeHandler.bind(this);
 
         if (CAN_I_USE_WINDOW_LISTENERS) {
             window.addEventListener("click", this.onOutsideClickHandler);
@@ -104,12 +104,12 @@ export abstract class HandlerBase<
      * Triggers this method when header is clicked.
      */
     protected onHeaderClick(): void {
-        const isOpen = !this.state.isOpen;
-
         if (!this.props.toggleOnHeaderClick) {
             return;
         }
 
+        // Toggle open state
+        const isOpen = !this.state.isOpen;
         this.triggerCallbacks(isOpen, EventSource.HeaderClick);
         this.updateOpenState(isOpen);
     }
@@ -118,44 +118,36 @@ export abstract class HandlerBase<
      * Triggers this method when section is clicked.
      */
     protected onSectionClick(): void {
-        const isOpen = false;
-
-        if (!this.props.closeOnSectionClick || this.state.isOpen === isOpen) {
+        if (!this.props.closeOnSectionClick || this.state.isOpen === false) {
             return;
         }
 
-        this.triggerCallbacks(isOpen, EventSource.SectionClick);
-        this.updateOpenState(isOpen);
+        this.triggerCallbacks(false, EventSource.SectionClick);
+        this.updateOpenState(false);
     }
 
     /**
-     * Handles window click event.
+     * Handles outside click.
      */
     protected onOutsideClick(event: MouseEvent): void {
-        const isOpen = false;
-
-        if (!this.props.closeOnOutsideClick || this.isElementInContainer(event.target as Element) || this.state.isOpen === isOpen) {
+        if (!this.props.closeOnOutsideClick || this.isElementInContainer(event.target as Element) || this.state.isOpen === false) {
             return;
         }
 
-        this.triggerCallbacks(isOpen, EventSource.OutsideClick);
-        this.updateOpenState(isOpen);
+        this.triggerCallbacks(false, EventSource.OutsideClick);
+        this.updateOpenState(false);
     }
 
     /**
-     * Handles window keyboard events.
+     * Handles escape button click.
      */
-    private onWindowKeyUp(event: KeyboardEvent): void {
-        const isOpen = false;
-
-        if (!this.props.closeOnEscapeClick || this.state.isOpen === isOpen) {
+    private onEscapeHandler(event: KeyboardEvent): void {
+        if (!this.props.closeOnEscapeClick || this.state.isOpen === false || event.keyCode !== ESCAPE_KEYCODE) {
             return;
         }
 
-        if (event.keyCode === ESCAPE_KEYCODE && this.props.closeOnEscapeClick) {
-            this.triggerCallbacks(isOpen, EventSource.EscapeClick);
-            this.updateOpenState(isOpen);
-        }
+        this.triggerCallbacks(false, EventSource.EscapeClick);
+        this.updateOpenState(false);
     }
 
     /**
