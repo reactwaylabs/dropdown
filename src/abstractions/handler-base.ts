@@ -32,9 +32,13 @@ export abstract class HandlerBase<
 > extends React.Component<TProps, TState> {
     constructor(props: TProps) {
         super(props);
+
+        this.onOutsideClickHandler = this.onOutsideClick.bind(this);
+        this.onWindowKeyUpHandler = this.onWindowKeyUp.bind(this);
+
         if (CAN_I_USE_WINDOW_LISTENERS) {
-            window.addEventListener("click", this.onOutsideClick.bind(this));
-            window.addEventListener("keyup", this.onWindowKeyUp.bind(this));
+            window.addEventListener("click", this.onOutsideClickHandler);
+            window.addEventListener("keyup", this.onWindowKeyUpHandler);
         }
 
         this.state = {
@@ -44,10 +48,13 @@ export abstract class HandlerBase<
 
     public componentWillUnmount(): void {
         if (CAN_I_USE_WINDOW_LISTENERS) {
-            window.removeEventListener("click", this.onOutsideClick.bind(this));
-            window.removeEventListener("keyup", this.onWindowKeyUp.bind(this));
+            window.removeEventListener("click", this.onOutsideClickHandler);
+            window.removeEventListener("keyup", this.onWindowKeyUpHandler);
         }
     }
+
+    private onOutsideClickHandler: () => void;
+    private onWindowKeyUpHandler: () => void;
 
     /**
      * Container element.
@@ -98,6 +105,7 @@ export abstract class HandlerBase<
      */
     protected onHeaderClick(): void {
         const isOpen = !this.state.isOpen;
+
         if (!this.props.toggleOnHeaderClick) {
             return;
         }
@@ -112,7 +120,7 @@ export abstract class HandlerBase<
     protected onSectionClick(): void {
         const isOpen = false;
 
-        if (!this.props.closeOnSectionClick) {
+        if (!this.props.closeOnSectionClick || this.state.isOpen === isOpen) {
             return;
         }
 
@@ -126,7 +134,7 @@ export abstract class HandlerBase<
     protected onOutsideClick(event: MouseEvent): void {
         const isOpen = false;
 
-        if (!this.props.closeOnOutsideClick || this.isElementInContainer(event.target as Element)) {
+        if (!this.props.closeOnOutsideClick || this.isElementInContainer(event.target as Element) || this.state.isOpen === isOpen) {
             return;
         }
 
@@ -140,7 +148,7 @@ export abstract class HandlerBase<
     private onWindowKeyUp(event: KeyboardEvent): void {
         const isOpen = false;
 
-        if (!this.props.closeOnEscapeClick) {
+        if (!this.props.closeOnEscapeClick || this.state.isOpen === isOpen) {
             return;
         }
 
