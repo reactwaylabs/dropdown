@@ -9,10 +9,11 @@ export interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement> {
 
 export class DropdownSection extends SectionBase<DropdownSectionProps> {
     protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
-        event.persist();
+        event.stopPropagation();
         this.onSectionClick();
 
         if (this.props.onClick != null) {
+            event.persist();
             this.props.onClick(event);
         }
     };
