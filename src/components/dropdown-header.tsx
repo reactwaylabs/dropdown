@@ -10,6 +10,7 @@ export interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement> {
 export class DropdownHeader extends HeaderBase<DropdownHeaderProps> {
     protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
         event.persist();
+        event.stopPropagation();
         this.onHeaderClick();
 
         if (this.props.onClick != null) {
