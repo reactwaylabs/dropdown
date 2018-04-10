@@ -234,11 +234,8 @@ export abstract class HandlerBase<
             return;
         }
 
-        this.setState((state: HandlerBaseState) => ({
-            ...state,
-            isOpen: true
-        }));
         this.triggerCallbacks(true, EventSource.ManualTrigger);
+        this.updateOpenState(true);
     }
 
     /**
@@ -249,11 +246,8 @@ export abstract class HandlerBase<
             return;
         }
 
-        this.setState((state: HandlerBaseState) => ({
-            ...state,
-            isOpen: false
-        }));
         this.triggerCallbacks(false, EventSource.ManualTrigger);
+        this.updateOpenState(false);
     }
     //#endregion
 }
