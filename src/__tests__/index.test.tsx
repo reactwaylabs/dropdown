@@ -79,3 +79,16 @@ it("does not trigger callback when clicked on header if dropdown is disabled.", 
     const handlerState: HandlerBaseState = dropdown.state();
     expect(stub).not.toBeCalled();
 });
+
+it("closedClassName is added when dropdown is closed.", () => {
+    const closedClassName = "closed-class-name";
+
+    const dropdown = mount(
+        <DropdownHandler closedClassName={closedClassName} id="handler">
+            <DropdownHeader>Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
+    const handlerElement = dropdown.find("div#handler").get(0);
+    expect((handlerElement.props as React.HTMLAttributes<HTMLDivElement>).className).toBe(closedClassName);
+});
