@@ -2,8 +2,9 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 export interface SectionBaseContext {
-    dropdownOnSectionClickCallback: Function;
     dropdownIsOpen: boolean;
+    dropdownIsDisabled: boolean;
+    dropdownOnSectionClickCallback: () => void;
 }
 
 export class SectionBase<TProps = {}, TState = {}> extends React.Component<TProps, TState> {
@@ -37,6 +38,10 @@ export class SectionBase<TProps = {}, TState = {}> extends React.Component<TProp
      */
     protected isOpen(): boolean {
         return this.context.dropdownIsOpen;
+    }
+
+    protected isDisabled(): boolean {
+        return this.context.dropdownIsDisabled;
     }
 
     protected getRestProps(props: TProps): {} {

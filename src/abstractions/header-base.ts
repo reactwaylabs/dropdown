@@ -2,8 +2,9 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 export interface HeaderBaseContext {
-    dropdownOnHeaderClickCallback: Function;
     dropdownIsOpen: boolean;
+    dropdownIsDisabled: boolean;
+    dropdownOnHeaderClickCallback: () => void;
 }
 
 export class HeaderBase<TProps = {}, TState = {}> extends React.Component<TProps, TState> {
@@ -21,8 +22,9 @@ export class HeaderBase<TProps = {}, TState = {}> extends React.Component<TProps
     public context!: HeaderBaseContext;
 
     public static contextTypes: PropTypes.ValidationMap<HeaderBaseContext> = {
-        dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
-        dropdownIsOpen: PropTypes.bool.isRequired
+        dropdownIsOpen: PropTypes.bool.isRequired,
+        dropdownIsDisabled: PropTypes.bool,
+        dropdownOnHeaderClickCallback: PropTypes.func.isRequired
     };
 
     /**
@@ -37,6 +39,10 @@ export class HeaderBase<TProps = {}, TState = {}> extends React.Component<TProps
      */
     protected isOpen(): boolean {
         return this.context.dropdownIsOpen;
+    }
+
+    protected isDisabled(): boolean {
+        return this.context.dropdownIsDisabled;
     }
 
     protected getRestProps(props: TProps): {} {

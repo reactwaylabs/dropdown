@@ -23,6 +23,7 @@ export interface HandlerBaseState {
 
 export interface BaseHandlerChildContext {
     dropdownIsOpen: boolean;
+    dropdownIsDisabled: boolean;
     dropdownOnHeaderClickCallback: () => void;
     dropdownOnSectionClickCallback: () => void;
 }
@@ -78,6 +79,7 @@ export abstract class HandlerBase<
     public getChildContext(): BaseHandlerChildContext {
         return {
             dropdownIsOpen: this.state.isOpen,
+            dropdownIsDisabled: this.props.disabled as boolean || false,
             dropdownOnHeaderClickCallback: this.onHeaderClick.bind(this),
             dropdownOnSectionClickCallback: this.onSectionClick.bind(this)
         };
