@@ -25,7 +25,7 @@
     "contributors": [
         "Martynas Žilinskas <martynas@quatrodev.com> (https://github.com/MartynasZilinskas)",
         "Dovydas Navickas <dovydas@quatrodev.com> (https://github.com/DovydasNavickas)",
-        "Giedrius Grabauskas <giedrius@quatrodev.com> (https://github.com/GiedriusGrabauskas)"        
+        "Giedrius Grabauskas <giedrius@quatrodev.com> (https://github.com/GiedriusGrabauskas)"
     ],
     "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
     "repository": "SimplrJS/simplr-dropdown",
@@ -60,9 +60,11 @@
         "typescript": "^2.7.2"
     },
     "dependencies": {
+        "@types/classnames": "^2.2.3",
         "@types/prop-types": "^15.5.2",
         "@types/react": "^16.0.40",
         "@types/react-dom": "^16.0.4",
+        "classnames": "^2.2.5",
         "prop-types": "^15.6.1",
         "react": "^16.2.0",
         "react-dom": "^16.2.0"
