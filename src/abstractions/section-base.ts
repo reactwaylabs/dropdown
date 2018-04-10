@@ -29,6 +29,7 @@ export class SectionBase<TProps extends SectionBaseProps = {}, TState = {}> exte
 
     public static contextTypes: PropTypes.ValidationMap<SectionBaseContext> = {
         dropdownOnSectionClickCallback: PropTypes.func.isRequired,
+        dropdownIsDisabled: PropTypes.bool.isRequired,
         dropdownIsOpen: PropTypes.bool.isRequired
     };
 
@@ -50,8 +51,16 @@ export class SectionBase<TProps extends SectionBaseProps = {}, TState = {}> exte
         return this.context.dropdownIsDisabled;
     }
 
-    protected getRestProps(props: TProps): {} {
-        return props;
+    protected getRestProps(props: SectionBaseProps): {} {
+        const {
+            className,
+            closedClassName,
+            disabledClassName,
+            openClassName,
+            ...restProps
+        } = props;
+
+        return restProps;
     }
 
     protected getClassName(props: ClassNameProps): string {

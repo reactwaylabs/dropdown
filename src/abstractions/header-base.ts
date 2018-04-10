@@ -29,7 +29,7 @@ export class HeaderBase<TProps extends HeaderBaseProps = {}, TState = {}> extend
 
     public static contextTypes: PropTypes.ValidationMap<HeaderBaseContext> = {
         dropdownIsOpen: PropTypes.bool.isRequired,
-        dropdownIsDisabled: PropTypes.bool,
+        dropdownIsDisabled: PropTypes.bool.isRequired,
         dropdownOnHeaderClickCallback: PropTypes.func.isRequired
     };
 
@@ -51,8 +51,16 @@ export class HeaderBase<TProps extends HeaderBaseProps = {}, TState = {}> extend
         return this.context.dropdownIsDisabled;
     }
 
-    protected getRestProps(props: TProps): {} {
-        return props;
+    protected getRestProps(props: HeaderBaseProps): {} {
+        const {
+            className,
+            closedClassName,
+            disabledClassName,
+            openClassName,
+            ...restProps
+        } = props;
+
+        return restProps;
     }
 
     protected getClassName(props: ClassNameProps): string {

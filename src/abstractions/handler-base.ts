@@ -73,6 +73,7 @@ export abstract class HandlerBase<
 
     public static childContextTypes: PropTypes.ValidationMap<BaseHandlerChildContext> = {
         dropdownIsOpen: PropTypes.bool.isRequired,
+        dropdownIsDisabled: PropTypes.bool.isRequired,
         dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
         dropdownOnSectionClickCallback: PropTypes.func.isRequired
     };
@@ -215,6 +216,11 @@ export abstract class HandlerBase<
             onToggle,
             isOpen,
             toggleOnHeaderClick,
+            className,
+            closedClassName,
+            disabled,
+            disabledClassName,
+            openClassName,
             ...restProps
         } = props;
 
