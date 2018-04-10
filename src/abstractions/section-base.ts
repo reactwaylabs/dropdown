@@ -5,7 +5,7 @@ import * as classNames from "classnames";
 import { ClassNameProps } from "../contracts";
 
 // tslint:disable-next-line no-empty-interface
-export interface HeaderBaseProps extends ClassNameProps {}
+export interface SectionBaseProps extends ClassNameProps {}
 
 export interface SectionBaseContext {
     dropdownIsOpen: boolean;
@@ -13,7 +13,7 @@ export interface SectionBaseContext {
     dropdownOnSectionClickCallback: () => void;
 }
 
-export class SectionBase<TProps = {}, TState = {}> extends React.Component<TProps, TState> {
+export class SectionBase<TProps extends SectionBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     /**
      * @throws
      */

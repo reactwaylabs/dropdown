@@ -1,8 +1,8 @@
 import * as React from "react";
-import { SectionBase } from "../abstractions/section-base";
+import { SectionBase, SectionBaseProps } from "../abstractions/section-base";
 import { HTMLElementProps } from "../contracts";
 
-export interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement> {
+export interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement>, SectionBaseProps {
     // HACK: Workaround of rule "intersection types should be consistent"
     ref?: React.Ref<DropdownSection>;
 }
@@ -23,6 +23,6 @@ export class DropdownSection extends SectionBase<DropdownSectionProps> {
             return null;
         }
 
-        return <div {...this.getRestProps(this.props)} onClick={this.onContainerClickCallback} />;
+        return <div {...this.getRestProps(this.props)} onClick={this.onContainerClickCallback} className={this.getClassName(this.props)} />;
     }
 }

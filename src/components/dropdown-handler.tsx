@@ -16,7 +16,7 @@ export class DropdownHandler extends HandlerBase<DropdownHandlerProps> {
 
     public render(): JSX.Element {
         return (
-            <div {...this.getRestProps(this.props)} ref={this.setElementRef}>
+            <div {...this.getRestProps(this.props)} ref={this.setElementRef} className={this.getClassName(this.props)}>
                 {this.props.children}
             </div>
         );
