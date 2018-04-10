@@ -1,5 +1,11 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import * as classNames from "classnames";
+
+import { ClassNameProps } from "../contracts";
+
+// tslint:disable-next-line no-empty-interface
+export interface HeaderBaseProps extends ClassNameProps {}
 
 export interface SectionBaseContext {
     dropdownIsOpen: boolean;
@@ -46,5 +52,13 @@ export class SectionBase<TProps = {}, TState = {}> extends React.Component<TProp
 
     protected getRestProps(props: TProps): {} {
         return props;
+    }
+
+    protected getClassName(props: ClassNameProps): string {
+        return classNames(props.className, {
+            [props.openClassName || ""]: this.isOpen(),
+            [props.closedClassName || ""]: !this.isOpen(),
+            [props.disabledClassName || ""]: this.isDisabled()
+        });
     }
 }

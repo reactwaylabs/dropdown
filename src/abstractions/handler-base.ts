@@ -1,10 +1,11 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import * as classNames from "classnames";
 
-import { EventSource, DropdownOnToggleHandler, DropdownOnCloseHandler, DropdownOnOpenHandler } from "../contracts";
+import { EventSource, DropdownOnToggleHandler, DropdownOnCloseHandler, DropdownOnOpenHandler, ClassNameProps } from "../contracts";
 import { CAN_I_USE_WINDOW_LISTENERS, ESCAPE_KEYCODE } from "../helpers";
 
-export interface HandlerBaseProps {
+export interface HandlerBaseProps extends ClassNameProps {
     defaultIsOpen?: boolean;
     isOpen?: boolean;
     onOpen?: DropdownOnOpenHandler;
@@ -79,7 +80,7 @@ export abstract class HandlerBase<
     public getChildContext(): BaseHandlerChildContext {
         return {
             dropdownIsOpen: this.state.isOpen,
-            dropdownIsDisabled: this.props.disabled as boolean || false,
+            dropdownIsDisabled: (this.props.disabled as boolean) || false,
             dropdownOnHeaderClickCallback: this.onHeaderClick.bind(this),
             dropdownOnSectionClickCallback: this.onSectionClick.bind(this)
         };
@@ -218,6 +219,14 @@ export abstract class HandlerBase<
         } = props;
 
         return restProps;
+    }
+
+    protected getClassName(props: ClassNameProps): string {
+        return classNames(props.className, {
+            [props.openClassName || ""]: this.isOpen,
+            [props.closedClassName || ""]: !this.isOpen,
+            [props.disabledClassName || ""]: this.props.disabled
+        });
     }
 
     //#region Public API
