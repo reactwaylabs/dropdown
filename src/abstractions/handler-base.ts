@@ -10,6 +10,7 @@ export interface HandlerBaseProps {
     onOpen?: DropdownOnOpenHandler;
     onClose?: DropdownOnOpenHandler;
     onToggle?: DropdownOnToggleHandler;
+    disabled?: boolean;
     toggleOnHeaderClick?: boolean;
     closeOnOutsideClick?: boolean;
     closeOnSectionClick?: boolean;
@@ -166,6 +167,10 @@ export abstract class HandlerBase<
      * Triggers all callbacks: onOpen, onClose and onToggle.
      */
     protected triggerCallbacks(isOpen: boolean, source: EventSource): void {
+        if (this.props.disabled) {
+            return;
+        }
+
         if (isOpen && this.props.onOpen != null) {
             this.props.onOpen(source);
         }
@@ -181,7 +186,7 @@ export abstract class HandlerBase<
      * Updates state if dropdown is not controlled.
      */
     protected updateOpenState(isOpen: boolean): void {
-        if (this.state.isOpen !== isOpen && !this.isControlled()) {
+        if (this.state.isOpen !== isOpen && !this.isControlled() && !this.props.disabled) {
             this.setState((state: HandlerBaseState) => ({
                 ...state,
                 isOpen: isOpen
@@ -229,11 +234,8 @@ export abstract class HandlerBase<
             return;
         }
 
-        this.setState((state: HandlerBaseState) => ({
-            ...state,
-            isOpen: true
-        }));
         this.triggerCallbacks(true, EventSource.ManualTrigger);
+        this.updateOpenState(true);
     }
 
     /**
@@ -244,11 +246,8 @@ export abstract class HandlerBase<
             return;
         }
 
-        this.setState((state: HandlerBaseState) => ({
-            ...state,
-            isOpen: false
-        }));
         this.triggerCallbacks(false, EventSource.ManualTrigger);
+        this.updateOpenState(false);
     }
     //#endregion
 }

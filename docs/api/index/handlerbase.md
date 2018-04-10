@@ -123,7 +123,7 @@ void
 
 ### onOutsideClick(event)
 
-Handles window click event.
+Handles outside click.
 
 ```typescript
 protected onOutsideClick(event: MouseEvent): void;

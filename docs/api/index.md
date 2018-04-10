@@ -31,6 +31,7 @@ interface HandlerBaseProps {
     onOpen?: DropdownOnOpenHandler | undefined;
     onClose?: DropdownOnOpenHandler | undefined;
     onToggle?: DropdownOnToggleHandler | undefined;
+    disabled?: boolean | undefined;
     toggleOnHeaderClick?: boolean | undefined;
     closeOnOutsideClick?: boolean | undefined;
     closeOnSectionClick?: boolean | undefined;
@@ -47,6 +48,7 @@ interface HandlerBaseProps {
 | onOpen              | DropdownOnOpenHandler &#124; undefined   | true     |
 | onClose             | DropdownOnOpenHandler &#124; undefined   | true     |
 | onToggle            | DropdownOnToggleHandler &#124; undefined | true     |
+| disabled            | boolean &#124; undefined                 | true     |
 | toggleOnHeaderClick | boolean &#124; undefined                 | true     |
 | closeOnOutsideClick | boolean &#124; undefined                 | true     |
 | closeOnSectionClick | boolean &#124; undefined                 | true     |

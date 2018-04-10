@@ -52,3 +52,30 @@ it("does not open when clicked on header if handler is controlled.", () => {
     const handlerState: HandlerBaseState = dropdown.state();
     expect(handlerState.isOpen).toBe(false);
 });
+
+it("does not open when clicked on header if dropdown is disabled.", () => {
+    const dropdown = mount(
+        <DropdownHandler disabled={true}>
+            <DropdownHeader id="header">Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
+    dropdown.find("div#header").simulate("click");
+
+    const handlerState: HandlerBaseState = dropdown.state();
+    expect(handlerState.isOpen).toBe(false);
+});
+
+it("does not trigger callback when clicked on header if dropdown is disabled.", () => {
+    const stub = jest.fn();
+    const dropdown = mount(
+        <DropdownHandler disabled={true} onToggle={stub}>
+            <DropdownHeader id="header">Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
+    dropdown.find("div#header").simulate("click");
+
+    const handlerState: HandlerBaseState = dropdown.state();
+    expect(stub).not.toBeCalled();
+});
