@@ -13,3 +13,10 @@ export type DropdownOnCloseHandler = (source: EventSource) => void;
 export interface HTMLElementProps<TElement> extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     ref?: React.Ref<any>;
 }
+
+export interface ClassNameProps {
+    className?: string;
+    openClassName?: string;
+    closedClassName?: string;
+    disabledClassName?: string;
+}

@@ -1,12 +1,19 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import * as classNames from "classnames";
+
+import { ClassNameProps } from "../contracts";
+
+// tslint:disable-next-line no-empty-interface
+export interface SectionBaseProps extends ClassNameProps {}
 
 export interface SectionBaseContext {
-    dropdownOnSectionClickCallback: Function;
     dropdownIsOpen: boolean;
+    dropdownIsDisabled: boolean;
+    dropdownOnSectionClickCallback: () => void;
 }
 
-export class SectionBase<TProps = {}, TState = {}> extends React.Component<TProps, TState> {
+export class SectionBase<TProps extends SectionBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     /**
      * @throws
      */
@@ -22,6 +29,7 @@ export class SectionBase<TProps = {}, TState = {}> extends React.Component<TProp
 
     public static contextTypes: PropTypes.ValidationMap<SectionBaseContext> = {
         dropdownOnSectionClickCallback: PropTypes.func.isRequired,
+        dropdownIsDisabled: PropTypes.bool.isRequired,
         dropdownIsOpen: PropTypes.bool.isRequired
     };
 
@@ -39,7 +47,27 @@ export class SectionBase<TProps = {}, TState = {}> extends React.Component<TProp
         return this.context.dropdownIsOpen;
     }
 
-    protected getRestProps(props: TProps): {} {
-        return props;
+    protected isDisabled(): boolean {
+        return this.context.dropdownIsDisabled;
+    }
+
+    protected getRestProps(props: SectionBaseProps): {} {
+        const {
+            className,
+            closedClassName,
+            disabledClassName,
+            openClassName,
+            ...restProps
+        } = props;
+
+        return restProps;
+    }
+
+    protected getClassName(props: ClassNameProps): string {
+        return classNames(props.className, {
+            [props.openClassName || ""]: this.isOpen(),
+            [props.closedClassName || ""]: !this.isOpen(),
+            [props.disabledClassName || ""]: this.isDisabled()
+        });
     }
 }

@@ -1,12 +1,19 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import * as classNames from "classnames";
+
+import { ClassNameProps } from "../contracts";
+
+// tslint:disable-next-line no-empty-interface
+export interface HeaderBaseProps extends ClassNameProps {}
 
 export interface HeaderBaseContext {
-    dropdownOnHeaderClickCallback: Function;
     dropdownIsOpen: boolean;
+    dropdownIsDisabled: boolean;
+    dropdownOnHeaderClickCallback: () => void;
 }
 
-export class HeaderBase<TProps = {}, TState = {}> extends React.Component<TProps, TState> {
+export class HeaderBase<TProps extends HeaderBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     /**
      * @throws
      */
@@ -21,8 +28,9 @@ export class HeaderBase<TProps = {}, TState = {}> extends React.Component<TProps
     public context!: HeaderBaseContext;
 
     public static contextTypes: PropTypes.ValidationMap<HeaderBaseContext> = {
-        dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
-        dropdownIsOpen: PropTypes.bool.isRequired
+        dropdownIsOpen: PropTypes.bool.isRequired,
+        dropdownIsDisabled: PropTypes.bool.isRequired,
+        dropdownOnHeaderClickCallback: PropTypes.func.isRequired
     };
 
     /**
@@ -39,7 +47,27 @@ export class HeaderBase<TProps = {}, TState = {}> extends React.Component<TProps
         return this.context.dropdownIsOpen;
     }
 
-    protected getRestProps(props: TProps): {} {
-        return props;
+    protected isDisabled(): boolean {
+        return this.context.dropdownIsDisabled;
+    }
+
+    protected getRestProps(props: HeaderBaseProps): {} {
+        const {
+            className,
+            closedClassName,
+            disabledClassName,
+            openClassName,
+            ...restProps
+        } = props;
+
+        return restProps;
+    }
+
+    protected getClassName(props: ClassNameProps): string {
+        return classNames(props.className, {
+            [props.openClassName || ""]: this.isOpen(),
+            [props.closedClassName || ""]: !this.isOpen(),
+            [props.disabledClassName || ""]: this.isDisabled()
+        });
     }
 }

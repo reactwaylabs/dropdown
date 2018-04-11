@@ -1,10 +1,11 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import * as classNames from "classnames";
 
-import { EventSource, DropdownOnToggleHandler, DropdownOnCloseHandler, DropdownOnOpenHandler } from "../contracts";
+import { EventSource, DropdownOnToggleHandler, DropdownOnCloseHandler, DropdownOnOpenHandler, ClassNameProps } from "../contracts";
 import { CAN_I_USE_WINDOW_LISTENERS, ESCAPE_KEYCODE } from "../helpers";
 
-export interface HandlerBaseProps {
+export interface HandlerBaseProps extends ClassNameProps {
     defaultIsOpen?: boolean;
     isOpen?: boolean;
     onOpen?: DropdownOnOpenHandler;
@@ -23,6 +24,7 @@ export interface HandlerBaseState {
 
 export interface BaseHandlerChildContext {
     dropdownIsOpen: boolean;
+    dropdownIsDisabled: boolean;
     dropdownOnHeaderClickCallback: () => void;
     dropdownOnSectionClickCallback: () => void;
 }
@@ -71,6 +73,7 @@ export abstract class HandlerBase<
 
     public static childContextTypes: PropTypes.ValidationMap<BaseHandlerChildContext> = {
         dropdownIsOpen: PropTypes.bool.isRequired,
+        dropdownIsDisabled: PropTypes.bool.isRequired,
         dropdownOnHeaderClickCallback: PropTypes.func.isRequired,
         dropdownOnSectionClickCallback: PropTypes.func.isRequired
     };
@@ -78,6 +81,7 @@ export abstract class HandlerBase<
     public getChildContext(): BaseHandlerChildContext {
         return {
             dropdownIsOpen: this.state.isOpen,
+            dropdownIsDisabled: (this.props.disabled as boolean) || false,
             dropdownOnHeaderClickCallback: this.onHeaderClick.bind(this),
             dropdownOnSectionClickCallback: this.onSectionClick.bind(this)
         };
@@ -212,10 +216,23 @@ export abstract class HandlerBase<
             onToggle,
             isOpen,
             toggleOnHeaderClick,
+            className,
+            closedClassName,
+            disabled,
+            disabledClassName,
+            openClassName,
             ...restProps
         } = props;
 
         return restProps;
+    }
+
+    protected getClassName(props: ClassNameProps): string {
+        return classNames(props.className, {
+            [props.openClassName || ""]: this.isOpen,
+            [props.closedClassName || ""]: !this.isOpen,
+            [props.disabledClassName || ""]: this.props.disabled
+        });
     }
 
     //#region Public API

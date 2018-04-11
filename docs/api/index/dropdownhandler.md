@@ -2,7 +2,7 @@
 
 * [DropdownHandler][ClassDeclaration-3]
     * Methods
-        * [render()][MethodDeclaration-19]
+        * [render()][MethodDeclaration-24]
     * Properties
         * [element][PropertyDeclaration-7]
 
@@ -38,5 +38,5 @@ public element: HTMLElement | null;
 HTMLElement | null
 
 [ClassDeclaration-3]: dropdownhandler.md#dropdownhandler
-[MethodDeclaration-19]: dropdownhandler.md#render
+[MethodDeclaration-24]: dropdownhandler.md#render
 [PropertyDeclaration-7]: dropdownhandler.md#element

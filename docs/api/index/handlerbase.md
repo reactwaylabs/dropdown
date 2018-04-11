@@ -15,8 +15,9 @@
         * [updateOpenState(isOpen)][MethodDeclaration-8]
         * [isControlled()][MethodDeclaration-9]
         * [getRestProps(props)][MethodDeclaration-10]
-        * [open()][MethodDeclaration-11]
-        * [close()][MethodDeclaration-12]
+        * [getClassName(props)][MethodDeclaration-11]
+        * [open()][MethodDeclaration-12]
+        * [close()][MethodDeclaration-13]
     * Properties
         * [element][PropertyDeclaration-0]
         * [defaultProps][PropertyDeclaration-1]
@@ -34,7 +35,7 @@ abstract class HandlerBase<TProps extends HandlerBaseProps = HandlerBaseProps, T
 | Name   | Constraint                                 | Default                                    |
 | ------ | ------------------------------------------ | ------------------------------------------ |
 | TProps | [HandlerBaseProps][InterfaceDeclaration-0] | [HandlerBaseProps][InterfaceDeclaration-0] |
-| TState | [HandlerBaseState][InterfaceDeclaration-1] | [HandlerBaseState][InterfaceDeclaration-1] |
+| TState | [HandlerBaseState][InterfaceDeclaration-2] | [HandlerBaseState][InterfaceDeclaration-2] |
 ## Constructor
 
 ### constructor(props)
@@ -74,7 +75,7 @@ public getChildContext(): BaseHandlerChildContext;
 
 **Return type**
 
-[BaseHandlerChildContext][InterfaceDeclaration-2]
+[BaseHandlerChildContext][InterfaceDeclaration-3]
 
 ----------
 
@@ -234,6 +235,24 @@ protected getRestProps(props: HandlerBaseProps): {};
 
 ----------
 
+### getClassName(props)
+
+```typescript
+protected getClassName(props: ClassNameProps): string;
+```
+
+**Parameters**
+
+| Name  | Type                                     |
+| ----- | ---------------------------------------- |
+| props | [ClassNameProps][InterfaceDeclaration-1] |
+
+**Return type**
+
+string
+
+----------
+
 ### open()
 
 To open dropdown.
@@ -296,7 +315,7 @@ public static childContextTypes: ValidationMap<BaseHandlerChildContext>;
 
 **Type**
 
-ValidationMap<[BaseHandlerChildContext][InterfaceDeclaration-2]>
+ValidationMap<[BaseHandlerChildContext][InterfaceDeclaration-3]>
 
 ----------
 
@@ -315,12 +334,12 @@ boolean
 [ClassDeclaration-0]: handlerbase.md#handlerbase
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
-[InterfaceDeclaration-1]: ../index.md#handlerbasestate
-[InterfaceDeclaration-1]: ../index.md#handlerbasestate
+[InterfaceDeclaration-2]: ../index.md#handlerbasestate
+[InterfaceDeclaration-2]: ../index.md#handlerbasestate
 [Constructor-0]: handlerbase.md#constructorprops
 [MethodDeclaration-0]: handlerbase.md#componentwillunmount
 [MethodDeclaration-1]: handlerbase.md#getchildcontext
-[InterfaceDeclaration-2]: ../index.md#basehandlerchildcontext
+[InterfaceDeclaration-3]: ../index.md#basehandlerchildcontext
 [MethodDeclaration-2]: handlerbase.md#getinitialopenvalue
 [MethodDeclaration-3]: handlerbase.md#onheaderclick
 [MethodDeclaration-4]: handlerbase.md#onsectionclick
@@ -332,11 +351,13 @@ boolean
 [MethodDeclaration-9]: handlerbase.md#iscontrolled
 [MethodDeclaration-10]: handlerbase.md#getrestpropsprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
-[MethodDeclaration-11]: handlerbase.md#open
-[MethodDeclaration-12]: handlerbase.md#close
+[MethodDeclaration-11]: handlerbase.md#getclassnameprops
+[InterfaceDeclaration-1]: ../index.md#classnameprops
+[MethodDeclaration-12]: handlerbase.md#open
+[MethodDeclaration-13]: handlerbase.md#close
 [PropertyDeclaration-0]: handlerbase.md#element
 [PropertyDeclaration-1]: handlerbase.md#defaultprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
 [PropertyDeclaration-2]: handlerbase.md#childcontexttypes
-[InterfaceDeclaration-2]: ../index.md#basehandlerchildcontext
+[InterfaceDeclaration-3]: ../index.md#basehandlerchildcontext
 [GetAccessor-0]: handlerbase.md#isopen

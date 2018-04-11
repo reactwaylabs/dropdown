@@ -79,3 +79,48 @@ it("does not trigger callback when clicked on header if dropdown is disabled.", 
     const handlerState: HandlerBaseState = dropdown.state();
     expect(stub).not.toBeCalled();
 });
+
+it("closedClassName is added when dropdown is closed.", () => {
+    const closedClassName = "closed-class-name";
+
+    const dropdown = mount(
+        <DropdownHandler closedClassName={closedClassName} id="handler">
+            <DropdownHeader>Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
+    const handlerElement = dropdown.find("div#handler").get(0);
+    expect((handlerElement.props as React.HTMLAttributes<HTMLDivElement>).className).toBe(closedClassName);
+});
+
+it("openClassName is added when dropdown is closed.", () => {
+    const openClassName = "open-class-name";
+
+    const dropdown = mount(
+        <DropdownHandler defaultIsOpen={true} openClassName={openClassName} id="handler">
+            <DropdownHeader>Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
+    const handlerElement = dropdown.find("div#handler").get(0);
+    expect((handlerElement.props as React.HTMLAttributes<HTMLDivElement>).className).toBe(openClassName);
+});
+
+it("openClassName is added to className when dropdown is opened.", () => {
+    const className = "dropdown-handler";
+    const openClassName = "open-class-name";
+
+    const dropdown = mount(
+        <DropdownHandler defaultIsOpen={true} className={className} openClassName={openClassName} id="handler">
+            <DropdownHeader>Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
+    const handlerElement = dropdown.find("div#handler").get(0);
+    const handlerClassName = (handlerElement.props as React.HTMLAttributes<HTMLDivElement>).className;
+    expect(handlerClassName).toBeDefined();
+
+    const classNames = handlerClassName!.split(" ");
+    expect(classNames.indexOf(className)).not.toBe(-1);
+    expect(classNames.indexOf(openClassName)).not.toBe(-1);
+});
