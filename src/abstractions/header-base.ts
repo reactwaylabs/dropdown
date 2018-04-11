@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as classNames_ from "classnames";
-const classNames = classNames_;
+import classNames from "classnames";
 
 import { ClassNameProps } from "../contracts";
 
