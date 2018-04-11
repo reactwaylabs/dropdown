@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "es2015",
         "target": "es5",
         "removeComments": false,
         "outDir": "dist",
@@ -12,6 +12,7 @@
         "strict": true,
         "noEmitHelpers": true,
         "importHelpers": true,
+        "moduleResolution": "node",
         "lib": ["dom", "dom.iterable", "es6"],
         "types": ["jest"],
         "typeRoots": ["./node_modules/@types"],
