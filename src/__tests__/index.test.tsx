@@ -106,7 +106,7 @@ it("openClassName is added when dropdown is closed.", () => {
     expect((handlerElement.props as React.HTMLAttributes<HTMLDivElement>).className).toBe(openClassName);
 });
 
-it("openClassName is added with className prop when dropdown is closed.", () => {
+it("openClassName is added to className when dropdown is opened.", () => {
     const className = "dropdown-handler";
     const openClassName = "open-class-name";
 
