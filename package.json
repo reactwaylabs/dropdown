@@ -85,7 +85,7 @@
         "globals": {
             "ts-jest": {
                 "skipBabel": true,
-                "tsConfigFile": "./tsconfig.json"
+                "tsConfigFile": "./tsconfig.jest.json"
             }
         },
         "testRegex": "/__tests__/.*\\.(test|spec).(ts|tsx|js)$",
