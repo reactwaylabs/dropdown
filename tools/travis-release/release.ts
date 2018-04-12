@@ -24,7 +24,7 @@ async function Main(): Promise<void> {
 
     let isPrerelease: boolean = false;
     for (const tag of prereleaseTags) {
-        if (packageJsonContents.version.indexOf(tag)) {
+        if (packageJsonContents.version.indexOf(tag) !== -1) {
             isPrerelease = true;
             break;
         }
