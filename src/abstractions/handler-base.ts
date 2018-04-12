@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import * as classNames from "classnames";
+import classNames from "classnames";
 
 import { EventSource, DropdownOnToggleHandler, DropdownOnCloseHandler, DropdownOnOpenHandler, ClassNameProps } from "../contracts";
 import { CAN_I_USE_WINDOW_LISTENERS, ESCAPE_KEYCODE } from "../helpers";

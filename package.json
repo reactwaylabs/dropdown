@@ -67,7 +67,8 @@
         "classnames": "^2.2.5",
         "prop-types": "^15.6.1",
         "react": "^16.3.1",
-        "react-dom": "^16.3.1"
+        "react-dom": "^16.3.1",
+        "tslib": "^1.9.0"
     },
     "jest": {
         "setupTestFrameworkScriptFile": "./__tests__/tests-configuration.ts",
@@ -84,7 +85,7 @@
         "globals": {
             "ts-jest": {
                 "skipBabel": true,
-                "tsConfigFile": "./tsconfig.json"
+                "tsConfigFile": "./tsconfig.jest.json"
             }
         },
         "testRegex": "/__tests__/.*\\.(test|spec).(ts|tsx|js)$",
