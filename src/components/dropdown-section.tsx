@@ -8,6 +8,12 @@ export interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement>, 
 }
 
 export class DropdownSection extends SectionBase<DropdownSectionProps> {
+    public element: HTMLDivElement | null = null;
+
+    private setElementRef = (element: HTMLDivElement | null) => {
+        this.element = element;
+    };
+
     protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
         event.stopPropagation();
         this.onSectionClick();
@@ -23,6 +29,13 @@ export class DropdownSection extends SectionBase<DropdownSectionProps> {
             return null;
         }
 
-        return <div {...this.getRestProps(this.props)} onClick={this.onContainerClickCallback} className={this.getClassName(this.props)} />;
+        return (
+            <div
+                {...this.getRestProps(this.props)}
+                ref={this.setElementRef}
+                onClick={this.onContainerClickCallback}
+                className={this.getClassName(this.props)}
+            />
+        );
     }
 }

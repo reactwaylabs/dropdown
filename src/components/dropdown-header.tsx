@@ -8,6 +8,12 @@ export interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement>, H
 }
 
 export class DropdownHeader extends HeaderBase<DropdownHeaderProps> {
+    public element: HTMLDivElement | null = null;
+
+    private setElementRef = (element: HTMLDivElement | null) => {
+        this.element = element;
+    };
+
     protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
         event.stopPropagation();
         this.onHeaderClick();
@@ -19,6 +25,13 @@ export class DropdownHeader extends HeaderBase<DropdownHeaderProps> {
     };
 
     public render(): JSX.Element {
-        return <div {...this.getRestProps(this.props)} onClick={this.onContainerClickCallback} className={this.getClassName(this.props)} />;
+        return (
+            <div
+                {...this.getRestProps(this.props)}
+                ref={this.setElementRef}
+                onClick={this.onContainerClickCallback}
+                className={this.getClassName(this.props)}
+            />
+        );
     }
 }

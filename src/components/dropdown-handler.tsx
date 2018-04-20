@@ -8,7 +8,7 @@ export interface DropdownHandlerProps extends HandlerBaseProps, HTMLElementProps
 }
 
 export class DropdownHandler extends HandlerBase<DropdownHandlerProps> {
-    public element: HTMLElement | null = null;
+    public element: HTMLDivElement | null = null;
 
     private setElementRef = (element: HTMLDivElement | null) => {
         this.element = element;
