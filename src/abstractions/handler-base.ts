@@ -49,6 +49,12 @@ export abstract class HandlerBase<
         } as TState;
     }
 
+    public static getDerivedStateFromProps(nextProps: HandlerBaseProps, prevState: HandlerBaseState): HandlerBaseState {
+        return {
+            isOpen: nextProps.isOpen || prevState.isOpen
+        };
+    }
+
     public componentWillUnmount(): void {
         if (CAN_I_USE_WINDOW_LISTENERS) {
             window.removeEventListener("click", this.onOutsideClickHandler);
