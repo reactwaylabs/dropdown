@@ -51,7 +51,7 @@ export abstract class HandlerBase<
 
     public static getDerivedStateFromProps(nextProps: HandlerBaseProps, prevState: HandlerBaseState): HandlerBaseState {
         return {
-            isOpen: nextProps.isOpen || prevState.isOpen
+            isOpen: nextProps.isOpen != null ? nextProps.isOpen : prevState.isOpen
         };
     }
 
@@ -98,17 +98,15 @@ export abstract class HandlerBase<
      * By default it gets initial value from props: defaultOpen and open.
      */
     protected getInitialOpenValue(): boolean {
-        let open = false;
+        if (this.props.isOpen != null) {
+            return Boolean(this.props.isOpen);
+        }
 
         if (this.props.defaultIsOpen != null) {
-            open = Boolean(this.props.defaultIsOpen);
+            return Boolean(this.props.defaultIsOpen);
         }
 
-        if (this.props.isOpen != null) {
-            open = Boolean(this.props.isOpen);
-        }
-
-        return open;
+        return false;
     }
 
     /**
