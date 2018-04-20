@@ -4,19 +4,20 @@
     * Constructor
         * [constructor(props, context)][Constructor-2]
     * Methods
-        * [onSectionClick()][MethodDeclaration-19]
-        * [isOpen()][MethodDeclaration-20]
-        * [isDisabled()][MethodDeclaration-21]
-        * [getRestProps(props)][MethodDeclaration-22]
-        * [getClassName(props)][MethodDeclaration-23]
+        * [onSectionClick()][MethodDeclaration-20]
+        * [isOpen()][MethodDeclaration-21]
+        * [isDisabled()][MethodDeclaration-22]
+        * [getRestProps(props)][MethodDeclaration-23]
+        * [getClassName(props)][MethodDeclaration-24]
     * Properties
-        * [context][PropertyDeclaration-5]
-        * [contextTypes][PropertyDeclaration-6]
+        * [element][PropertyDeclaration-6]
+        * [context][PropertyDeclaration-7]
+        * [contextTypes][PropertyDeclaration-8]
 
 # SectionBase
 
 ```typescript
-class SectionBase<TProps extends SectionBaseProps = {}, TState = {}>
+abstract class SectionBase<TProps extends SectionBaseProps = {}, TState = {}>
 ```
 
 **Type parameters**
@@ -118,6 +119,20 @@ string
 
 ## Properties
 
+### element
+
+Container element.
+
+```typescript
+public abstract element: HTMLElement | null;
+```
+
+**Type**
+
+HTMLElement | null
+
+----------
+
 ### context
 
 ```typescript
@@ -144,14 +159,15 @@ ValidationMap<[SectionBaseContext][InterfaceDeclaration-7]>
 [InterfaceDeclaration-6]: ../index.md#sectionbaseprops
 [Constructor-2]: sectionbase.md#constructorprops-context
 [InterfaceDeclaration-7]: ../index.md#sectionbasecontext
-[MethodDeclaration-19]: sectionbase.md#onsectionclick
-[MethodDeclaration-20]: sectionbase.md#isopen
-[MethodDeclaration-21]: sectionbase.md#isdisabled
-[MethodDeclaration-22]: sectionbase.md#getrestpropsprops
+[MethodDeclaration-20]: sectionbase.md#onsectionclick
+[MethodDeclaration-21]: sectionbase.md#isopen
+[MethodDeclaration-22]: sectionbase.md#isdisabled
+[MethodDeclaration-23]: sectionbase.md#getrestpropsprops
 [InterfaceDeclaration-6]: ../index.md#sectionbaseprops
-[MethodDeclaration-23]: sectionbase.md#getclassnameprops
+[MethodDeclaration-24]: sectionbase.md#getclassnameprops
 [InterfaceDeclaration-1]: ../index.md#classnameprops
-[PropertyDeclaration-5]: sectionbase.md#context
+[PropertyDeclaration-6]: sectionbase.md#element
+[PropertyDeclaration-7]: sectionbase.md#context
 [InterfaceDeclaration-7]: ../index.md#sectionbasecontext
-[PropertyDeclaration-6]: sectionbase.md#contexttypes
+[PropertyDeclaration-8]: sectionbase.md#contexttypes
 [InterfaceDeclaration-7]: ../index.md#sectionbasecontext

@@ -2,9 +2,9 @@
 
 * [DropdownHandler][ClassDeclaration-3]
     * Methods
-        * [render()][MethodDeclaration-24]
+        * [render()][MethodDeclaration-25]
     * Properties
-        * [element][PropertyDeclaration-7]
+        * [element][PropertyDeclaration-9]
 
 # DropdownHandler
 
@@ -30,13 +30,13 @@ Element
 Container element.
 
 ```typescript
-public element: HTMLElement | null;
+public element: HTMLDivElement | null;
 ```
 
 **Type**
 
-HTMLElement | null
+HTMLDivElement | null
 
 [ClassDeclaration-3]: dropdownhandler.md#dropdownhandler
-[MethodDeclaration-24]: dropdownhandler.md#render
-[PropertyDeclaration-7]: dropdownhandler.md#element
+[MethodDeclaration-25]: dropdownhandler.md#render
+[PropertyDeclaration-9]: dropdownhandler.md#element

@@ -4,19 +4,20 @@
     * Constructor
         * [constructor(props, context)][Constructor-1]
     * Methods
-        * [onHeaderClick()][MethodDeclaration-14]
-        * [isOpen()][MethodDeclaration-15]
-        * [isDisabled()][MethodDeclaration-16]
-        * [getRestProps(props)][MethodDeclaration-17]
-        * [getClassName(props)][MethodDeclaration-18]
+        * [onHeaderClick()][MethodDeclaration-15]
+        * [isOpen()][MethodDeclaration-16]
+        * [isDisabled()][MethodDeclaration-17]
+        * [getRestProps(props)][MethodDeclaration-18]
+        * [getClassName(props)][MethodDeclaration-19]
     * Properties
-        * [context][PropertyDeclaration-3]
-        * [contextTypes][PropertyDeclaration-4]
+        * [element][PropertyDeclaration-3]
+        * [context][PropertyDeclaration-4]
+        * [contextTypes][PropertyDeclaration-5]
 
 # HeaderBase
 
 ```typescript
-class HeaderBase<TProps extends HeaderBaseProps = {}, TState = {}>
+abstract class HeaderBase<TProps extends HeaderBaseProps = {}, TState = {}>
 ```
 
 **Type parameters**
@@ -118,6 +119,20 @@ string
 
 ## Properties
 
+### element
+
+Container element.
+
+```typescript
+public abstract element: HTMLElement | null;
+```
+
+**Type**
+
+HTMLElement | null
+
+----------
+
 ### context
 
 ```typescript
@@ -144,14 +159,15 @@ ValidationMap<[HeaderBaseContext][InterfaceDeclaration-5]>
 [InterfaceDeclaration-4]: ../index.md#headerbaseprops
 [Constructor-1]: headerbase.md#constructorprops-context
 [InterfaceDeclaration-5]: ../index.md#headerbasecontext
-[MethodDeclaration-14]: headerbase.md#onheaderclick
-[MethodDeclaration-15]: headerbase.md#isopen
-[MethodDeclaration-16]: headerbase.md#isdisabled
-[MethodDeclaration-17]: headerbase.md#getrestpropsprops
+[MethodDeclaration-15]: headerbase.md#onheaderclick
+[MethodDeclaration-16]: headerbase.md#isopen
+[MethodDeclaration-17]: headerbase.md#isdisabled
+[MethodDeclaration-18]: headerbase.md#getrestpropsprops
 [InterfaceDeclaration-4]: ../index.md#headerbaseprops
-[MethodDeclaration-18]: headerbase.md#getclassnameprops
+[MethodDeclaration-19]: headerbase.md#getclassnameprops
 [InterfaceDeclaration-1]: ../index.md#classnameprops
-[PropertyDeclaration-3]: headerbase.md#context
+[PropertyDeclaration-3]: headerbase.md#element
+[PropertyDeclaration-4]: headerbase.md#context
 [InterfaceDeclaration-5]: ../index.md#headerbasecontext
-[PropertyDeclaration-4]: headerbase.md#contexttypes
+[PropertyDeclaration-5]: headerbase.md#contexttypes
 [InterfaceDeclaration-5]: ../index.md#headerbasecontext

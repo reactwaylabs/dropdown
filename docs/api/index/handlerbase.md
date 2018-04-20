@@ -4,20 +4,21 @@
     * Constructor
         * [constructor(props)][Constructor-0]
     * Methods
-        * [componentWillUnmount()][MethodDeclaration-0]
-        * [getChildContext()][MethodDeclaration-1]
-        * [getInitialOpenValue()][MethodDeclaration-2]
-        * [onHeaderClick()][MethodDeclaration-3]
-        * [onSectionClick()][MethodDeclaration-4]
-        * [onOutsideClick(event)][MethodDeclaration-5]
-        * [isElementInContainer(element)][MethodDeclaration-6]
-        * [triggerCallbacks(isOpen, source)][MethodDeclaration-7]
-        * [updateOpenState(isOpen)][MethodDeclaration-8]
-        * [isControlled()][MethodDeclaration-9]
-        * [getRestProps(props)][MethodDeclaration-10]
-        * [getClassName(props)][MethodDeclaration-11]
-        * [open()][MethodDeclaration-12]
-        * [close()][MethodDeclaration-13]
+        * [getDerivedStateFromProps(nextProps, prevState)][MethodDeclaration-0]
+        * [componentWillUnmount()][MethodDeclaration-1]
+        * [getChildContext()][MethodDeclaration-2]
+        * [getInitialOpenValue()][MethodDeclaration-3]
+        * [onHeaderClick()][MethodDeclaration-4]
+        * [onSectionClick()][MethodDeclaration-5]
+        * [onOutsideClick(event)][MethodDeclaration-6]
+        * [isElementInContainer(element)][MethodDeclaration-7]
+        * [triggerCallbacks(isOpen, source)][MethodDeclaration-8]
+        * [updateOpenState(isOpen)][MethodDeclaration-9]
+        * [isControlled()][MethodDeclaration-10]
+        * [getRestProps(props)][MethodDeclaration-11]
+        * [getClassName(props)][MethodDeclaration-12]
+        * [open()][MethodDeclaration-13]
+        * [close()][MethodDeclaration-14]
     * Properties
         * [element][PropertyDeclaration-0]
         * [defaultProps][PropertyDeclaration-1]
@@ -51,6 +52,25 @@ public constructor(props: TProps);
 | props | TProps |
 
 ## Methods
+
+### getDerivedStateFromProps(nextProps, prevState)
+
+```typescript
+public static getDerivedStateFromProps(nextProps: HandlerBaseProps, prevState: HandlerBaseState): HandlerBaseState;
+```
+
+**Parameters**
+
+| Name      | Type                                       |
+| --------- | ------------------------------------------ |
+| nextProps | [HandlerBaseProps][InterfaceDeclaration-0] |
+| prevState | [HandlerBaseState][InterfaceDeclaration-2] |
+
+**Return type**
+
+[HandlerBaseState][InterfaceDeclaration-2]
+
+----------
 
 ### componentWillUnmount()
 
@@ -337,24 +357,28 @@ boolean
 [InterfaceDeclaration-2]: ../index.md#handlerbasestate
 [InterfaceDeclaration-2]: ../index.md#handlerbasestate
 [Constructor-0]: handlerbase.md#constructorprops
-[MethodDeclaration-0]: handlerbase.md#componentwillunmount
-[MethodDeclaration-1]: handlerbase.md#getchildcontext
-[InterfaceDeclaration-3]: ../index.md#basehandlerchildcontext
-[MethodDeclaration-2]: handlerbase.md#getinitialopenvalue
-[MethodDeclaration-3]: handlerbase.md#onheaderclick
-[MethodDeclaration-4]: handlerbase.md#onsectionclick
-[MethodDeclaration-5]: handlerbase.md#onoutsideclickevent
-[MethodDeclaration-6]: handlerbase.md#iselementincontainerelement
-[MethodDeclaration-7]: handlerbase.md#triggercallbacksisopen-source
-[EnumDeclaration-0]: ../index.md#eventsource
-[MethodDeclaration-8]: handlerbase.md#updateopenstateisopen
-[MethodDeclaration-9]: handlerbase.md#iscontrolled
-[MethodDeclaration-10]: handlerbase.md#getrestpropsprops
+[MethodDeclaration-0]: handlerbase.md#getderivedstatefrompropsnextprops-prevstate
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
-[MethodDeclaration-11]: handlerbase.md#getclassnameprops
+[InterfaceDeclaration-2]: ../index.md#handlerbasestate
+[InterfaceDeclaration-2]: ../index.md#handlerbasestate
+[MethodDeclaration-1]: handlerbase.md#componentwillunmount
+[MethodDeclaration-2]: handlerbase.md#getchildcontext
+[InterfaceDeclaration-3]: ../index.md#basehandlerchildcontext
+[MethodDeclaration-3]: handlerbase.md#getinitialopenvalue
+[MethodDeclaration-4]: handlerbase.md#onheaderclick
+[MethodDeclaration-5]: handlerbase.md#onsectionclick
+[MethodDeclaration-6]: handlerbase.md#onoutsideclickevent
+[MethodDeclaration-7]: handlerbase.md#iselementincontainerelement
+[MethodDeclaration-8]: handlerbase.md#triggercallbacksisopen-source
+[EnumDeclaration-0]: ../index.md#eventsource
+[MethodDeclaration-9]: handlerbase.md#updateopenstateisopen
+[MethodDeclaration-10]: handlerbase.md#iscontrolled
+[MethodDeclaration-11]: handlerbase.md#getrestpropsprops
+[InterfaceDeclaration-0]: ../index.md#handlerbaseprops
+[MethodDeclaration-12]: handlerbase.md#getclassnameprops
 [InterfaceDeclaration-1]: ../index.md#classnameprops
-[MethodDeclaration-12]: handlerbase.md#open
-[MethodDeclaration-13]: handlerbase.md#close
+[MethodDeclaration-13]: handlerbase.md#open
+[MethodDeclaration-14]: handlerbase.md#close
 [PropertyDeclaration-0]: handlerbase.md#element
 [PropertyDeclaration-1]: handlerbase.md#defaultprops
 [InterfaceDeclaration-0]: ../index.md#handlerbaseprops
