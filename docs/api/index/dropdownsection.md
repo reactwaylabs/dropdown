@@ -2,9 +2,10 @@
 
 * [DropdownSection][ClassDeclaration-5]
     * Methods
-        * [render()][MethodDeclaration-26]
+        * [render()][MethodDeclaration-27]
     * Properties
-        * [onContainerClickCallback][PropertyDeclaration-9]
+        * [element][PropertyDeclaration-12]
+        * [onContainerClickCallback][PropertyDeclaration-13]
 
 # DropdownSection
 
@@ -25,6 +26,20 @@ Element | null
 
 ## Properties
 
+### element
+
+Container element.
+
+```typescript
+public element: HTMLDivElement | null;
+```
+
+**Type**
+
+HTMLDivElement | null
+
+----------
+
 ### onContainerClickCallback
 
 ```typescript
@@ -36,5 +51,6 @@ protected onContainerClickCallback: bivarianceHack<HTMLDivElement>;
 bivarianceHack<HTMLDivElement>
 
 [ClassDeclaration-5]: dropdownsection.md#dropdownsection
-[MethodDeclaration-26]: dropdownsection.md#render
-[PropertyDeclaration-9]: dropdownsection.md#oncontainerclickcallback
+[MethodDeclaration-27]: dropdownsection.md#render
+[PropertyDeclaration-12]: dropdownsection.md#element
+[PropertyDeclaration-13]: dropdownsection.md#oncontainerclickcallback

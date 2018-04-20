@@ -124,3 +124,16 @@ it("openClassName is added to className when dropdown is opened.", () => {
     expect(classNames.indexOf(className)).not.toBe(-1);
     expect(classNames.indexOf(openClassName)).not.toBe(-1);
 });
+
+it("simple controlled dropdown", () => {
+    const dropdown = mount(
+        <DropdownHandler isOpen={true}>
+            <DropdownHeader>Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
+
+    expect(dropdown.state().isOpen).toBe(true);
+    dropdown.setProps({ isOpen: false });
+    expect(dropdown.state().isOpen).toBe(false);
+});

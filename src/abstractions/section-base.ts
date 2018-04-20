@@ -13,7 +13,7 @@ export interface SectionBaseContext {
     dropdownOnSectionClickCallback: () => void;
 }
 
-export class SectionBase<TProps extends SectionBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
+export abstract class SectionBase<TProps extends SectionBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     /**
      * @throws
      */
@@ -24,6 +24,11 @@ export class SectionBase<TProps extends SectionBaseProps = {}, TState = {}> exte
             throw `simplr-dropdown: (BaseHeader) "${this.constructor.name}" must be inside DropdownHandler component.`;
         }
     }
+
+    /**
+     * Container element.
+     */
+    public abstract element: HTMLElement | null;
 
     public context!: SectionBaseContext;
 
@@ -52,13 +57,7 @@ export class SectionBase<TProps extends SectionBaseProps = {}, TState = {}> exte
     }
 
     protected getRestProps(props: SectionBaseProps): {} {
-        const {
-            className,
-            closedClassName,
-            disabledClassName,
-            openClassName,
-            ...restProps
-        } = props;
+        const { className, closedClassName, disabledClassName, openClassName, ...restProps } = props;
 
         return restProps;
     }

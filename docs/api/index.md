@@ -171,7 +171,7 @@ interface SectionBaseContext {
 
 ```typescript
 interface DropdownHandlerProps extends HandlerBaseProps, HTMLElementProps<HTMLDivElement> {
-    ref?: string | ((instance: DropdownHandler | null) => any) | undefined<DropdownHandler>;
+    ref?: string | ((instance: DropdownHandler | null) => any) | RefObject<DropdownHandler> | undefined<DropdownHandler>;
 }
 ```
 
@@ -183,9 +183,9 @@ interface DropdownHandlerProps extends HandlerBaseProps, HTMLElementProps<HTMLDi
 
 **Properties**
 
-| Name | Type                                                                                                                   | Optional |
-| ---- | ---------------------------------------------------------------------------------------------------------------------- | -------- |
-| ref  | string &#124; ((instance: DropdownHandler &#124; null) => any) &#124; undefined<[DropdownHandler][ClassDeclaration-3]> | true     |
+| Name | Type                                                                                                                                                     | Optional |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| ref  | string &#124; ((instance: DropdownHandler &#124; null) => any) &#124; RefObject<DropdownHandler> &#124; undefined<[DropdownHandler][ClassDeclaration-3]> | true     |
 
 ----------
 
@@ -193,7 +193,7 @@ interface DropdownHandlerProps extends HandlerBaseProps, HTMLElementProps<HTMLDi
 
 ```typescript
 interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement>, HeaderBaseProps {
-    ref?: string | ((instance: DropdownHeader | null) => any) | undefined<DropdownHeader>;
+    ref?: string | ((instance: DropdownHeader | null) => any) | RefObject<DropdownHeader> | undefined<DropdownHeader>;
 }
 ```
 
@@ -205,9 +205,9 @@ interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement>, HeaderBa
 
 **Properties**
 
-| Name | Type                                                                                                                 | Optional |
-| ---- | -------------------------------------------------------------------------------------------------------------------- | -------- |
-| ref  | string &#124; ((instance: DropdownHeader &#124; null) => any) &#124; undefined<[DropdownHeader][ClassDeclaration-4]> | true     |
+| Name | Type                                                                                                                                                  | Optional |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| ref  | string &#124; ((instance: DropdownHeader &#124; null) => any) &#124; RefObject<DropdownHeader> &#124; undefined<[DropdownHeader][ClassDeclaration-4]> | true     |
 
 ----------
 
@@ -215,7 +215,7 @@ interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement>, HeaderBa
 
 ```typescript
 interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement>, SectionBaseProps {
-    ref?: string | ((instance: DropdownSection | null) => any) | undefined<DropdownSection>;
+    ref?: string | ((instance: DropdownSection | null) => any) | RefObject<DropdownSection> | undefined<DropdownSection>;
 }
 ```
 
@@ -227,9 +227,9 @@ interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement>, Section
 
 **Properties**
 
-| Name | Type                                                                                                                   | Optional |
-| ---- | ---------------------------------------------------------------------------------------------------------------------- | -------- |
-| ref  | string &#124; ((instance: DropdownSection &#124; null) => any) &#124; undefined<[DropdownSection][ClassDeclaration-5]> | true     |
+| Name | Type                                                                                                                                                     | Optional |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| ref  | string &#124; ((instance: DropdownSection &#124; null) => any) &#124; RefObject<DropdownSection> &#124; undefined<[DropdownSection][ClassDeclaration-5]> | true     |
 
 ----------
 
@@ -237,7 +237,7 @@ interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement>, Section
 
 ```typescript
 interface HTMLElementProps<TElement> extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    ref?: string | ((instance: any) => any) | undefined<any>;
+    ref?: string | ((instance: any) => any) | RefObject<any> | undefined<any>;
 }
 ```
 
@@ -253,9 +253,9 @@ DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 **Properties**
 
-| Name | Type                                                         | Optional |
-| ---- | ------------------------------------------------------------ | -------- |
-| ref  | string &#124; ((instance: any) => any) &#124; undefined<any> | true     |
+| Name | Type                                                                               | Optional |
+| ---- | ---------------------------------------------------------------------------------- | -------- |
+| ref  | string &#124; ((instance: any) => any) &#124; RefObject<any> &#124; undefined<any> | true     |
 
 ----------
 

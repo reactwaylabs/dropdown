@@ -13,7 +13,7 @@ export interface HeaderBaseContext {
     dropdownOnHeaderClickCallback: () => void;
 }
 
-export class HeaderBase<TProps extends HeaderBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
+export abstract class HeaderBase<TProps extends HeaderBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     /**
      * @throws
      */
@@ -24,6 +24,11 @@ export class HeaderBase<TProps extends HeaderBaseProps = {}, TState = {}> extend
             throw `simplr-dropdown: (HeaderBase) "${this.constructor.name}" must be inside DropdownHandler component.`;
         }
     }
+
+    /**
+     * Container element.
+     */
+    public abstract element: HTMLElement | null;
 
     public context!: HeaderBaseContext;
 
