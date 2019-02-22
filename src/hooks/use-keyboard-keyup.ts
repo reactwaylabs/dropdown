@@ -16,5 +16,5 @@ export function useKeyboardKeyUp(callback: (event: KeyboardEvent) => void): void
         return () => {
             window.removeEventListener("keyup", windowClick);
         };
-    });
+    }, [callback]);
 }

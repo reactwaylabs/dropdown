@@ -16,5 +16,5 @@ export function useWindowClick(callback: (event: MouseEvent) => void): void {
         return () => {
             window.removeEventListener("click", windowClick);
         };
-    });
+    }, [callback]);
 }

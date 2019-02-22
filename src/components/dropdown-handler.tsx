@@ -1,4 +1,4 @@
-import React, { createRef, useState } from "react";
+import React, { useState, useRef } from "react";
 import classNames from "classnames";
 
 import { DropdownContext } from "../contexts/dropdown-context";
@@ -22,9 +22,27 @@ export interface DropdownHandlerProps extends ClassNameProps {
     closeOnEscapeClick?: boolean;
 }
 
-export const DropdownHandler = (props: DropdownHandlerProps) => {
-    const ref = createRef<HTMLDivElement>();
-    const [isOpen, setOpen] = useState(false);
+export const DropdownHandler = (_props: DropdownHandlerProps) => {
+    const props = {
+        toggleOnHeaderClick: true,
+        closeOnSectionClick: false,
+        closeOnOutsideClick: true,
+        closeOnEscapeClick: true,
+        ..._props
+    };
+
+    let defaultIsOpen: boolean;
+    if (props.isOpen != null) {
+        defaultIsOpen = props.isOpen;
+    } else if (props.defaultIsOpen != null) {
+        defaultIsOpen = props.defaultIsOpen;
+    } else {
+        defaultIsOpen = false;
+    }
+
+
+    const ref = useRef<HTMLDivElement>(null);
+    const [isOpen, setOpen] = useState(defaultIsOpen);
 
     const isControlled: boolean = props.isOpen != null;
     const triggerCallbacks = (nextOpenState: boolean, eventSource: DropdownEventSource): void => {
@@ -84,10 +102,9 @@ export const DropdownHandler = (props: DropdownHandlerProps) => {
         if (!props.toggleOnHeaderClick) {
             return;
         }
-
         // Toggle open state
-        triggerCallbacks(isOpen, DropdownEventSource.HeaderClick);
-        updateOpenState(isOpen);
+        triggerCallbacks(!isOpen, DropdownEventSource.HeaderClick);
+        updateOpenState(!isOpen);
     };
 
     const onSectionClick = () => {
@@ -98,7 +115,7 @@ export const DropdownHandler = (props: DropdownHandlerProps) => {
         triggerCallbacks(false, DropdownEventSource.SectionClick);
         updateOpenState(false);
     };
-    //#endergion
+    //#endregion
 
     return (
         <div
