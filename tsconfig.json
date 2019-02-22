@@ -1,24 +1,26 @@
 {
     "compilerOptions": {
-        "module": "es2015",
+        "module": "commonjs",
         "target": "es5",
-        "removeComments": false,
         "outDir": "dist",
         "rootDir": "src",
         "jsx": "react",
-        "skipDefaultLibCheck": true,
+        "noUnusedLocals": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
         "declaration": true,
-        "pretty": true,
         "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "experimentalDecorators": true,
         "noEmitHelpers": true,
         "importHelpers": true,
-        "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "lib": ["dom", "dom.iterable", "es6"],
-        "types": ["jest"],
-        "typeRoots": ["./node_modules/@types"],
-        "plugins": [{ "name": "tslint-language-service" }]
-    },
-    "exclude": ["node_modules", "dist", "@types", "__tests__", "tools", "examples"]
+        "plugins": [
+            {
+                "name": "tslint-language-service",
+                "alwaysShowRuleFailuresAsWarnings": true,
+                "ignoreDefinitionFiles": true
+            }
+        ]
+    }
 }

@@ -4,7 +4,10 @@
     "description": "A flexible React dropdown component.",
     "types": "./dist/index.d.ts",
     "main": "./dist/simplr-dropdown.js",
-    "scripts": {},
+    "scripts": {
+        "build": "tsc -p .",
+        "watch": "tsc -p . -w"
+    },
     "keywords": [
         "react",
         "dropdown",
@@ -25,7 +28,12 @@
         "dist",
         "**/*.md"
     ],
-    "devDependencies": {},
+    "devDependencies": {
+        "simplr-tslint": "^1.0.0-alpha.14",
+        "tslint": "^5.12.1",
+        "tslint-language-service": "^0.9.9",
+        "typescript": "^3.3.3333"
+    },
     "dependencies": {},
     "jest": {}
 }
