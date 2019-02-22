@@ -1,11 +1,13 @@
 import "jest-dom/extend-expect";
 
 import React from "react";
+import { act } from "react-dom/test-utils";
 import { render, fireEvent, cleanup } from "react-testing-library";
 
 import { DropdownHandler } from "../src/components/dropdown-handler";
 import { DropdownHeader } from "../src/components/dropdown-header";
 import { DropdownSection } from "../src/components/dropdown-section";
+import { ESCAPE_KEYCODE } from "../src/helpers";
 
 afterEach(cleanup);
 
@@ -151,6 +153,30 @@ it("dropdown is closed when clicked outside", () => {
 
     const outside = dropdown.getByText("Outside");
     fireEvent.click(outside);
+
+    expect(() => dropdown.getByText("Section")).toThrow();
+});
+
+it("dropdown is closed when clicked outside", () => {
+    // FIXME: Update to normal types for mockup.
+    const map: { [event: string]: any } = {};
+    window.addEventListener = jest.fn((event, cb) => {
+        map[event] = cb;
+    });
+
+    const dropdown = render(
+        <>
+            <DropdownHandler defaultIsOpen={true}>
+                <DropdownHeader>Header</DropdownHeader>
+                <DropdownSection>Section</DropdownSection>
+            </DropdownHandler>
+            <div>Outside</div>
+        </>
+    );
+
+    act(() => {
+        map["keyup"]({ key: "Escape", keyCode: ESCAPE_KEYCODE });
+    });
 
     expect(() => dropdown.getByText("Section")).toThrow();
 });

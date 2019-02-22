@@ -53,11 +53,10 @@ export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOpt
             return;
         }
 
+        setOpen(nextOpenState);
         if (options.onToggle != null) {
             options.onToggle(nextOpenState, eventSource);
         }
-
-        setOpen(nextOpenState);
     };
 
     //#region Effects
