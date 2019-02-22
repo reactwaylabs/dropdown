@@ -9,7 +9,7 @@ import { DropdownOnOpenHandler, DropdownOnToggleHandler, DropdownEventSource, Cl
 import { ESCAPE_KEYCODE } from "../helpers";
 
 export interface DropdownHandlerProps extends ClassNameProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     defaultIsOpen?: boolean;
     isOpen?: boolean;
     onOpen?: DropdownOnOpenHandler;
