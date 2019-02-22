@@ -119,22 +119,38 @@ it("openClassName is added to className when dropdown is opened.", () => {
     expect(dropdown.container.firstChild).toHaveClass(className, openClassName);
 });
 
-// TODO: Fix controlled value.
-// it("simple controlled dropdown", () => {
-//     const dropdown = render(
-//         <DropdownHandler isOpen={true}>
-//             <DropdownHeader>Header</DropdownHeader>
-//             <DropdownSection>Section</DropdownSection>
-//         </DropdownHandler>
-//     );
+it("simple controlled dropdown", () => {
+    const dropdown = render(
+        <DropdownHandler isOpen={true}>
+            <DropdownHeader>Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
 
-//     expect(dropdown.getByText("Section")).toBeDefined();
+    expect(dropdown.getByText("Section")).toBeDefined();
 
-//     dropdown.rerender(
-//         <DropdownHandler isOpen={false}>
-//             <DropdownHeader>Header</DropdownHeader>
-//             <DropdownSection>Section</DropdownSection>
-//         </DropdownHandler>
-//     );
-//     expect(() => dropdown.getByText("Section")).toThrow();
-// });
+    dropdown.rerender(
+        <DropdownHandler isOpen={false}>
+            <DropdownHeader>Header</DropdownHeader>
+            <DropdownSection>Section</DropdownSection>
+        </DropdownHandler>
+    );
+    expect(() => dropdown.getByText("Section")).toThrow();
+});
+
+it("dropdown is closed when clicked outside", () => {
+    const dropdown = render(
+        <>
+            <DropdownHandler defaultIsOpen={true}>
+                <DropdownHeader>Header</DropdownHeader>
+                <DropdownSection>Section</DropdownSection>
+            </DropdownHandler>
+            <div>Outside</div>
+        </>
+    );
+
+    const outside = dropdown.getByText("Outside");
+    fireEvent.click(outside);
+
+    expect(() => dropdown.getByText("Section")).toThrow();
+});

@@ -40,9 +40,13 @@ export const DropdownHandler = (_props: DropdownHandlerProps) => {
         defaultIsOpen = false;
     }
 
-
     const ref = useRef<HTMLDivElement>(null);
     const [isOpen, setOpen] = useState(defaultIsOpen);
+
+    if (props.isOpen != null) {
+        //@ts-ignore
+        isOpen = props.isOpen;
+    }
 
     const isControlled: boolean = props.isOpen != null;
     const triggerCallbacks = (nextOpenState: boolean, eventSource: DropdownEventSource): void => {

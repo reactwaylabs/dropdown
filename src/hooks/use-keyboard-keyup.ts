@@ -6,15 +6,10 @@ export function useKeyboardKeyUp(callback: (event: KeyboardEvent) => void): void
         if (!CAN_I_USE_WINDOW_LISTENERS) {
             return;
         }
-
-        const windowClick = (event: KeyboardEvent) => {
-            callback(event);
-        };
-
-        window.addEventListener("keyup", windowClick);
+        window.addEventListener("keyup", callback);
 
         return () => {
-            window.removeEventListener("keyup", windowClick);
+            window.removeEventListener("keyup", callback);
         };
     }, [callback]);
 }

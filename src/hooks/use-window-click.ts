@@ -6,15 +6,10 @@ export function useWindowClick(callback: (event: MouseEvent) => void): void {
         if (!CAN_I_USE_WINDOW_LISTENERS) {
             return;
         }
-
-        const windowClick = (event: MouseEvent) => {
-            callback(event);
-        };
-
-        window.addEventListener("click", windowClick);
+        window.addEventListener("click", callback);
 
         return () => {
-            window.removeEventListener("click", windowClick);
+            window.removeEventListener("click", callback);
         };
     }, [callback]);
 }
