@@ -1,7 +1,7 @@
 import { useState, useRef, Dispatch, SetStateAction, RefObject } from "react";
 
 import { DropdownOnToggleHandler, DropdownEventSource } from "../contracts";
-import { ESCAPE_KEYCODE } from "../helpers";
+import { ESCAPE_KEYCODE, isElementInContainer } from "../helpers";
 import { useKeyboardKeyUp } from "./use-keyboard-keyup";
 import { useWindowClick } from "./use-window-click";
 
@@ -25,15 +25,6 @@ function useDropdownOpenState(isOpen: boolean | undefined = undefined, defaultIs
 
 type OpenStateUpdater = Dispatch<SetStateAction<boolean>>;
 
-function isElementInContainer(container: HTMLElement | null, element: Element): boolean {
-    if (container == null) {
-        return false;
-    }
-    const containerElement: HTMLElement = container;
-
-    return containerElement.contains(element);
-}
-
 export interface DropdownHandlerOptions {
     defaultIsOpen: boolean;
     isOpen: boolean;
@@ -48,14 +39,14 @@ export interface DropdownHandlerOptions {
 export interface DropdownHandlerResult {
     updateOpenState: (isOpen: boolean, eventSource: DropdownEventSource) => void;
     isOpen: boolean;
-    containerRef: RefObject<HTMLElement>;
+    containerRef: RefObject<HTMLElement | undefined>;
 }
 
 type RequiredUndefined<TT> = { [TKey in keyof TT]: TT[TKey] | undefined };
 
 export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOptions>): DropdownHandlerResult {
     const [isOpen, setOpen] = useDropdownOpenState(options.isOpen, options.defaultIsOpen);
-    const ref = useRef<HTMLElement>(null);
+    const ref = useRef<HTMLElement>();
 
     const updateOpenState: DropdownOnToggleHandler = (nextOpenState, eventSource) => {
         if (options.disabled) {

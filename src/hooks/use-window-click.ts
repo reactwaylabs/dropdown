@@ -4,7 +4,7 @@ import { CAN_I_USE_WINDOW_LISTENERS } from "../helpers";
 export function useWindowClick(callback: (event: MouseEvent) => void): void {
     useEffect(() => {
         if (!CAN_I_USE_WINDOW_LISTENERS) {
-            return;
+            return undefined;
         }
         window.addEventListener("click", callback);
 
