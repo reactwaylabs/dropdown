@@ -5,15 +5,11 @@ import { ESCAPE_KEYCODE } from "../helpers";
 import { useKeyboardKeyUp } from "./use-keyboard-keyup";
 import { useWindowClick } from "./use-window-click";
 
-function useDropdownOpenState(
-    isOpen: boolean | undefined = undefined,
-    defaultIsOpen: boolean = false,
-    disabled: boolean = false
-): [boolean, OpenStateUpdater] {
+function useDropdownOpenState(isOpen: boolean | undefined = undefined, defaultIsOpen: boolean = false): [boolean, OpenStateUpdater] {
     const [isOpenValue, setOpen] = useState(defaultIsOpen);
 
     const updater: OpenStateUpdater = value => {
-        if (disabled || isOpen != null) {
+        if (isOpen != null) {
             return;
         }
 
@@ -58,8 +54,8 @@ export interface DropdownHandlerResult {
 type RequiredUndefined<TT> = { [TKey in keyof TT]: TT[TKey] | undefined };
 
 export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOptions>): DropdownHandlerResult {
-    const [isOpen, setOpen] = useDropdownOpenState(options.isOpen, options.defaultIsOpen, options.disabled);
-    const ref = useRef<HTMLDivElement>(null);
+    const [isOpen, setOpen] = useDropdownOpenState(options.isOpen, options.defaultIsOpen);
+    const ref = useRef<HTMLElement>(null);
 
     const updateOpenState: DropdownOnToggleHandler = (nextOpenState, eventSource) => {
         if (options.disabled) {
@@ -73,6 +69,7 @@ export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOpt
         setOpen(nextOpenState);
     };
 
+    //#region Effects
     useKeyboardKeyUp(event => {
         if (!options.closeOnEscapeClick || isOpen === false || event.keyCode !== ESCAPE_KEYCODE) {
             return;
@@ -87,6 +84,7 @@ export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOpt
 
         updateOpenState(false, DropdownEventSource.EscapeClick);
     });
+    //#endregion
 
     return {
         containerRef: ref,
