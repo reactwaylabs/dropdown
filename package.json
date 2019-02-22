@@ -1,20 +1,10 @@
 {
     "name": "simplr-dropdown",
-    "version": "4.0.2",
+    "version": "5.0.0",
     "description": "A flexible React dropdown component.",
     "types": "./dist/index.d.ts",
     "main": "./dist/simplr-dropdown.js",
-    "scripts": {
-        "pretest": "tsc -p . --noEmit && tslint -p .",
-        "test": "jest",
-        "test-ci": "npm run test -- --maxWorkers=4",
-        "coveralls": "coveralls < coverage/lcov.info",
-        "build": "rollup -c",
-        "postbuild": "rimraf ./dist/**/__tests__/",
-        "watch": "rollup -c -w",
-        "docs-gen": "ts-docs-gen --entryFile ./src/index.ts",
-        "travis-release": "node ./tools/travis-release/release.js"
-    },
+    "scripts": {},
     "keywords": [
         "react",
         "dropdown",
@@ -35,64 +25,7 @@
         "dist",
         "**/*.md"
     ],
-    "devDependencies": {
-        "@types/enzyme": "^3.1.9",
-        "@types/enzyme-adapter-react-16": "^1.0.2",
-        "@types/fs-extra": "^5.0.1",
-        "@types/jest": "^22.2.2",
-        "coveralls": "^3.0.0",
-        "enzyme": "^3.3.0",
-        "enzyme-adapter-react-16": "^1.1.1",
-        "fs-extra": "^5.0.0",
-        "jest": "^22.4.3",
-        "jest-environment-jsdom": "^22.4.3",
-        "jest-enzyme": "^6.0.0",
-        "rimraf": "^2.6.2",
-        "rollup": "^0.57.1",
-        "rollup-plugin-auto-external": "^1.2.0",
-        "rollup-plugin-typescript2": "^0.12.0",
-        "rollup-plugin-uglify": "^3.0.0",
-        "simplr-tslint": "^1.0.0-alpha.9",
-        "ts-docs-gen": "^0.2.0",
-        "ts-jest": "^22.4.2",
-        "tslint": "^5.9.1",
-        "tslint-language-service": "^0.9.9",
-        "typescript": "^2.8.1"
-    },
-    "dependencies": {
-        "@types/classnames": "^2.2.3",
-        "@types/prop-types": "^15.5.2",
-        "@types/react": "^16.3.6",
-        "@types/react-dom": "^16.0.4",
-        "classnames": "^2.2.5",
-        "prop-types": "^15.6.1",
-        "react": "^16.3.1",
-        "react-dom": "^16.3.1",
-        "tslib": "^1.9.0"
-    },
-    "jest": {
-        "setupTestFrameworkScriptFile": "./__tests__/tests-configuration.ts",
-        "collectCoverage": true,
-        "collectCoverageFrom": [
-            "!src/index.ts",
-            "src/**/*.{ts,tsx}",
-            "!*",
-            "!**/__tests__/**/*"
-        ],
-        "transform": {
-            ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-        },
-        "globals": {
-            "ts-jest": {
-                "skipBabel": true,
-                "tsConfigFile": "./tsconfig.jest.json"
-            }
-        },
-        "testRegex": "/__tests__/.*\\.(test|spec).(ts|tsx|js)$",
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js"
-        ]
-    }
+    "devDependencies": {},
+    "dependencies": {},
+    "jest": {}
 }
