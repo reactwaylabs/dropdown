@@ -4,12 +4,10 @@ import classNames from "classnames";
 import { DropdownContext } from "../contexts/dropdown-context";
 
 import { useDropdownHandler, DropdownHandlerOptions } from "../hooks/use-dropdown-handler";
-import { ClassNameProps, DropdownOnOpenHandler, DropdownEventSource } from "../contracts";
+import { ClassNameProps, DropdownEventSource } from "../contracts";
 
 export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHandlerOptions> {
     children?: React.ReactNode;
-    onOpen?: DropdownOnOpenHandler;
-    onClose?: DropdownOnOpenHandler;
     toggleOnHeaderClick?: boolean;
     closeOnSectionClick?: boolean;
 }
@@ -26,19 +24,7 @@ export const DropdownHandler = (_props: DropdownHandlerProps) => {
     const dropdown = useDropdownHandler({
         defaultIsOpen: props.defaultIsOpen,
         isOpen: props.isOpen,
-        onToggle: (isOpen, eventSource) => {
-            if (props.onToggle != null) {
-                props.onToggle(isOpen, eventSource);
-            }
-
-            if (props.onOpen != null && props.isOpen) {
-                props.onOpen(eventSource);
-            }
-
-            if (props.onClose != null && !props.isOpen) {
-                props.onClose(eventSource);
-            }
-        },
+        onToggle: props.onToggle,
         disabled: props.disabled,
         closeOnEscapeClick: props.closeOnEscapeClick,
         closeOnOutsideClick: props.closeOnOutsideClick

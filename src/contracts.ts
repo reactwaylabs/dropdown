@@ -7,8 +7,6 @@ export enum DropdownEventSource {
 }
 
 export type DropdownOnToggleHandler = (isOpen: boolean, source: DropdownEventSource) => void;
-export type DropdownOnOpenHandler = (source: DropdownEventSource) => void;
-export type DropdownOnCloseHandler = (source: DropdownEventSource) => void;
 
 export interface ClassNameProps {
     className?: string;
