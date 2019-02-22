@@ -30,9 +30,7 @@ export interface DropdownHandlerOptions {
     isOpen: boolean;
     onToggle: DropdownOnToggleHandler;
     disabled: boolean;
-    toggleOnHeaderClick: boolean;
     closeOnOutsideClick: boolean;
-    closeOnSectionClick: boolean;
     closeOnEscapeClick: boolean;
 }
 

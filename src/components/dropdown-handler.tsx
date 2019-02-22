@@ -10,6 +10,8 @@ export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHa
     children?: React.ReactNode;
     onOpen?: DropdownOnOpenHandler;
     onClose?: DropdownOnOpenHandler;
+    toggleOnHeaderClick?: boolean;
+    closeOnSectionClick?: boolean;
 }
 
 export const DropdownHandler = (_props: DropdownHandlerProps) => {
@@ -39,9 +41,7 @@ export const DropdownHandler = (_props: DropdownHandlerProps) => {
         },
         disabled: props.disabled,
         closeOnEscapeClick: props.closeOnEscapeClick,
-        closeOnOutsideClick: props.closeOnOutsideClick,
-        closeOnSectionClick: props.closeOnSectionClick,
-        toggleOnHeaderClick: props.toggleOnHeaderClick
+        closeOnOutsideClick: props.closeOnOutsideClick
     });
 
     //#region Children clicks
