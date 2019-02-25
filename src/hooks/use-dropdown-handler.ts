@@ -3,7 +3,7 @@ import { useRef, RefObject } from "react";
 import { useKeyboardKeyUp } from "./use-keyboard-keyup";
 import { useWindowClick } from "./use-window-click";
 import { useDropdownOpenState } from "./use-dropdown-state";
-import { DropdownOnToggleHandler, DropdownEventSource } from "../contracts";
+import { DropdownOnToggleHandler, DropdownEventSource, RequiredUndefined } from "../contracts";
 import { ESCAPE_KEYCODE, isElementInContainer } from "../helpers";
 
 export interface DropdownHandlerOptions {
@@ -20,8 +20,6 @@ export interface DropdownHandlerResult {
     isOpen: boolean;
     containerRef: RefObject<HTMLElement | undefined>;
 }
-
-type RequiredUndefined<TT> = { [TKey in keyof TT]: TT[TKey] | undefined };
 
 export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOptions>): DropdownHandlerResult {
     const [isOpen, setOpen] = useDropdownOpenState(options.isOpen, options.defaultIsOpen);

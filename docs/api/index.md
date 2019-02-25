@@ -1,261 +1,239 @@
 # Table of contents
 
 * [index.ts][SourceFile-0]
+    * Functions
+        * [useDropdownHandler][FunctionDeclaration-0]
+        * [useDropdownOpenState][FunctionDeclaration-1]
+        * [useKeyboardKeyUp][FunctionDeclaration-2]
+        * [useWindowClick][FunctionDeclaration-3]
     * Interfaces
-        * [HandlerBaseProps][InterfaceDeclaration-0]
-        * [HandlerBaseState][InterfaceDeclaration-2]
-        * [BaseHandlerChildContext][InterfaceDeclaration-3]
-        * [HeaderBaseProps][InterfaceDeclaration-4]
-        * [HeaderBaseContext][InterfaceDeclaration-5]
-        * [SectionBaseProps][InterfaceDeclaration-6]
-        * [SectionBaseContext][InterfaceDeclaration-7]
-        * [DropdownHandlerProps][InterfaceDeclaration-8]
-        * [DropdownHeaderProps][InterfaceDeclaration-10]
-        * [DropdownSectionProps][InterfaceDeclaration-11]
-        * [HTMLElementProps][InterfaceDeclaration-9]
+        * [DropdownHandlerProps][InterfaceDeclaration-0]
+        * [DropdownHeaderProps][InterfaceDeclaration-3]
+        * [DropdownSectionProps][InterfaceDeclaration-4]
+        * [DropdownHandlerOptions][InterfaceDeclaration-2]
+        * [DropdownHandlerResult][InterfaceDeclaration-5]
+        * [DropdownContextDto][InterfaceDeclaration-6]
         * [ClassNameProps][InterfaceDeclaration-1]
     * Types
+        * [OpenStateUpdater][TypeAliasDeclaration-2]
         * [DropdownOnToggleHandler][TypeAliasDeclaration-0]
-        * [DropdownOnOpenHandler][TypeAliasDeclaration-1]
-        * [DropdownOnCloseHandler][TypeAliasDeclaration-2]
+        * [RequiredUndefined][TypeAliasDeclaration-1]
     * Enums
-        * [EventSource][EnumDeclaration-0]
+        * [DropdownEventSource][EnumDeclaration-0]
+    * Variables
+        * [DropdownHandler][VariableDeclaration-0]
+        * [DropdownHeader][VariableDeclaration-1]
+        * [DropdownSection][VariableDeclaration-2]
+        * [DropdownContext][VariableDeclaration-3]
 
 # index.ts
 
+## Functions
+
+### useDropdownHandler
+
+```typescript
+function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOptions>): DropdownHandlerResult;
+```
+
+**Parameters**
+
+| Name    | Type                                                                                          |
+| ------- | --------------------------------------------------------------------------------------------- |
+| options | [RequiredUndefined][TypeAliasDeclaration-1]<[DropdownHandlerOptions][InterfaceDeclaration-2]> |
+
+**Return type**
+
+[DropdownHandlerResult][InterfaceDeclaration-5]
+
+----------
+
+### useDropdownOpenState
+
+```typescript
+function useDropdownOpenState(isOpen: boolean | undefined = undefined, defaultIsOpen: boolean = false): [boolean, Dispatch];
+```
+
+**Parameters**
+
+| Name          | Type                     | Default value |
+| ------------- | ------------------------ | ------------- |
+| isOpen        | boolean &#124; undefined | undefined     |
+| defaultIsOpen | boolean                  | false         |
+
+**Return type**
+
+[boolean, Dispatch]
+
+----------
+
+### useKeyboardKeyUp
+
+```typescript
+function useKeyboardKeyUp(callback: (event: KeyboardEvent) => void): void;
+```
+
+**Parameters**
+
+| Name     | Type                           |
+| -------- | ------------------------------ |
+| callback | (event: KeyboardEvent) => void |
+
+**Return type**
+
+void
+
+----------
+
+### useWindowClick
+
+```typescript
+function useWindowClick(callback: (event: MouseEvent) => void): void;
+```
+
+**Parameters**
+
+| Name     | Type                        |
+| -------- | --------------------------- |
+| callback | (event: MouseEvent) => void |
+
+**Return type**
+
+void
+
 ## Interfaces
-
-### HandlerBaseProps
-
-```typescript
-interface HandlerBaseProps extends ClassNameProps {
-    defaultIsOpen?: boolean | undefined;
-    isOpen?: boolean | undefined;
-    onOpen?: DropdownOnOpenHandler | undefined;
-    onClose?: DropdownOnOpenHandler | undefined;
-    onToggle?: DropdownOnToggleHandler | undefined;
-    disabled?: boolean | undefined;
-    toggleOnHeaderClick?: boolean | undefined;
-    closeOnOutsideClick?: boolean | undefined;
-    closeOnSectionClick?: boolean | undefined;
-    closeOnEscapeClick?: boolean | undefined;
-}
-```
-
-**Extends**
-
-[ClassNameProps][InterfaceDeclaration-1]
-
-**Properties**
-
-| Name                | Type                                     | Optional |
-| ------------------- | ---------------------------------------- | -------- |
-| defaultIsOpen       | boolean &#124; undefined                 | true     |
-| isOpen              | boolean &#124; undefined                 | true     |
-| onOpen              | DropdownOnOpenHandler &#124; undefined   | true     |
-| onClose             | DropdownOnOpenHandler &#124; undefined   | true     |
-| onToggle            | DropdownOnToggleHandler &#124; undefined | true     |
-| disabled            | boolean &#124; undefined                 | true     |
-| toggleOnHeaderClick | boolean &#124; undefined                 | true     |
-| closeOnOutsideClick | boolean &#124; undefined                 | true     |
-| closeOnSectionClick | boolean &#124; undefined                 | true     |
-| closeOnEscapeClick  | boolean &#124; undefined                 | true     |
-
-----------
-
-### HandlerBaseState
-
-```typescript
-interface HandlerBaseState {
-    isOpen: boolean;
-}
-```
-
-**Properties**
-
-| Name   | Type    | Optional |
-| ------ | ------- | -------- |
-| isOpen | boolean | false    |
-
-----------
-
-### BaseHandlerChildContext
-
-```typescript
-interface BaseHandlerChildContext {
-    dropdownIsOpen: boolean;
-    dropdownIsDisabled: boolean;
-    dropdownOnHeaderClickCallback: () => void;
-    dropdownOnSectionClickCallback: () => void;
-}
-```
-
-**Properties**
-
-| Name                           | Type       | Optional |
-| ------------------------------ | ---------- | -------- |
-| dropdownIsOpen                 | boolean    | false    |
-| dropdownIsDisabled             | boolean    | false    |
-| dropdownOnHeaderClickCallback  | () => void | false    |
-| dropdownOnSectionClickCallback | () => void | false    |
-
-----------
-
-### HeaderBaseProps
-
-```typescript
-interface HeaderBaseProps extends ClassNameProps {
-}
-```
-
-**Extends**
-
-[ClassNameProps][InterfaceDeclaration-1]
-
-----------
-
-### HeaderBaseContext
-
-```typescript
-interface HeaderBaseContext {
-    dropdownIsOpen: boolean;
-    dropdownIsDisabled: boolean;
-    dropdownOnHeaderClickCallback: () => void;
-}
-```
-
-**Properties**
-
-| Name                          | Type       | Optional |
-| ----------------------------- | ---------- | -------- |
-| dropdownIsOpen                | boolean    | false    |
-| dropdownIsDisabled            | boolean    | false    |
-| dropdownOnHeaderClickCallback | () => void | false    |
-
-----------
-
-### SectionBaseProps
-
-```typescript
-interface SectionBaseProps extends ClassNameProps {
-}
-```
-
-**Extends**
-
-[ClassNameProps][InterfaceDeclaration-1]
-
-----------
-
-### SectionBaseContext
-
-```typescript
-interface SectionBaseContext {
-    dropdownIsOpen: boolean;
-    dropdownIsDisabled: boolean;
-    dropdownOnSectionClickCallback: () => void;
-}
-```
-
-**Properties**
-
-| Name                           | Type       | Optional |
-| ------------------------------ | ---------- | -------- |
-| dropdownIsOpen                 | boolean    | false    |
-| dropdownIsDisabled             | boolean    | false    |
-| dropdownOnSectionClickCallback | () => void | false    |
-
-----------
 
 ### DropdownHandlerProps
 
 ```typescript
-interface DropdownHandlerProps extends HandlerBaseProps, HTMLElementProps<HTMLDivElement> {
-    ref?: string | ((instance: DropdownHandler | null) => any) | RefObject<DropdownHandler> | undefined<DropdownHandler>;
+interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHandlerOptions> {
+    children?: ReactNode;
+    toggleOnHeaderClick?: boolean | undefined;
+    closeOnSectionClick?: boolean | undefined;
 }
 ```
 
 **Extends**
 
-[HandlerBaseProps][InterfaceDeclaration-0]
+[ClassNameProps][InterfaceDeclaration-1]
 
-[HTMLElementProps][InterfaceDeclaration-9]<HTMLDivElement>
+Partial<[DropdownHandlerOptions][InterfaceDeclaration-2]>
 
 **Properties**
 
-| Name | Type                                                                                                                                                     | Optional |
-| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ref  | string &#124; ((instance: DropdownHandler &#124; null) => any) &#124; RefObject<DropdownHandler> &#124; undefined<[DropdownHandler][ClassDeclaration-3]> | true     |
+| Name                | Type                     | Optional |
+| ------------------- | ------------------------ | -------- |
+| children            | ReactNode                | true     |
+| toggleOnHeaderClick | boolean &#124; undefined | true     |
+| closeOnSectionClick | boolean &#124; undefined | true     |
 
 ----------
 
 ### DropdownHeaderProps
 
 ```typescript
-interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement>, HeaderBaseProps {
-    ref?: string | ((instance: DropdownHeader | null) => any) | RefObject<DropdownHeader> | undefined<DropdownHeader>;
+interface DropdownHeaderProps extends ClassNameProps {
+    children?: ReactNode;
 }
 ```
 
 **Extends**
 
-[HTMLElementProps][InterfaceDeclaration-9]<HTMLDivElement>
-
-[HeaderBaseProps][InterfaceDeclaration-4]
+[ClassNameProps][InterfaceDeclaration-1]
 
 **Properties**
 
-| Name | Type                                                                                                                                                  | Optional |
-| ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ref  | string &#124; ((instance: DropdownHeader &#124; null) => any) &#124; RefObject<DropdownHeader> &#124; undefined<[DropdownHeader][ClassDeclaration-4]> | true     |
+| Name     | Type      | Optional |
+| -------- | --------- | -------- |
+| children | ReactNode | true     |
 
 ----------
 
 ### DropdownSectionProps
 
 ```typescript
-interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement>, SectionBaseProps {
-    ref?: string | ((instance: DropdownSection | null) => any) | RefObject<DropdownSection> | undefined<DropdownSection>;
+interface DropdownSectionProps extends ClassNameProps {
+    children?: ReactNode;
 }
 ```
 
 **Extends**
 
-[HTMLElementProps][InterfaceDeclaration-9]<HTMLDivElement>
-
-[SectionBaseProps][InterfaceDeclaration-6]
+[ClassNameProps][InterfaceDeclaration-1]
 
 **Properties**
 
-| Name | Type                                                                                                                                                     | Optional |
-| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ref  | string &#124; ((instance: DropdownSection &#124; null) => any) &#124; RefObject<DropdownSection> &#124; undefined<[DropdownSection][ClassDeclaration-5]> | true     |
+| Name     | Type      | Optional |
+| -------- | --------- | -------- |
+| children | ReactNode | true     |
 
 ----------
 
-### HTMLElementProps
+### DropdownHandlerOptions
 
 ```typescript
-interface HTMLElementProps<TElement> extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    ref?: string | ((instance: any) => any) | RefObject<any> | undefined<any>;
+interface DropdownHandlerOptions {
+    defaultIsOpen: boolean;
+    isOpen: boolean;
+    onToggle: DropdownOnToggleHandler;
+    disabled: boolean;
+    closeOnOutsideClick: boolean;
+    closeOnEscapeClick: boolean;
 }
 ```
 
-**Type parameters**
+**Properties**
 
-| Name     |
-| -------- |
-| TElement |
+| Name                | Type                                              | Optional |
+| ------------------- | ------------------------------------------------- | -------- |
+| defaultIsOpen       | boolean                                           | false    |
+| isOpen              | boolean                                           | false    |
+| onToggle            | [DropdownOnToggleHandler][TypeAliasDeclaration-0] | false    |
+| disabled            | boolean                                           | false    |
+| closeOnOutsideClick | boolean                                           | false    |
+| closeOnEscapeClick  | boolean                                           | false    |
 
-**Extends**
+----------
 
-DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+### DropdownHandlerResult
+
+```typescript
+interface DropdownHandlerResult {
+    updateOpenState: (isOpen: boolean, eventSource: DropdownEventSource) => void;
+    isOpen: boolean;
+    containerRef: RefObject<HTMLElement | undefined>;
+}
+```
 
 **Properties**
 
-| Name | Type                                                                               | Optional |
-| ---- | ---------------------------------------------------------------------------------- | -------- |
-| ref  | string &#124; ((instance: any) => any) &#124; RefObject<any> &#124; undefined<any> | true     |
+| Name            | Type                                                        | Optional |
+| --------------- | ----------------------------------------------------------- | -------- |
+| updateOpenState | (isOpen: boolean, eventSource: DropdownEventSource) => void | false    |
+| isOpen          | boolean                                                     | false    |
+| containerRef    | RefObject<HTMLElement &#124; undefined>                     | false    |
+
+----------
+
+### DropdownContextDto
+
+```typescript
+interface DropdownContextDto {
+    isOpen: boolean;
+    isDisabled: boolean;
+    onHeaderClick: () => void;
+    onSectionClick: () => void;
+}
+```
+
+**Properties**
+
+| Name           | Type       | Optional |
+| -------------- | ---------- | -------- |
+| isOpen         | boolean    | false    |
+| isDisabled     | boolean    | false    |
+| onHeaderClick  | () => void | false    |
+| onSectionClick | () => void | false    |
 
 ----------
 
@@ -281,47 +259,55 @@ interface ClassNameProps {
 
 ## Types
 
+### OpenStateUpdater
+
+```typescript
+type OpenStateUpdater = Dispatch<SetStateAction<boolean>>;
+```
+
+**Type**
+
+Dispatch<SetStateAction<boolean>>
+
+----------
+
 ### DropdownOnToggleHandler
 
 ```typescript
-type DropdownOnToggleHandler = (isOpen: boolean, source: EventSource) => void;
+type DropdownOnToggleHandler = (isOpen: boolean, source: DropdownEventSource) => void;
 ```
 
 **Type**
 
-(isOpen: boolean, source: EventSource) => void
+(isOpen: boolean, source: DropdownEventSource) => void
 
 ----------
 
-### DropdownOnOpenHandler
+### RequiredUndefined
 
 ```typescript
-type DropdownOnOpenHandler = (source: EventSource) => void;
+type RequiredUndefined<TT> = {
+    [TKey extends keyof TT]: TT[TKey] | undefined
+};
 ```
+
+**Type parameters**
+
+| Name |
+| ---- |
+| TT   |
 
 **Type**
 
-(source: EventSource) => void
-
-----------
-
-### DropdownOnCloseHandler
-
-```typescript
-type DropdownOnCloseHandler = (source: EventSource) => void;
-```
-
-**Type**
-
-(source: EventSource) => void
+{ [TKey extends keyof TT]: TT[TKey] | undefined }
 
 ## Enums
 
-### EventSource
+### DropdownEventSource
 
 
 ```typescript
-enum EventSource {
+enum DropdownEventSource {
      HeaderClick = 8,
      SectionClick = 16,
      OutsideClick = 24,
@@ -340,68 +326,80 @@ enum EventSource {
 | EscapeClick   | 32    |
 | ManualTrigger | 64    |
 
-## Classes
+## Variables
 
-### [HandlerBase][ClassDeclaration-0]
+### DropdownHandler
 
+```typescript
+const DropdownHandler: (_props: DropdownHandlerProps) => Element;
+```
 
-----------
+**Type**
 
-### [HeaderBase][ClassDeclaration-1]
-
-
-----------
-
-### [SectionBase][ClassDeclaration-2]
-
+(_props: DropdownHandlerProps) => Element
 
 ----------
 
-### [DropdownHandler][ClassDeclaration-3]
+### DropdownHeader
 
+```typescript
+const DropdownHeader: (props: DropdownHeaderProps) => Element;
+```
+
+**Type**
+
+(props: DropdownHeaderProps) => Element
 
 ----------
 
-### [DropdownHeader][ClassDeclaration-4]
+### DropdownSection
 
+```typescript
+const DropdownSection: (props: DropdownSectionProps) => Element | null;
+```
+
+**Type**
+
+(props: DropdownSectionProps) => Element | null
 
 ----------
 
-### [DropdownSection][ClassDeclaration-5]
+### DropdownContext
 
+```typescript
+const DropdownContext: Context<DropdownContextDto>;
+```
+
+**Type**
+
+Context<[DropdownContextDto][InterfaceDeclaration-6]>
 
 [SourceFile-0]: index.md#indexts
-[InterfaceDeclaration-0]: index.md#handlerbaseprops
+[FunctionDeclaration-0]: index.md#usedropdownhandler
+[InterfaceDeclaration-2]: index.md#dropdownhandleroptions
+[TypeAliasDeclaration-1]: index.md#requiredundefined
+[InterfaceDeclaration-5]: index.md#dropdownhandlerresult
+[FunctionDeclaration-1]: index.md#usedropdownopenstate
+[FunctionDeclaration-2]: index.md#usekeyboardkeyup
+[FunctionDeclaration-3]: index.md#usewindowclick
+[InterfaceDeclaration-0]: index.md#dropdownhandlerprops
 [InterfaceDeclaration-1]: index.md#classnameprops
-[InterfaceDeclaration-2]: index.md#handlerbasestate
-[InterfaceDeclaration-3]: index.md#basehandlerchildcontext
-[InterfaceDeclaration-4]: index.md#headerbaseprops
+[InterfaceDeclaration-2]: index.md#dropdownhandleroptions
+[InterfaceDeclaration-3]: index.md#dropdownheaderprops
 [InterfaceDeclaration-1]: index.md#classnameprops
-[InterfaceDeclaration-5]: index.md#headerbasecontext
-[InterfaceDeclaration-6]: index.md#sectionbaseprops
+[InterfaceDeclaration-4]: index.md#dropdownsectionprops
 [InterfaceDeclaration-1]: index.md#classnameprops
-[InterfaceDeclaration-7]: index.md#sectionbasecontext
-[InterfaceDeclaration-8]: index.md#dropdownhandlerprops
-[InterfaceDeclaration-0]: index.md#handlerbaseprops
-[InterfaceDeclaration-9]: index.md#htmlelementprops
-[ClassDeclaration-3]: index/dropdownhandler.md#dropdownhandler
-[InterfaceDeclaration-10]: index.md#dropdownheaderprops
-[InterfaceDeclaration-9]: index.md#htmlelementprops
-[InterfaceDeclaration-4]: index.md#headerbaseprops
-[ClassDeclaration-4]: index/dropdownheader.md#dropdownheader
-[InterfaceDeclaration-11]: index.md#dropdownsectionprops
-[InterfaceDeclaration-9]: index.md#htmlelementprops
-[InterfaceDeclaration-6]: index.md#sectionbaseprops
-[ClassDeclaration-5]: index/dropdownsection.md#dropdownsection
-[InterfaceDeclaration-9]: index.md#htmlelementprops
-[InterfaceDeclaration-1]: index.md#classnameprops
+[InterfaceDeclaration-2]: index.md#dropdownhandleroptions
 [TypeAliasDeclaration-0]: index.md#dropdownontogglehandler
-[TypeAliasDeclaration-1]: index.md#dropdownonopenhandler
-[TypeAliasDeclaration-2]: index.md#dropdownonclosehandler
-[EnumDeclaration-0]: index.md#eventsource
-[ClassDeclaration-0]: index/handlerbase.md#handlerbase
-[ClassDeclaration-1]: index/headerbase.md#headerbase
-[ClassDeclaration-2]: index/sectionbase.md#sectionbase
-[ClassDeclaration-3]: index/dropdownhandler.md#dropdownhandler
-[ClassDeclaration-4]: index/dropdownheader.md#dropdownheader
-[ClassDeclaration-5]: index/dropdownsection.md#dropdownsection
+[InterfaceDeclaration-5]: index.md#dropdownhandlerresult
+[InterfaceDeclaration-6]: index.md#dropdowncontextdto
+[InterfaceDeclaration-1]: index.md#classnameprops
+[TypeAliasDeclaration-2]: index.md#openstateupdater
+[TypeAliasDeclaration-0]: index.md#dropdownontogglehandler
+[TypeAliasDeclaration-1]: index.md#requiredundefined
+[EnumDeclaration-0]: index.md#dropdowneventsource
+[VariableDeclaration-0]: index.md#dropdownhandler
+[VariableDeclaration-1]: index.md#dropdownheader
+[VariableDeclaration-2]: index.md#dropdownsection
+[VariableDeclaration-3]: index.md#dropdowncontext
+[InterfaceDeclaration-6]: index.md#dropdowncontextdto

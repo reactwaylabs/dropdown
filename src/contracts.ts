@@ -14,3 +14,8 @@ export interface ClassNameProps {
     closedClassName?: string;
     disabledClassName?: string;
 }
+
+/**
+ * Types helper.
+ */
+export type RequiredUndefined<TT> = { [TKey in keyof TT]: TT[TKey] | undefined };
