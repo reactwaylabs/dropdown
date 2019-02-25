@@ -121,7 +121,7 @@ it("openClassName is added to className when dropdown is opened.", () => {
     expect(dropdown.container.firstChild).toHaveClass(className, openClassName);
 });
 
-it("simple controlled dropdown", () => {
+it("simple controlled dropdown.", () => {
     const dropdown = render(
         <DropdownHandler isOpen={true}>
             <DropdownHeader>Header</DropdownHeader>
@@ -140,7 +140,7 @@ it("simple controlled dropdown", () => {
     expect(() => dropdown.getByText("Section")).toThrow();
 });
 
-it("dropdown is closed when clicked outside", () => {
+it("dropdown is closed when clicked outside.", () => {
     const dropdown = render(
         <>
             <DropdownHandler defaultIsOpen={true}>
@@ -157,7 +157,7 @@ it("dropdown is closed when clicked outside", () => {
     expect(() => dropdown.getByText("Section")).toThrow();
 });
 
-it("dropdown is closed when clicked outside", () => {
+it("dropdown is closed when clicked outside.", () => {
     // FIXME: Update to normal types for mockup.
     const map: { [event: string]: any } = {};
     window.addEventListener = jest.fn((event, cb) => {
