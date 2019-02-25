@@ -6,13 +6,34 @@ import { DropdownContext } from "../contexts/dropdown-context";
 import { useDropdownHandler, DropdownHandlerOptions } from "../hooks/use-dropdown-handler";
 import { ClassNameProps, DropdownEventSource, HTMLProps } from "../contracts";
 
-export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHandlerOptions>, HTMLProps<HTMLDivElement> {
+function extractHTMLProps(props: DropdownHandlerProps): {} {
+    const {
+        children,
+        className,
+        closeOnEscapeClick,
+        closeOnOutsideClick,
+        closeOnSectionClick,
+        closedClassName,
+        defaultIsOpen,
+        disabled,
+        disabledClassName,
+        isOpen,
+        onToggle,
+        openClassName,
+        toggleOnHeaderClick,
+        ...restProps
+    } = props;
+
+    return restProps;
+}
+
+export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHandlerOptions> {
     children?: React.ReactNode;
     toggleOnHeaderClick?: boolean;
     closeOnSectionClick?: boolean;
 }
 
-export const DropdownHandler = (_props: DropdownHandlerProps) => {
+export const DropdownHandler = (_props: DropdownHandlerProps & HTMLProps<HTMLDivElement>) => {
     const props = {
         toggleOnHeaderClick: true,
         closeOnSectionClick: false,
@@ -20,6 +41,7 @@ export const DropdownHandler = (_props: DropdownHandlerProps) => {
         closeOnEscapeClick: true,
         ..._props
     };
+    const htmlElementProps = extractHTMLProps(props);
 
     const dropdown = useDropdownHandler({
         defaultIsOpen: props.defaultIsOpen,
@@ -56,6 +78,7 @@ export const DropdownHandler = (_props: DropdownHandlerProps) => {
                 [props.closedClassName || ""]: !dropdown.isOpen,
                 [props.disabledClassName || ""]: props.disabled
             })}
+            {...htmlElementProps}
         >
             <DropdownContext.Provider
                 value={{
