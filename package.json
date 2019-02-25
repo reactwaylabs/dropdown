@@ -1,12 +1,12 @@
 {
-    "name": "simplr-dropdown",
+    "name": "@reactway/dropdown",
     "version": "5.0.0-beta",
     "publishConfig": {
         "tag": "beta"
     },
     "description": "A flexible React dropdown component.",
     "types": "./dist/index.d.ts",
-    "main": "./dist/simplr-dropdown.js",
+    "main": "./dist/index.js",
     "scripts": {
         "build": "tsc -p .",
         "watch": "tsc -p . -w",
@@ -20,15 +20,15 @@
         "flexible",
         "component"
     ],
-    "author": "simplrjs <simplr@quatrodev.com> (https://github.com/simplrjs)",
+    "author": "ReactWay <dev@reactway.com> (https://github.com/reactway)",
     "contributors": [
         "Martynas Žilinskas <martynas@quatrodev.com> (https://github.com/MartynasZilinskas)",
         "Dovydas Navickas <dovydas@quatrodev.com> (https://github.com/DovydasNavickas)",
         "Giedrius Grabauskas <giedrius@quatrodev.com> (https://github.com/GiedriusGrabauskas)"
     ],
-    "bugs": "https://github.com/SimplrJS/simplr-dropdown/issues",
-    "repository": "SimplrJS/simplr-dropdown",
-    "homepage": "https://github.com/SimplrJS/simplr-dropdown",
+    "bugs": "https://github.com/ReactWay/dropdown/issues",
+    "repository": "reactway/dropdown",
+    "homepage": "https://github.com/ReactWay/dropdown",
     "license": "MIT",
     "files": [
         "dist",
