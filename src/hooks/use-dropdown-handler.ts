@@ -1,29 +1,10 @@
-import { useState, useRef, Dispatch, SetStateAction, RefObject } from "react";
+import { useRef, RefObject } from "react";
 
-import { DropdownOnToggleHandler, DropdownEventSource } from "../contracts";
-import { ESCAPE_KEYCODE, isElementInContainer } from "../helpers";
 import { useKeyboardKeyUp } from "./use-keyboard-keyup";
 import { useWindowClick } from "./use-window-click";
-
-function useDropdownOpenState(isOpen: boolean | undefined = undefined, defaultIsOpen: boolean = false): [boolean, OpenStateUpdater] {
-    const [isOpenValue, setOpen] = useState(defaultIsOpen);
-
-    const updater: OpenStateUpdater = value => {
-        if (isOpen != null) {
-            return;
-        }
-
-        if (typeof value === "function") {
-            setOpen(value(isOpenValue));
-        } else {
-            setOpen(value);
-        }
-    };
-
-    return [isOpen != null ? isOpen : isOpenValue, updater];
-}
-
-type OpenStateUpdater = Dispatch<SetStateAction<boolean>>;
+import { useDropdownOpenState } from "./use-dropdown-state";
+import { DropdownOnToggleHandler, DropdownEventSource } from "../contracts";
+import { ESCAPE_KEYCODE, isElementInContainer } from "../helpers";
 
 export interface DropdownHandlerOptions {
     defaultIsOpen: boolean;
