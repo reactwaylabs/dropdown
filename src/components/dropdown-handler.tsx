@@ -33,7 +33,7 @@ export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHa
     closeOnSectionClick?: boolean;
 }
 
-export const DropdownHandler = React.forwardRef<HTMLDivElement, DropdownHandlerProps & HTMLProps<HTMLDivElement>>((_props, ref) => {
+export const DropdownHandler = React.forwardRef<HTMLDivElement, DropdownHandlerProps & HTMLProps<HTMLDivElement>>((_props, forwardRef) => {
     const props = {
         toggleOnHeaderClick: true,
         closeOnSectionClick: false,
@@ -42,6 +42,7 @@ export const DropdownHandler = React.forwardRef<HTMLDivElement, DropdownHandlerP
         ..._props
     };
     const htmlElementProps = extractHTMLProps(props);
+    const ref = React.useMemo(() => (forwardRef != null ? forwardRef : React.createRef<HTMLDivElement>()), [forwardRef]);
 
     const dropdown = useDropdownHandler({
         defaultIsOpen: props.defaultIsOpen,
