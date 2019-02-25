@@ -4,9 +4,9 @@ import classNames from "classnames";
 import { DropdownContext } from "../contexts/dropdown-context";
 
 import { useDropdownHandler, DropdownHandlerOptions } from "../hooks/use-dropdown-handler";
-import { ClassNameProps, DropdownEventSource } from "../contracts";
+import { ClassNameProps, DropdownEventSource, HTMLProps } from "../contracts";
 
-export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHandlerOptions> {
+export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHandlerOptions>, HTMLProps<HTMLDivElement> {
     children?: React.ReactNode;
     toggleOnHeaderClick?: boolean;
     closeOnSectionClick?: boolean;

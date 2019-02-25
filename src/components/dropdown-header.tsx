@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import classNames from "classnames";
 
 import { DropdownContext } from "../contexts/dropdown-context";
-import { ClassNameProps } from "../contracts";
+import { ClassNameProps, HTMLProps } from "../contracts";
 
-export interface DropdownHeaderProps extends ClassNameProps {
+export interface DropdownHeaderProps extends ClassNameProps, HTMLProps<HTMLDivElement> {
     children?: React.ReactNode;
 }
 

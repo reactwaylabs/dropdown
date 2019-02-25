@@ -19,3 +19,13 @@ export interface ClassNameProps {
  * Types helper.
  */
 export type RequiredUndefined<TT> = { [TKey in keyof TT]: TT[TKey] | undefined };
+
+/**
+ * Types helper.
+ */
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
+/**
+ * Types helper.
+ */
+export type HTMLProps<TElement> = Omit<React.DetailedHTMLProps<React.HTMLAttributes<TElement>, TElement>, "ref">;
