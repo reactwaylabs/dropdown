@@ -1,19 +1,12 @@
-[![NPM version](https://img.shields.io/npm/v/simplr-dropdown.svg)](https://www.npmjs.com/package/simplr-dropdown)
-[![Build Status](https://travis-ci.org/SimplrJS/simplr-dropdown.svg?branch=master)](https://travis-ci.org/SimplrJS/simplr-dropdown)
-[![Coverage Status](https://coveralls.io/repos/github/SimplrJS/simplr-dropdown/badge.svg?branch=master)](https://coveralls.io/github/SimplrJS/simplr-dropdown?branch=master)
-[![dependencies Status](https://david-dm.org/SimplrJS/simplr-dropdown/status.svg)](https://david-dm.org/SimplrJS/simplr-dropdown)
-[![devDependencies Status](https://david-dm.org/SimplrJS/simplr-dropdown/dev-status.svg)](https://david-dm.org/SimplrJS/simplr-dropdown?type=dev)
-[![devDependencies Status](https://img.shields.io/npm/l/simplr-dropdown.svg)](https://npmjs.org/package/simplr-dropdown)
-
-# simplr-dropdown
+# @reactway/dropdown
 
 ## [Docs](./docs/index.md) | [API](./docs/api/index.md)
 
-A flexible React dropdown component.
+A flexible React dropdown component. Created with hooks :tada:.
 
 ## Get started 
 ```sh
-$ npm install simplr-dropdown
+$ npm install @reactway/dropdown
 ```
 
 ## Features
