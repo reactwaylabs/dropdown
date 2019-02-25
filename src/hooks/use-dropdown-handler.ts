@@ -45,7 +45,11 @@ export function useDropdownHandler(options: DropdownHandlerOptions): DropdownHan
         updateOpenState(false, DropdownEventSource.EscapeClick);
     });
     useWindowClick(event => {
-        if (!options.closeOnOutsideClick || isElementInContainer(options.containerRef.current, event.target as Element) || isOpen === false) {
+        if (
+            !options.closeOnOutsideClick ||
+            isElementInContainer(options.containerRef.current, event.target as Element) ||
+            isOpen === false
+        ) {
             return;
         }
 

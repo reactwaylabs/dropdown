@@ -18,7 +18,7 @@ export interface ClassNameProps {
 /**
  * Types helper.
  */
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+type Omit<TT, TK extends keyof TT> = Pick<TT, Exclude<keyof TT, TK>>;
 
 /**
  * Types helper.

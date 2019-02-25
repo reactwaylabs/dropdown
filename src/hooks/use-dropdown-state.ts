@@ -19,4 +19,3 @@ export function useDropdownOpenState(isOpen: boolean | undefined = undefined, de
 
     return [isOpen != null ? isOpen : isOpenValue, updater];
 }
-
