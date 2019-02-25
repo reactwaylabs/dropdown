@@ -22,12 +22,13 @@ export interface DropdownHeaderProps extends ClassNameProps {
     children?: React.ReactNode;
 }
 
-export const DropdownHeader = (props: DropdownHeaderProps & HTMLProps<HTMLDivElement>): JSX.Element => {
+export const DropdownHeader = React.forwardRef<HTMLDivElement, DropdownHeaderProps & HTMLProps<HTMLDivElement>>((props, ref) => {
     const handlerContext = useContext(DropdownContext);
     const htmlElementProps = extractHTMLProps(props);
 
     return (
         <div
+            ref={ref}
             className={classNames(props.className, {
                 [props.openClassName || ""]: handlerContext.isOpen,
                 [props.closedClassName || ""]: !handlerContext.isOpen,
@@ -39,4 +40,4 @@ export const DropdownHeader = (props: DropdownHeaderProps & HTMLProps<HTMLDivEle
             {props.children}
         </div>
     );
-};
+});

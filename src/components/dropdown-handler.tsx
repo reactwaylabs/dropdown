@@ -33,7 +33,7 @@ export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHa
     closeOnSectionClick?: boolean;
 }
 
-export const DropdownHandler = (_props: DropdownHandlerProps & HTMLProps<HTMLDivElement>) => {
+export const DropdownHandler = React.forwardRef<HTMLDivElement, DropdownHandlerProps & HTMLProps<HTMLDivElement>>((_props, ref) => {
     const props = {
         toggleOnHeaderClick: true,
         closeOnSectionClick: false,
@@ -49,7 +49,8 @@ export const DropdownHandler = (_props: DropdownHandlerProps & HTMLProps<HTMLDiv
         onToggle: props.onToggle,
         disabled: props.disabled,
         closeOnEscapeClick: props.closeOnEscapeClick,
-        closeOnOutsideClick: props.closeOnOutsideClick
+        closeOnOutsideClick: props.closeOnOutsideClick,
+        containerRef: ref as React.RefObject<HTMLDivElement>
     });
 
     //#region Children clicks
@@ -92,4 +93,4 @@ export const DropdownHandler = (_props: DropdownHandlerProps & HTMLProps<HTMLDiv
             </DropdownContext.Provider>
         </div>
     );
-};
+});

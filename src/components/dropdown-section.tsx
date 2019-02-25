@@ -22,7 +22,7 @@ export interface DropdownSectionProps extends ClassNameProps, HTMLProps<HTMLDivE
     children?: React.ReactNode;
 }
 
-export const DropdownSection = (props: DropdownSectionProps & HTMLProps<HTMLDivElement>): JSX.Element | null => {
+export const DropdownSection = React.forwardRef<HTMLDivElement, DropdownSectionProps & HTMLProps<HTMLDivElement>>((props, ref) => {
     const handlerContext = useContext(DropdownContext);
     const htmlElementProps = extractHTMLProps(props);
 
@@ -32,6 +32,7 @@ export const DropdownSection = (props: DropdownSectionProps & HTMLProps<HTMLDivE
 
     return (
         <div
+            ref={ref}
             className={classNames(props.className, {
                 [props.openClassName || ""]: handlerContext.isOpen,
                 [props.closedClassName || ""]: !handlerContext.isOpen,
@@ -43,4 +44,4 @@ export const DropdownSection = (props: DropdownSectionProps & HTMLProps<HTMLDivE
             {props.children}
         </div>
     );
-};
+});

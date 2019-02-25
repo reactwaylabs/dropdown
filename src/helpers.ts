@@ -2,7 +2,7 @@ export const CAN_I_USE_WINDOW_LISTENERS = typeof window !== "undefined" && windo
 
 export const ESCAPE_KEYCODE: number = 27;
 
-export function isElementInContainer(container: HTMLElement | undefined, element: Element): boolean {
+export function isElementInContainer(container: HTMLElement | undefined | null, element: Element): boolean {
     if (container == null) {
         return false;
     }

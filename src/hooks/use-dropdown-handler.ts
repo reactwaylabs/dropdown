@@ -1,18 +1,19 @@
-import { useRef, RefObject } from "react";
+import { RefObject } from "react";
 
 import { useKeyboardKeyUp } from "./use-keyboard-keyup";
 import { useWindowClick } from "./use-window-click";
 import { useDropdownOpenState } from "./use-dropdown-state";
-import { DropdownOnToggleHandler, DropdownEventSource, RequiredUndefined } from "../contracts";
+import { DropdownOnToggleHandler, DropdownEventSource } from "../contracts";
 import { ESCAPE_KEYCODE, isElementInContainer } from "../helpers";
 
 export interface DropdownHandlerOptions {
-    defaultIsOpen: boolean;
-    isOpen: boolean;
-    onToggle: DropdownOnToggleHandler;
-    disabled: boolean;
-    closeOnOutsideClick: boolean;
-    closeOnEscapeClick: boolean;
+    defaultIsOpen?: boolean;
+    isOpen?: boolean;
+    onToggle?: DropdownOnToggleHandler;
+    disabled?: boolean;
+    closeOnOutsideClick?: boolean;
+    closeOnEscapeClick?: boolean;
+    containerRef: RefObject<HTMLElement | undefined>;
 }
 
 export interface DropdownHandlerResult {
@@ -21,9 +22,8 @@ export interface DropdownHandlerResult {
     containerRef: RefObject<HTMLElement | undefined>;
 }
 
-export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOptions>): DropdownHandlerResult {
+export function useDropdownHandler(options: DropdownHandlerOptions): DropdownHandlerResult {
     const [isOpen, setOpen] = useDropdownOpenState(options.isOpen, options.defaultIsOpen);
-    const ref = useRef<HTMLElement>();
 
     const updateOpenState: DropdownOnToggleHandler = (nextOpenState, eventSource) => {
         if (options.disabled) {
@@ -45,7 +45,7 @@ export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOpt
         updateOpenState(false, DropdownEventSource.EscapeClick);
     });
     useWindowClick(event => {
-        if (!options.closeOnOutsideClick || isElementInContainer(ref.current, event.target as Element) || isOpen === false) {
+        if (!options.closeOnOutsideClick || isElementInContainer(options.containerRef.current, event.target as Element) || isOpen === false) {
             return;
         }
 
@@ -54,7 +54,7 @@ export function useDropdownHandler(options: RequiredUndefined<DropdownHandlerOpt
     //#endregion
 
     return {
-        containerRef: ref,
+        containerRef: options.containerRef,
         isOpen: isOpen,
         updateOpenState: updateOpenState
     };
