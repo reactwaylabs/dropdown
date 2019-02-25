@@ -1,24 +1,97 @@
-import * as React from "react";
-import { HandlerBase, HandlerBaseProps } from "../abstractions/handler-base";
-import { HTMLElementProps } from "../contracts";
+import React from "react";
+import classNames from "classnames";
 
-export interface DropdownHandlerProps extends HandlerBaseProps, HTMLElementProps<HTMLDivElement> {
-    // HACK: Workaround of rule "intersection types should be consistent"
-    ref?: React.Ref<DropdownHandler>;
+import { DropdownContext } from "../contexts/dropdown-context";
+
+import { useDropdownHandler, DropdownHandlerOptions } from "../hooks/use-dropdown-handler";
+import { ClassNameProps, DropdownEventSource, HTMLProps } from "../contracts";
+
+function extractHTMLProps(props: DropdownHandlerProps): {} {
+    const {
+        children,
+        className,
+        closeOnEscapeClick,
+        closeOnOutsideClick,
+        closeOnSectionClick,
+        closedClassName,
+        defaultIsOpen,
+        disabled,
+        disabledClassName,
+        isOpen,
+        onToggle,
+        openClassName,
+        toggleOnHeaderClick,
+        ...restProps
+    } = props;
+
+    return restProps;
 }
 
-export class DropdownHandler extends HandlerBase<DropdownHandlerProps> {
-    public element: HTMLDivElement | null = null;
+export interface DropdownHandlerProps extends ClassNameProps, Partial<DropdownHandlerOptions> {
+    children?: React.ReactNode;
+    toggleOnHeaderClick?: boolean;
+    closeOnSectionClick?: boolean;
+}
 
-    private setElementRef = (element: HTMLDivElement | null) => {
-        this.element = element;
+export const DropdownHandler = React.forwardRef<HTMLDivElement, DropdownHandlerProps & HTMLProps<HTMLDivElement>>((_props, forwardRef) => {
+    const props = {
+        toggleOnHeaderClick: true,
+        closeOnSectionClick: false,
+        closeOnOutsideClick: true,
+        closeOnEscapeClick: true,
+        ..._props
+    };
+    const htmlElementProps = extractHTMLProps(props);
+    const ref = React.useMemo(() => (forwardRef != null ? forwardRef : React.createRef<HTMLDivElement>()), [forwardRef]);
+
+    const dropdown = useDropdownHandler({
+        defaultIsOpen: props.defaultIsOpen,
+        isOpen: props.isOpen,
+        onToggle: props.onToggle,
+        disabled: props.disabled,
+        closeOnEscapeClick: props.closeOnEscapeClick,
+        closeOnOutsideClick: props.closeOnOutsideClick,
+        containerRef: ref as React.RefObject<HTMLDivElement>
+    });
+
+    //#region Children clicks
+    const onHeaderClick = () => {
+        if (!props.toggleOnHeaderClick) {
+            return;
+        }
+        // Toggle open state
+        dropdown.updateOpenState(!dropdown.isOpen, DropdownEventSource.HeaderClick);
     };
 
-    public render(): JSX.Element {
-        return (
-            <div {...this.getRestProps(this.props)} ref={this.setElementRef} className={this.getClassName(this.props)}>
-                {this.props.children}
-            </div>
-        );
-    }
-}
+    const onSectionClick = () => {
+        if (!props.closeOnSectionClick || dropdown.isOpen === false) {
+            return;
+        }
+
+        dropdown.updateOpenState(false, DropdownEventSource.SectionClick);
+    };
+    //#endregion
+
+    return (
+        <div
+            ref={dropdown.containerRef as React.RefObject<HTMLDivElement>}
+            className={classNames(props.className, {
+                [props.openClassName || ""]: dropdown.isOpen,
+                [props.closedClassName || ""]: !dropdown.isOpen,
+                [props.disabledClassName || ""]: props.disabled
+            })}
+            {...htmlElementProps}
+        >
+            <DropdownContext.Provider
+                value={{
+                    isOpen: dropdown.isOpen,
+                    isDisabled: props.disabled || false,
+                    onHeaderClick: onHeaderClick,
+                    onSectionClick: onSectionClick
+                }}
+            >
+                {props.children}
+            </DropdownContext.Provider>
+        </div>
+    );
+});

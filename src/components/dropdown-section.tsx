@@ -1,41 +1,47 @@
-import * as React from "react";
-import { SectionBase, SectionBaseProps } from "../abstractions/section-base";
-import { HTMLElementProps } from "../contracts";
+import React, { useContext } from "react";
+import classNames from "classnames";
 
-export interface DropdownSectionProps extends HTMLElementProps<HTMLDivElement>, SectionBaseProps {
-    // HACK: Workaround of rule "intersection types should be consistent"
-    ref?: React.Ref<DropdownSection>;
+import { DropdownContext } from "../contexts/dropdown-context";
+import { ClassNameProps, HTMLProps } from "../contracts";
+
+function extractHTMLProps(props: DropdownSectionProps): {} {
+    // prettier-ignore
+    const {
+        children,
+        className,
+        closedClassName,
+        disabledClassName,
+        openClassName,
+        ...restProps
+    } = props;
+
+    return restProps;
 }
 
-export class DropdownSection extends SectionBase<DropdownSectionProps> {
-    public element: HTMLDivElement | null = null;
+export interface DropdownSectionProps extends ClassNameProps, HTMLProps<HTMLDivElement> {
+    children?: React.ReactNode;
+}
 
-    private setElementRef = (element: HTMLDivElement | null) => {
-        this.element = element;
-    };
+export const DropdownSection = React.forwardRef<HTMLDivElement, DropdownSectionProps & HTMLProps<HTMLDivElement>>((props, ref) => {
+    const handlerContext = useContext(DropdownContext);
+    const htmlElementProps = extractHTMLProps(props);
 
-    protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
-        event.stopPropagation();
-        this.onSectionClick();
-
-        if (this.props.onClick != null) {
-            event.persist();
-            this.props.onClick(event);
-        }
-    };
-
-    public render(): JSX.Element | null {
-        if (!this.isOpen()) {
-            return null;
-        }
-
-        return (
-            <div
-                {...this.getRestProps(this.props)}
-                ref={this.setElementRef}
-                onClick={this.onContainerClickCallback}
-                className={this.getClassName(this.props)}
-            />
-        );
+    if (!handlerContext.isOpen) {
+        return null;
     }
-}
+
+    return (
+        <div
+            ref={ref}
+            className={classNames(props.className, {
+                [props.openClassName || ""]: handlerContext.isOpen,
+                [props.closedClassName || ""]: !handlerContext.isOpen,
+                [props.disabledClassName || ""]: handlerContext.isDisabled
+            })}
+            onClick={() => handlerContext.onSectionClick()}
+            {...htmlElementProps}
+        >
+            {props.children}
+        </div>
+    );
+});

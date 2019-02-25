@@ -1,4 +1,4 @@
-export enum EventSource {
+export enum DropdownEventSource {
     HeaderClick = 8,
     SectionClick = 16,
     OutsideClick = 24,
@@ -6,13 +6,7 @@ export enum EventSource {
     ManualTrigger = 64
 }
 
-export type DropdownOnToggleHandler = (isOpen: boolean, source: EventSource) => void;
-export type DropdownOnOpenHandler = (source: EventSource) => void;
-export type DropdownOnCloseHandler = (source: EventSource) => void;
-
-export interface HTMLElementProps<TElement> extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    ref?: React.Ref<any>;
-}
+export type DropdownOnToggleHandler = (isOpen: boolean, source: DropdownEventSource) => void;
 
 export interface ClassNameProps {
     className?: string;
@@ -20,3 +14,13 @@ export interface ClassNameProps {
     closedClassName?: string;
     disabledClassName?: string;
 }
+
+/**
+ * Types helper.
+ */
+type Omit<TT, TK extends keyof TT> = Pick<TT, Exclude<keyof TT, TK>>;
+
+/**
+ * Types helper.
+ */
+export type HTMLProps<TElement> = Omit<React.DetailedHTMLProps<React.HTMLAttributes<TElement>, TElement>, "ref">;

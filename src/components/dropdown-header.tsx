@@ -1,37 +1,43 @@
-import * as React from "react";
-import { HeaderBase, HeaderBaseProps } from "../abstractions/header-base";
-import { HTMLElementProps } from "../contracts";
+import React, { useContext } from "react";
+import classNames from "classnames";
 
-export interface DropdownHeaderProps extends HTMLElementProps<HTMLDivElement>, HeaderBaseProps {
-    // HACK: Workaround of rule "intersection types should be consistent"
-    ref?: React.Ref<DropdownHeader>;
+import { DropdownContext } from "../contexts/dropdown-context";
+import { ClassNameProps, HTMLProps } from "../contracts";
+
+function extractHTMLProps(props: DropdownHeaderProps): {} {
+    // prettier-ignore
+    const {
+        children,
+        className,
+        closedClassName,
+        disabledClassName,
+        openClassName,
+        ...restProps
+    } = props;
+
+    return restProps;
 }
 
-export class DropdownHeader extends HeaderBase<DropdownHeaderProps> {
-    public element: HTMLDivElement | null = null;
-
-    private setElementRef = (element: HTMLDivElement | null) => {
-        this.element = element;
-    };
-
-    protected onContainerClickCallback: React.MouseEventHandler<HTMLDivElement> = event => {
-        event.stopPropagation();
-        this.onHeaderClick();
-
-        if (this.props.onClick != null) {
-            event.persist();
-            this.props.onClick(event);
-        }
-    };
-
-    public render(): JSX.Element {
-        return (
-            <div
-                {...this.getRestProps(this.props)}
-                ref={this.setElementRef}
-                onClick={this.onContainerClickCallback}
-                className={this.getClassName(this.props)}
-            />
-        );
-    }
+export interface DropdownHeaderProps extends ClassNameProps {
+    children?: React.ReactNode;
 }
+
+export const DropdownHeader = React.forwardRef<HTMLDivElement, DropdownHeaderProps & HTMLProps<HTMLDivElement>>((props, ref) => {
+    const handlerContext = useContext(DropdownContext);
+    const htmlElementProps = extractHTMLProps(props);
+
+    return (
+        <div
+            ref={ref}
+            className={classNames(props.className, {
+                [props.openClassName || ""]: handlerContext.isOpen,
+                [props.closedClassName || ""]: !handlerContext.isOpen,
+                [props.disabledClassName || ""]: handlerContext.isDisabled
+            })}
+            onClick={() => handlerContext.onHeaderClick()}
+            {...htmlElementProps}
+        >
+            {props.children}
+        </div>
+    );
+});
