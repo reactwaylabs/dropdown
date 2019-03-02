@@ -1,6 +1,6 @@
 {
     "name": "@reactway/dropdown",
-    "version": "5.0.0-beta",
+    "version": "5.0.0-beta.2",
     "publishConfig": {
         "tag": "beta"
     },
@@ -38,7 +38,7 @@
         "@types/jest": "^24.0.6",
         "@types/react": "^16.8.4",
         "@types/react-dom": "^16.8.2",
-        "istanbul-reporter-html-internal-css": "0.0.1",
+        "istanbul-azure-reporter": "^0.1.1",
         "jest": "^24.1.0",
         "jest-dom": "^3.1.2",
         "jest-junit": "^6.3.0",
@@ -74,7 +74,7 @@
         ],
         "coverageReporters": [
             "cobertura",
-            "istanbul-reporter-html-internal-css"
+            "istanbul-azure-reporter"
         ]
     }
 }
