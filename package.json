@@ -1,6 +1,6 @@
 {
     "name": "@reactway/dropdown",
-    "version": "5.0.0-beta.2",
+    "version": "5.0.0-beta.3",
     "publishConfig": {
         "tag": "beta"
     },
@@ -57,7 +57,8 @@
     "dependencies": {
         "@types/classnames": "^2.2.7",
         "classnames": "^2.2.6",
-        "react": "^16.8.3"
+        "react": "^16.8.3",
+        "tslib": "^1.9.3"
     },
     "jest": {
         "verbose": true,
